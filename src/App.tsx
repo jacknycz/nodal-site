@@ -3,7 +3,6 @@ import NodalBlackLogo from './assets/nodal-black.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
