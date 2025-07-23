@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import NodalBlackLogo from './assets/nodal-black.svg'
 import './App.css'
 
