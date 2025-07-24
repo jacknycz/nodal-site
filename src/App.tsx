@@ -101,7 +101,7 @@ function App() {
                   'coming soon...',
                   'a research assistant...',
                   'coming soon...',
-                  'for sharing idea...s'
+                  'for sharing ideas...'
                 ]}
               />
             </span>
