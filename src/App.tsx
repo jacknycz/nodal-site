@@ -58,7 +58,7 @@ function App() {
   return (
     <>
       <section
-        className="relative flex flex-col items-center justify-center bg-cover h-screen bg-center text-zinc-900 dark:text-white transition-colors duration-200"
+        className="relative flex flex-col items-center justify-center bg-cover min-h-screen bg-center text-zinc-900 dark:text-white transition-colors duration-200"
         style={{ backgroundImage: `url(${Screengrab})` }}
       >
         {/* Overlay for readability */}
