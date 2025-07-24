@@ -88,19 +88,12 @@ function App() {
                 phrases={[
                   'coming soon...',
                   'a visual thinking tool...',
-                  'coming soon...',
                   'AI for your ideas...',
-                  'coming soon...',
                   'boards & nodes...',
-                  'coming soon...',
                   'your creative partner...',
-                  'coming soon...',
-                  'whatever you imagine',
-                  'coming soon...',
+                  'whatever you imagine...',
                   'AI meets ADHD...',
-                  'coming soon...',
                   'a research assistant...',
-                  'coming soon...',
                   'for sharing ideas...'
                 ]}
               />
