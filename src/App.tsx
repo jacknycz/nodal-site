@@ -1,52 +1,10 @@
 import { useState, useEffect } from 'react'
-import NodalBlackLogo from './assets/nodal-black.svg'
-import NodalWhiteLogo from './assets/nodal-white.svg'
-import Screengrab from './assets/screengrab.png'
+import { Brain, Users, FileText, Target, Cloud, Share2 } from 'lucide-react'
+import TypewriterHero from './components/TypewriterHero'
+import ConversationalHero from './components/ConversationalHero'
 import './App.css'
 
-// Typewriter component
-function Typewriter({ phrases, typingSpeed = 80, pause = 1800, deletingSpeed = 40 }: {
-  phrases: string[];
-  typingSpeed?: number;
-  pause?: number;
-  deletingSpeed?: number;
-}) {
-  const [displayed, setDisplayed] = useState('')
-  const [phraseIdx, setPhraseIdx] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [charIdx, setCharIdx] = useState(0)
 
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    const currentPhrase = phrases[phraseIdx];
-    if (!isDeleting && charIdx < currentPhrase.length) {
-      timeout = setTimeout(() => {
-        setDisplayed(currentPhrase.slice(0, charIdx + 1));
-        setCharIdx(charIdx + 1);
-      }, typingSpeed);
-    } else if (isDeleting && charIdx > 0) {
-      timeout = setTimeout(() => {
-        setDisplayed(currentPhrase.slice(0, charIdx - 1));
-        setCharIdx(charIdx - 1);
-      }, deletingSpeed);
-    } else if (!isDeleting && charIdx === currentPhrase.length) {
-      timeout = setTimeout(() => setIsDeleting(true), pause);
-    } else if (isDeleting && charIdx === 0) {
-      timeout = setTimeout(() => {
-        setIsDeleting(false);
-        setPhraseIdx((phraseIdx + 1) % phrases.length);
-      }, 400);
-    }
-    return () => clearTimeout(timeout);
-  }, [charIdx, isDeleting, phraseIdx, phrases, typingSpeed, deletingSpeed, pause]);
-
-  return (
-    <span className="inline-block -mr-3">
-      {displayed}
-      <span className="typewriter-cursor">|</span>
-    </span>
-  );
-}
 
 function App() {
   const [isDark, setIsDark] = useState(true)
@@ -57,68 +15,121 @@ function App() {
 
   return (
     <>
-      <section
-        className="relative flex flex-col items-center justify-center bg-cover min-h-screen bg-center text-zinc-900 dark:text-white transition-colors duration-200"
-        style={{ backgroundImage: `url(${Screengrab})` }}
+      {/* Global Dev Toggle - temporary */}
+      <button
+        onClick={() => setIsDark(prev => !prev)}
+        className="fixed top-4 left-4 z-50 px-3 py-2 text-sm bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded border border-zinc-300 dark:border-zinc-600 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
       >
-        {/* Overlay for readability */}
-        <div className="absolute inset-0 bg-white/80 dark:bg-zinc-950/80 pointer-events-none transition-colors duration-200" />
-        <div className="relative flex flex-col items-start justify-start w-full px-4 md:px-8 lg:px-16">
+        {isDark ? '☀️ Light' : '🌙 Dark'}
+      </button>
+      
+      {/* <TypewriterHero isDark={isDark} /> */}
 
-          <button
-            onClick={() => setIsDark(prev => !prev)}
-            className="fixed -top-40 right-4 px-4 py-2 rounded bg-zinc-200 dark:bg-zinc-800"
-          >
-            {isDark ? "🌙 Dark" : "☀️ Light"}
-          </button>
+      {/* A SECOND TEST HERO */}
+      <ConversationalHero isDark={isDark} />
 
-          {/* Logo - show different versions for light/dark */}
-          <div className="mb-8 max-w-full md:max-w-1/2 lg:max-w-1/2">
-            <img
-              src={isDark ? NodalWhiteLogo : NodalBlackLogo}
-              alt="Nodal Logo"
-              className="transition-opacity duration-200"
-            />
+      <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4">
+              Visual thinking, supercharged by AI
+            </h2>
+            <p className="text-xl text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto">
+              Transform ideas into visual maps with real-time collaboration and intelligent AI assistance
+            </p>
           </div>
 
-          <h1 className="flex justify-start text-2xl lg:text-4xl lg:max-w-3/4 text-zinc-900 dark:text-white font-normal tracking-tight">
-            <span>is&nbsp;</span>
-            <span className="text-zinc-200 dark:text-white border-b-3 lg:border-b-4 border-primary-500 dark:border-primary-500">
-              <Typewriter
-                phrases={[
-                  'coming soon...',
-                  'a visual thinking tool...',
-                  'AI for your ideas...',
-                  'boards & nodes...',
-                  'your creative partner...',
-                  'whatever you imagine...',
-                  'AI meets ADHD...',
-                  'a research assistant...',
-                  'for sharing ideas...'
-                ]}
-              />
-            </span>
-          </h1>
-          {/* <p className="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-300">
-            Nodal is a visual thinking tool powered by AI. Build ideas with Boards & Nodes.
-          </p> */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {/* AI-Powered Ideation */}
+            <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+              <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
+                <Brain className="text-white w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">AI-Powered Brainstorming</h3>
+              <p className="text-zinc-600 dark:text-zinc-300">
+                Generate ideas, expand thoughts, and get context-aware suggestions. Your AI creative partner that understands your thinking process.
+              </p>
+            </div>
 
-          {/* <div className="mt-10 flex justify-center gap-4">
-            <a
-              href="https://app.nodalapp.com"
-              className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors duration-200"
-            >
-              Try the App
-            </a>
-            <a
-              href="#features"
-              className="border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white px-6 py-3 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors duration-200"
-            >
-              Learn More
-            </a>
-          </div> */}
+            {/* Real-time Collaboration */}
+            <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+              <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+                <Users className="text-white w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Real-time Collaboration</h3>
+              <p className="text-zinc-600 dark:text-zinc-300">
+                Work together seamlessly with live cursors, presence indicators, and smart conflict prevention. See who's thinking what, when.
+              </p>
+            </div>
 
-          {/* <h3 className="mt-10 text-lg sm:text-xl text-zinc-600 dark:text-zinc-300">Coming soon...</h3> */}
+            {/* Rich Content */}
+            <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+              <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+                <FileText className="text-white w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Rich Text & Media</h3>
+              <p className="text-zinc-600 dark:text-zinc-300">
+                Full WYSIWYG editing with document uploads, PDF previews, and rich formatting. Every node can hold detailed content.
+              </p>
+            </div>
+
+            {/* Focus & Organization */}
+            <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+              <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4">
+                <Target className="text-white w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Focus Tree & Navigation</h3>
+              <p className="text-zinc-600 dark:text-zinc-300">
+                Hierarchical organization with focus modes. Zoom into specific areas or see the big picture with intelligent navigation.
+              </p>
+            </div>
+
+            {/* Cloud-First */}
+            <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+              <div className="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-4">
+                <Cloud className="text-white w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Cloud-First Storage</h3>
+              <p className="text-zinc-600 dark:text-zinc-300">
+                Automatic saves, thumbnail previews, and seamless sync across devices. Your boards are always available, everywhere.
+              </p>
+            </div>
+
+            {/* Board Sharing */}
+            <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
+              <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4">
+                <Share2 className="text-white w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Easy Board Sharing</h3>
+              <p className="text-zinc-600 dark:text-zinc-300">
+                Invite collaborators via email, manage permissions, and track who's active. Share ideas as easily as sending a link.
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center">
+            <div className="bg-gradient-to-r from-primary-500 to-blue-600 text-white p-8 rounded-2xl">
+              <h3 className="text-2xl font-bold mb-4">Ready to transform how you think?</h3>
+              <p className="text-lg mb-6 opacity-90">
+                Join thousands who've already discovered the power of visual thinking with AI
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="#"
+                  className="bg-white text-primary-600 font-semibold px-8 py-3 rounded-lg hover:bg-zinc-50 transition-colors duration-200"
+                >
+                  Start Free Today
+                </a>
+                <a
+                  href="#"
+                  className="border border-white/30 text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors duration-200"
+                >
+                  See Pro Features
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
