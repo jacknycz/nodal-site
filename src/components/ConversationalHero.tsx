@@ -96,17 +96,17 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
           </p>
         </motion.div>
 
-        {/* Right Column - Conversation */}
-        <div className="flex flex-col">
-          {/* Chat bubbles */}
-          <div className="space-y-4 mb-8">
+        {/* Right Column - Conversation as Nodes */}
+        <div className="flex flex-col items-center relative">
+          {/* Chat bubbles as nodes with connections */}
+          <div className="space-y-6 relative w-full">
             <AnimatePresence>
               {conversation.slice(0, currentStep).map((message, index) => {
                 if (message.speaker === 'final') {
                   return (
                     <motion.div
                       key={index}
-                      className="text-center mt-8"
+                      className="text-center mt-12"
                       variants={bubbleVariants}
                       initial="hidden"
                       animate="visible"
@@ -119,108 +119,74 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
                 }
 
                 const isUser = message.speaker === 'user'
+                const showConnection = index > 0 && conversation.slice(0, currentStep).length > index
+
                 return (
-                  <motion.div
-                    key={index}
-                    className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}
-                    variants={bubbleVariants}
-                    initial="hidden"
-                    animate="visible"
-                  >
-                    <div className={`
-                      max-w-xs px-4 py-3 rounded-2xl shadow-sm
-                      ${isUser 
-                        ? 'bg-primary-500 text-white rounded-br-md' 
-                        : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded-bl-md'
-                      }
-                    `}>
-                      <p className="text-sm md:text-base">{message.text}</p>
-                    </div>
-                  </motion.div>
+                  <div key={index} className="relative">
+                    {/* Connection line to previous node */}
+                    {showConnection && (
+                      <motion.div
+                        className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-6"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.6, delay: 0.3 }}
+                      >
+                        <svg width="60" height="24" className="overflow-visible">
+                          <motion.path
+                            d={`M 30 0 Q ${isUser ? 45 : 15} 12 30 24`}
+                            stroke={isDark ? "#6b7280" : "#4b5563"}
+                            strokeWidth="2"
+                            strokeDasharray="4 4"
+                            fill="none"
+                            initial={{ pathLength: 0 }}
+                            animate={{ pathLength: 1 }}
+                            transition={{ duration: 0.8, delay: 0.5 }}
+                          />
+                        </svg>
+                      </motion.div>
+                    )}
+
+                    {/* Node bubble */}
+                    <motion.div
+                      className={`flex ${isUser ? 'justify-end' : 'justify-start'} relative`}
+                      variants={bubbleVariants}
+                      initial="hidden"
+                      animate="visible"
+                    >
+                      {/* Connection handles */}
+                      <div className="relative">
+                        {/* Left handle */}
+                        <motion.div
+                          className="absolute left-0 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-zinc-400 dark:bg-zinc-500 rounded-full border-2 border-white dark:border-zinc-800"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.4, duration: 0.3 }}
+                        />
+                        
+                        {/* Right handle */}
+                        <motion.div
+                          className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-zinc-400 dark:bg-zinc-500 rounded-full border-2 border-white dark:border-zinc-800"
+                          initial={{ scale: 0, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.4, duration: 0.3 }}
+                        />
+
+                        {/* The actual node/bubble */}
+                        <div className={`
+                          px-6 py-4 rounded-xl shadow-lg border-2 max-w-xs
+                          ${isUser 
+                            ? 'bg-primary-500 text-white border-primary-400 rounded-br-md' 
+                            : 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white border-zinc-200 dark:border-zinc-700 rounded-bl-md'
+                          }
+                        `}>
+                          <p className="text-sm md:text-base font-medium">{message.text}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </div>
                 )
               })}
             </AnimatePresence>
-          </div>
-
-          {/* Visual demonstration */}
-          <div className="flex justify-center mt-4">
-            <svg width="200" height="150" viewBox="0 0 200 150">
-              {/* First node */}
-              {currentStep >= 2 && (
-                <motion.circle
-                  cx="50"
-                  cy="60"
-                  r="20"
-                  fill={isDark ? "#3b82f6" : "#2563eb"}
-                  variants={nodeVariants}
-                  initial="hidden"
-                  animate="visible"
-                />
-              )}
-              
-              {/* Second node */}
-              {currentStep >= 4 && (
-                <motion.circle
-                  cx="150"
-                  cy="90"
-                  r="20"
-                  fill={isDark ? "#10b981" : "#059669"}
-                  variants={nodeVariants}
-                  initial="hidden"
-                  animate="visible"
-                />
-              )}
-              
-              {/* Connection line */}
-              {currentStep >= 4 && (
-                <motion.path
-                  d="M 70 60 Q 110 50 130 90"
-                  stroke={isDark ? "#6b7280" : "#4b5563"}
-                  strokeWidth="2"
-                  fill="none"
-                  variants={connectionVariants}
-                  initial="hidden"
-                  animate="visible"
-                />
-              )}
-              
-              {/* Third node for cluster effect */}
-              {currentStep >= 5 && (
-                <motion.circle
-                  cx="100"
-                  cy="30"
-                  r="15"
-                  fill={isDark ? "#f59e0b" : "#d97706"}
-                  variants={nodeVariants}
-                  initial="hidden"
-                  animate="visible"
-                />
-              )}
-              
-              {/* Additional connections */}
-              {currentStep >= 5 && (
-                <>
-                  <motion.path
-                    d="M 65 50 Q 80 40 85 30"
-                    stroke={isDark ? "#6b7280" : "#4b5563"}
-                    strokeWidth="2"
-                    fill="none"
-                    variants={connectionVariants}
-                    initial="hidden"
-                    animate="visible"
-                  />
-                  <motion.path
-                    d="M 115 30 Q 130 60 135 85"
-                    stroke={isDark ? "#6b7280" : "#4b5563"}
-                    strokeWidth="2"
-                    fill="none"
-                    variants={connectionVariants}
-                    initial="hidden"
-                    animate="visible"
-                  />
-                </>
-              )}
-            </svg>
           </div>
         </div>
       </div>
