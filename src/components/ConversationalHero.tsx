@@ -23,7 +23,7 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
   ]
 
   useEffect(() => {
-    const timers: NodeJS.Timeout[] = []
+    const timers: number[] = []
     
     conversation.forEach((_, index) => {
       const timer = setTimeout(() => {
@@ -42,7 +42,7 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
       scale: 1, 
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 300,
         damping: 25
       }
@@ -53,37 +53,12 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
       y: -50,
       transition: {
         duration: 0.4,
-        ease: "easeInOut"
+        ease: "easeInOut" as const
       }
     }
   }
 
-  const nodeVariants = {
-    hidden: { opacity: 0, scale: 0 },
-    visible: { 
-      opacity: 1, 
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 400,
-        damping: 20,
-        delay: 0.3
-      }
-    }
-  }
 
-  const connectionVariants = {
-    hidden: { pathLength: 0, opacity: 0 },
-    visible: { 
-      pathLength: 1, 
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-        delay: 0.5
-      }
-    }
-  }
 
   return (
     <section 

@@ -28,7 +28,7 @@ export default function CollaborationSection({ isDark }: CollaborationSectionPro
   // Simulate live cursors moving around
   useEffect(() => {
     const interval = setInterval(() => {
-      setCursors(prev => {
+      setCursors(() => {
         const newCursors = collaborators.slice(0, Math.min(activeUsers + 1, 3)).map((user, index) => ({
           id: user.name,
           name: user.name,

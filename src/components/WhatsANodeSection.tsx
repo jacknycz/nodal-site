@@ -5,7 +5,7 @@ interface WhatsANodeSectionProps {
   isDark: boolean;
 }
 
-export default function WhatsANodeSection({ isDark }: WhatsANodeSectionProps) {
+export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   const nodeTypes = [
     { icon: Lightbulb, label: 'a thought', color: 'primary', delay: 0 },
     { icon: CheckSquare, label: 'a plan', color: 'secondary', delay: 0.2 },
@@ -64,7 +64,7 @@ export default function WhatsANodeSection({ isDark }: WhatsANodeSectionProps) {
 
         {/* Node Types Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {nodeTypes.map((nodeType, index) => (
+          {nodeTypes.map((nodeType) => (
             <motion.div
               key={nodeType.label}
               className="flex flex-col items-center text-center group"

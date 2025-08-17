@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Brain, Users, FileText, Target, Cloud, Share2 } from 'lucide-react'
-import TypewriterHero from './components/TypewriterHero'
 import ConversationalHero from './components/ConversationalHero'
 import WhatsANodeSection from './components/WhatsANodeSection'
 import ConnectThoughtsSection from './components/ConnectThoughtsSection'

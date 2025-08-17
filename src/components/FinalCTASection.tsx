@@ -323,7 +323,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
       </div>
 
       {/* CSS for background animation */}
-      <style jsx>{`
+      <style>{`
         @keyframes backgroundFloat {
           0% { transform: translateY(0px) translateX(0px); }
           33% { transform: translateY(-10px) translateX(5px); }

@@ -17,7 +17,7 @@ interface Template {
   features: string[];
 }
 
-export default function TemplatesSection({ isDark }: TemplatesSectionProps) {
+export default function TemplatesSection({ }: TemplatesSectionProps) {
   const [hoveredTemplate, setHoveredTemplate] = useState<string | null>(null)
 
   const templates: Template[] = [

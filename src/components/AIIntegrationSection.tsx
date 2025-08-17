@@ -90,7 +90,7 @@ export default function AIIntegrationSection({ isDark }: AIIntegrationSectionPro
             </motion.p>
 
             <div className="space-y-4 mb-8">
-              {aiFeatures.map((feature, index) => (
+              {aiFeatures.map((feature) => (
                 <motion.div 
                   key={feature.text}
                   className="flex items-center gap-4 group"

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Zap, Eye } from 'lucide-react'
+import { Zap } from 'lucide-react'
 
 interface ConnectThoughtsSectionProps {
   isDark: boolean;
