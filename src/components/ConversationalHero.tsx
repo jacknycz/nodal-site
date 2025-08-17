@@ -18,7 +18,7 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
     { speaker: 'user', text: "An idea?" },
     { speaker: 'nodal', text: "Yep. You can connect them to other nodes." },
     { speaker: 'user', text: "...and then we hangout on a board, as ideas?" }, 
-    { speaker: 'nodal', text: "Just sign in and start creating. Trust me - easier that way." },
+    { speaker: 'nodal', text: "Just sign up and start creating. It's free! (pro has some cool stuff coming though). Trust me - easier that way." },
     // { speaker: 'final', text: "Nodal helps you connect your ideas." }
   ]
 

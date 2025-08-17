@@ -2,6 +2,12 @@ import { useState, useEffect } from 'react'
 import { Brain, Users, FileText, Target, Cloud, Share2 } from 'lucide-react'
 import TypewriterHero from './components/TypewriterHero'
 import ConversationalHero from './components/ConversationalHero'
+import WhatsANodeSection from './components/WhatsANodeSection'
+import ConnectThoughtsSection from './components/ConnectThoughtsSection'
+import AIIntegrationSection from './components/AIIntegrationSection'
+import CollaborationSection from './components/CollaborationSection'
+import TemplatesSection from './components/TemplatesSection'
+import FinalCTASection from './components/FinalCTASection'
 import './App.css'
 
 
@@ -28,6 +34,13 @@ function App() {
       {/* A SECOND TEST HERO */}
       <ConversationalHero isDark={isDark} />
 
+      {/* New Landing Page Sections */}
+      <WhatsANodeSection isDark={isDark} />
+      <ConnectThoughtsSection isDark={isDark} />
+      <AIIntegrationSection isDark={isDark} />
+      <CollaborationSection isDark={isDark} />
+      <TemplatesSection isDark={isDark} />
+
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -53,7 +66,7 @@ function App() {
 
             {/* Real-time Collaboration */}
             <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-              <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-secondary-500 rounded-lg flex items-center justify-center mb-4">
                 <Users className="text-white w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Real-time Collaboration</h3>
@@ -64,7 +77,7 @@ function App() {
 
             {/* Rich Content */}
             <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-              <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-tertiary-500 rounded-lg flex items-center justify-center mb-4">
                 <FileText className="text-white w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Rich Text & Media</h3>
@@ -75,7 +88,7 @@ function App() {
 
             {/* Focus & Organization */}
             <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-              <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
                 <Target className="text-white w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Focus Tree & Navigation</h3>
@@ -86,7 +99,7 @@ function App() {
 
             {/* Cloud-First */}
             <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-              <div className="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-secondary-500 rounded-lg flex items-center justify-center mb-4">
                 <Cloud className="text-white w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Cloud-First Storage</h3>
@@ -97,7 +110,7 @@ function App() {
 
             {/* Board Sharing */}
             <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-              <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-tertiary-500 rounded-lg flex items-center justify-center mb-4">
                 <Share2 className="text-white w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Easy Board Sharing</h3>
@@ -132,6 +145,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Final CTA with Confetti */}
+      <FinalCTASection isDark={isDark} />
     </>
   )
 }
