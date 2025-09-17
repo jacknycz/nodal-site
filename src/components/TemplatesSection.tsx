@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plane, BookOpen, Trophy, Lightbulb, ArrowRight, Play } from 'lucide-react'
+import { Airplane, Book, Trophy, Lightbulb, ArrowRight, Play, CaretLeft, CaretRight } from '@phosphor-icons/react'
 
 interface TemplatesSectionProps {
   isDark: boolean;
@@ -26,7 +26,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
       title: 'Vacation to Greece',
       subtitle: '✈️ Travel Planning',
       description: 'Itinerary, must‑see spots, and packing list ready to customize.',
-      icon: Plane,
+      icon: Airplane,
       color: 'primary',
       preview: '/api/placeholder/400/250',
       features: ['Pre-planned itinerary', 'Budget tracker', 'Packing checklist', 'Local recommendations']
@@ -36,7 +36,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
       title: 'My Research Paper',
       subtitle: '📚 Academic Structure',
       description: 'Sections outlined with sources placeholder nodes.',
-      icon: BookOpen,
+      icon: Book,
       color: 'secondary',
       preview: '/api/placeholder/400/250',
       features: ['Chapter outlines', 'Citation management', 'Research timeline', 'Source organization']
@@ -100,6 +100,69 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
     }
   }
 
+  // Build 10 carousel items by repeating the base templates
+  const carouselItems: Template[] = Array.from({ length: 10 }, (_, i) => {
+    const base = templates[i % templates.length]
+    return { ...base, id: `${base.id}-${i}` }
+  })
+
+  const listRef = useRef<HTMLDivElement | null>(null)
+  const isAnimatingRef = useRef(false)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [itemsPerView, setItemsPerView] = useState(1)
+  const GAP_PX = 24 // matches gap-6
+
+  const scrollToIndex = (index: number) => {
+    const container = listRef.current
+    if (!container) return
+    const child = container.children[index] as HTMLElement | undefined
+    if (!child) return
+    isAnimatingRef.current = true
+    container.scrollTo({ left: child.offsetLeft, behavior: 'smooth' })
+    // Reset the animating flag after the scroll settles
+    window.clearTimeout((container as any)._snapTimer)
+    ;(container as any)._snapTimer = window.setTimeout(() => {
+      isAnimatingRef.current = false
+    }, 400)
+  }
+
+  useEffect(() => {
+    scrollToIndex(activeIndex)
+  }, [activeIndex])
+
+  // Responsively set how many cards are fully visible and compute widths
+  useEffect(() => {
+    const calc = () => {
+      const w = window.innerWidth
+      if (w >= 1024) setItemsPerView(3)
+      else if (w >= 768) setItemsPerView(2)
+      else setItemsPerView(1)
+    }
+    calc()
+    window.addEventListener('resize', calc)
+    return () => window.removeEventListener('resize', calc)
+  }, [])
+
+  const handleScroll = () => {
+    const container = listRef.current
+    if (!container) return
+    if (isAnimatingRef.current) return
+    let closest = 0
+    let minDelta = Infinity
+    for (let i = 0; i < container.children.length; i++) {
+      const el = container.children[i] as HTMLElement
+      const delta = Math.abs(el.offsetLeft - container.scrollLeft)
+      if (delta < minDelta) {
+        minDelta = delta
+        closest = i
+      }
+    }
+    if (closest !== activeIndex) setActiveIndex(closest)
+  }
+
+  const prev = () => setActiveIndex((i) => Math.max(0, i - 1))
+  const next = () => setActiveIndex((i) => Math.min(carouselItems.length - 1, i + 1))
+
   return (
     <section className="py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
       <div className="max-w-7xl mx-auto">
@@ -136,28 +199,59 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
           </motion.p>
         </div>
 
-        {/* Templates Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
-          {templates.map((template, index) => {
-            const colors = getColorClasses(template.color)
-            const isHovered = hoveredTemplate === template.id
+        {/* Carousel */}
+        <div className="relative mb-12">
+          {/* Progress indicator */}
+          <div className="absolute -top-8 left-0 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+            {activeIndex + 1}/{carouselItems.length}
+          </div>
 
-            return (
-              <motion.div
-                key={template.id}
-                className={`
-                  relative bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border-2 transition-all duration-300 overflow-hidden group cursor-pointer
-                  ${colors.border} ${colors.hover}
-                  ${isHovered ? 'scale-[1.02] shadow-2xl' : 'hover:scale-[1.01]'}
-                `}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                onHoverStart={() => setHoveredTemplate(template.id)}
-                onHoverEnd={() => setHoveredTemplate(null)}
-                whileHover={{ y: -5 }}
-              >
+          {/* Controls */}
+          <div className="absolute -top-10 right-0 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={prev}
+              className="w-9 h-9 rounded-full bg-zinc-800 text-white/90 hover:text-white dark:bg-zinc-700 flex items-center justify-center"
+              aria-label="Previous"
+              disabled={activeIndex === 0}
+            >
+              <CaretLeft className="w-5 h-5" />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              className="w-9 h-9 rounded-full bg-zinc-800 text-white/90 hover:text-white dark:bg-zinc-700 flex items-center justify-center"
+              aria-label="Next"
+              disabled={activeIndex === carouselItems.length - 1}
+            >
+              <CaretRight className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div
+            ref={listRef}
+            onScroll={handleScroll}
+            className="snap-x snap-mandatory overflow-x-auto no-scrollbar scroll-smooth flex gap-6 pb-2"
+          >
+            {carouselItems.map((template) => {
+            const colors = getColorClasses(template.color)
+              const isHovered = hoveredTemplate === template.id
+
+              return (
+                <motion.div
+                  key={template.id}
+                  className={`snap-start flex-none relative bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border-2 transition-all duration-300 overflow-hidden group cursor-pointer ${colors.border} ${colors.hover} ${isHovered ? 'scale-[1.02] shadow-2xl' : 'hover:scale-[1.01]'}`}
+                  style={{
+                    width: `calc((100% - ${(itemsPerView - 1) * GAP_PX}px) / ${itemsPerView})`
+                  }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4 }}
+                  onHoverStart={() => setHoveredTemplate(template.id)}
+                  onHoverEnd={() => setHoveredTemplate(null)}
+                  whileHover={{ y: -5 }}
+                >
                 {/* Preview Image Section */}
                 <div className="relative h-48 overflow-hidden">
                   {/* FPO Image */}
@@ -266,9 +360,10 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
                     )}
                   </AnimatePresence>
                 </div>
-              </motion.div>
-            )
-          })}
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
 
         {/* Bottom Text */}

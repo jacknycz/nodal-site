@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, ArrowRight, Star, Zap } from 'lucide-react'
+import { Sparkle, ArrowRight, Star, Lightning } from '@phosphor-icons/react'
 
 interface FinalCTASectionProps {
   isDark: boolean;
@@ -197,7 +197,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
         >
           <div className="text-center">
             <div className="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Sparkles className="w-8 h-8 text-white" />
+              <Sparkle className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">Start with a single thought.</h3>
             <p className="text-zinc-400">One idea becomes a node</p>
@@ -205,7 +205,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
 
           <div className="text-center">
             <div className="w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Zap className="w-8 h-8 text-white" />
+              <Lightning className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-semibold text-white mb-2">End with something bigger than you imagined.</h3>
             <p className="text-zinc-400">Watch your ideas connect and grow</p>

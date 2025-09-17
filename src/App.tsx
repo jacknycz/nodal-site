@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Brain, Users, FileText, Target, Cloud, Share2 } from 'lucide-react'
+import { Brain, Users, FileText, Target, Cloud, Share } from '@phosphor-icons/react'
 import ConversationalHero from './components/ConversationalHero'
 import WhatsANodeSection from './components/WhatsANodeSection'
 import ConnectThoughtsSection from './components/ConnectThoughtsSection'
 import AIIntegrationSection from './components/AIIntegrationSection'
-import CollaborationSection from './components/CollaborationSection'
 import TemplatesSection from './components/TemplatesSection'
 import FinalCTASection from './components/FinalCTASection'
 import './App.css'
@@ -35,9 +34,8 @@ function App() {
 
       {/* New Landing Page Sections */}
       <WhatsANodeSection isDark={isDark} />
-      <ConnectThoughtsSection isDark={isDark} />
+      <ConnectThoughtsSection isDark={isDark} />  
       <AIIntegrationSection isDark={isDark} />
-      <CollaborationSection isDark={isDark} />
       <TemplatesSection isDark={isDark} />
 
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
@@ -110,7 +108,7 @@ function App() {
             {/* Board Sharing */}
             <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
               <div className="w-12 h-12 bg-tertiary-500 rounded-lg flex items-center justify-center mb-4">
-                <Share2 className="text-white w-6 h-6" />
+                <Share className="text-white w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-zinc-900 dark:text-white mb-2">Easy Board Sharing</h3>
               <p className="text-zinc-600 dark:text-zinc-300">

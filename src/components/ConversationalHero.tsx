@@ -17,14 +17,14 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
     { speaker: 'nodal', text: "You can be a document. Or a task, or a list. Maybe an image." },
     { speaker: 'user', text: "An idea?" },
     { speaker: 'nodal', text: "Yep. You can connect them to other nodes." },
-    { speaker: 'user', text: "...and then we hangout on a board, as ideas?" }, 
+    { speaker: 'user', text: "...and then we hangout on a board, as ideas?" },
     { speaker: 'nodal', text: "Just sign up and start creating. It's free! (pro has some cool stuff coming though). Trust me - easier that way." },
     // { speaker: 'final', text: "Nodal helps you connect your ideas." }
   ]
 
   useEffect(() => {
     const timers: number[] = []
-    
+
     conversation.forEach((_, index) => {
       const timer = setTimeout(() => {
         setCurrentStep(index + 1)
@@ -37,9 +37,9 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
 
   const bubbleVariants = {
     hidden: { opacity: 0, scale: 0.9, y: 20 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
+    visible: {
+      opacity: 1,
+      scale: 1,
       y: 0,
       transition: {
         type: "spring" as const,
@@ -61,7 +61,7 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
 
 
   return (
-    <section 
+    <section
       className="min-h-screen flex items-center justify-center px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200 relative"
       style={{
         backgroundImage: `radial-gradient(circle, ${isDark ? '#666666' : '#cccccc'} 1px, transparent 1px)`,
@@ -71,11 +71,11 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
     >
       {/* Optional subtle overlay to tone down the dots */}
       <div className="absolute inset-0 bg-white/70 dark:bg-zinc-950/70 pointer-events-none" />
-      
+
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-10">
-        
+
         {/* Left Column - Brand */}
-        <motion.div 
+        <motion.div
           className="flex flex-col items-start space-y-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -88,23 +88,32 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
               className="transition-opacity duration-200"
             />
           </div>
+          <HeroTagline />
           <p className="text-xl text-zinc-600 dark:text-white font-light">
-            Collaborative mindmapping with AI
+            For ideas.
           </p>
           <div className="mt-6 flex gap-4">
-          <a
-            href="#"
-            className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors duration-200"
-          >
-            Get Nodal Free
-          </a>
-          <a
-            href="#"
-            className="border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white px-6 py-3 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors duration-200"
-          >
-            See Pro Features
-          </a>
-        </div>
+            <div className="flex gap-4">
+              <div className="flex flex-col space-y-1">
+                <a
+                  href="#"
+                  className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors duration-200"
+                >
+                  Try Nodal (it's free)
+                </a>
+                <span className="text-gray-400 dark:text-gray-400 text-xs">like you don't need a credit card</span>
+              </div>
+              <div className="flex flex-col space-y-1">
+                <a
+                  href="#"
+                  className="border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white px-6 py-3 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors duration-200"
+                >
+                  Checkout the Fancy Stuff
+                </a>
+                <span className="text-gray-400 dark:text-gray-400 text-xs">if you're feeling $9.99 kinda ambitious</span>
+              </div>
+            </div>
+          </div>
         </motion.div>
 
         {/* Right Column - Conversation as Nodes */}
@@ -149,8 +158,8 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
                         {/* The actual node/bubble */}
                         <div className={`
                           px-6 py-4 rounded-xl shadow-lg border-2 max-w-xs relative
-                          ${isUser 
-                            ? 'dark:text-white border-primary-400' 
+                          ${isUser
+                            ? 'dark:text-white border-primary-400'
                             : 'bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white border-zinc-200 dark:border-zinc-700'
                           }
                         `}>
@@ -164,7 +173,7 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
                           animate={{ scale: 1, opacity: 1 }}
                           transition={{ delay: 0.4, duration: 0.3 }}
                         />
-                        
+
                         {/* Right handle */}
                         <motion.div
                           className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-zinc-400 dark:bg-zinc-500 rounded-full border-2 border-white dark:border-zinc-800"
@@ -182,5 +191,65 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
         </div>
       </div>
     </section>
+  )
+}
+
+function HeroTagline() {
+  const phrases = [
+    'showing',
+    'coming up with',
+    'working on',
+    'expanding',
+  ]
+
+  const [index, setIndex] = useState(0)
+  const [done, setDone] = useState(false)
+
+  useEffect(() => {
+    if (done) return
+    const interval = setInterval(() => {
+      if (index < phrases.length - 1) {
+        setIndex((prev) => prev + 1)
+      } else {
+        setDone(true)
+        clearInterval(interval)
+      }
+    }, 1500)
+    return () => clearInterval(interval)
+  }, [index, done])
+
+  return (
+    <div className="text-left w-full">
+      <h1 className="flex text-xl md:text-3xl font-bold text-zinc-900 dark:text-white w-full">
+        <span className="w-full">is for {' '}</span>
+        <span className="block h-10 md:h-12 relative overflow-hidden w-full">
+          <AnimatePresence mode="wait">
+            {!done ? (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+                className="absolute inset-0 line-through text-zinc-400 dark:text-zinc-500"
+              >
+                {phrases[index]}
+              </motion.span>
+            ) : (
+              <motion.span
+                key="final"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.35 }}
+                className="text-zinc-900 dark:text-white"
+              >
+                is for ideas.
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </span>
+      </h1>
+    </div>
   )
 }
