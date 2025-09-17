@@ -220,9 +220,9 @@ function HeroTagline() {
 
   return (
     <div className="text-left w-full">
-      <h1 className="flex text-xl md:text-3xl font-bold text-zinc-900 dark:text-white w-full">
-        <span className="w-full">is for {' '}</span>
-        <span className="block h-10 md:h-12 relative overflow-hidden w-full">
+      <h1 className="flex items-center gap-2 text-xl md:text-3xl font-bold text-zinc-900 dark:text-white w-full">
+        <span className="shrink-0 h-8 whitespace-nowrap">is for{' '}</span>
+        <span className="block h-8 relative overflow-hidden flex-1 min-w-0">
           <AnimatePresence mode="wait">
             {!done ? (
               <motion.span
