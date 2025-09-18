@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Airplane, Book, Trophy, Lightbulb, ArrowRight, Play, CaretLeft, CaretRight } from '@phosphor-icons/react'
 
@@ -106,29 +106,56 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
     return { ...base, id: `${base.id}-${i}` }
   })
 
-  const listRef = useRef<HTMLDivElement | null>(null)
-  const isAnimatingRef = useRef(false)
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [itemsPerView, setItemsPerView] = useState(1)
+  // Looping carousel driven by translateX
+  const M = carouselItems.length
+  const initialItemsPerView = typeof window !== 'undefined'
+    ? (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1)
+    : 1
+  const [itemsPerView, setItemsPerView] = useState(initialItemsPerView)
+  const clones = useMemo(() => Math.min(itemsPerView, M), [itemsPerView, M])
+  const displayedItems = useMemo(() => {
+    if (M === 0) return [] as Template[]
+    const head = carouselItems.slice(0, clones)
+    const tail = carouselItems.slice(M - clones)
+    return [...tail, ...carouselItems, ...head]
+  }, [M, clones, carouselItems])
+  const [current, setCurrent] = useState(() => clones) // index on displayed items
+  const [disableTransition, setDisableTransition] = useState(false)
+  const trackRef = useRef<HTMLDivElement | null>(null)
   const GAP_PX = 24 // matches gap-6
 
-  const scrollToIndex = (index: number) => {
-    const container = listRef.current
-    if (!container) return
-    const child = container.children[index] as HTMLElement | undefined
-    if (!child) return
-    isAnimatingRef.current = true
-    container.scrollTo({ left: child.offsetLeft, behavior: 'smooth' })
-    // Reset the animating flag after the scroll settles
-    window.clearTimeout((container as any)._snapTimer)
-    ;(container as any)._snapTimer = window.setTimeout(() => {
-      isAnimatingRef.current = false
-    }, 400)
+  const [slideWidth, setSlideWidth] = useState(0)
+  const stepPx = slideWidth + 24 // card width + gap
+  const translatePx = -current * stepPx
+
+  useEffect(() => {
+    // Reset position when itemsPerView changes
+    setDisableTransition(true)
+    setCurrent(clones)
+    const id = requestAnimationFrame(() => setDisableTransition(false))
+    return () => cancelAnimationFrame(id)
+  }, [clones])
+
+  // Measure slide width whenever layout may change
+  const measure = () => {
+    const track = trackRef.current
+    if (!track) return
+    const el = track.children[clones] as HTMLElement | undefined
+    if (el) {
+      const w = el.getBoundingClientRect().width
+      if (w && Math.abs(w - slideWidth) > 0.5) setSlideWidth(w)
+    }
   }
 
   useEffect(() => {
-    scrollToIndex(activeIndex)
-  }, [activeIndex])
+    measure()
+  }, [itemsPerView])
+
+  useEffect(() => {
+    const onResize = () => measure()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
 
   // Responsively set how many cards are fully visible and compute widths
   useEffect(() => {
@@ -143,25 +170,25 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
     return () => window.removeEventListener('resize', calc)
   }, [])
 
-  const handleScroll = () => {
-    const container = listRef.current
-    if (!container) return
-    if (isAnimatingRef.current) return
-    let closest = 0
-    let minDelta = Infinity
-    for (let i = 0; i < container.children.length; i++) {
-      const el = container.children[i] as HTMLElement
-      const delta = Math.abs(el.offsetLeft - container.scrollLeft)
-      if (delta < minDelta) {
-        minDelta = delta
-        closest = i
-      }
+  const onTransitionEnd = () => {
+    // Jump seamlessly when hitting clones (double RAF to avoid visible flicker)
+    if (current >= M + clones) {
+      setDisableTransition(true)
+      requestAnimationFrame(() => {
+        setCurrent(current - M)
+        requestAnimationFrame(() => setDisableTransition(false))
+      })
+    } else if (current < clones) {
+      setDisableTransition(true)
+      requestAnimationFrame(() => {
+        setCurrent(current + M)
+        requestAnimationFrame(() => setDisableTransition(false))
+      })
     }
-    if (closest !== activeIndex) setActiveIndex(closest)
   }
 
-  const prev = () => setActiveIndex((i) => Math.max(0, i - 1))
-  const next = () => setActiveIndex((i) => Math.min(carouselItems.length - 1, i + 1))
+  const prev = () => setCurrent((c) => c - 1)
+  const next = () => setCurrent((c) => c + 1)
 
   return (
     <section className="py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
@@ -203,7 +230,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
         <div className="relative mb-12">
           {/* Progress indicator */}
           <div className="absolute -top-8 left-0 text-sm font-medium text-zinc-500 dark:text-zinc-400">
-            {activeIndex + 1}/{carouselItems.length}
+            {((current - clones + M) % M) + 1}/{M}
           </div>
 
           {/* Controls */}
@@ -213,7 +240,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               onClick={prev}
               className="w-9 h-9 rounded-full bg-zinc-800 text-white/90 hover:text-white dark:bg-zinc-700 flex items-center justify-center"
               aria-label="Previous"
-              disabled={activeIndex === 0}
+              disabled={false}
             >
               <CaretLeft className="w-5 h-5" />
             </button>
@@ -222,35 +249,32 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               onClick={next}
               className="w-9 h-9 rounded-full bg-zinc-800 text-white/90 hover:text-white dark:bg-zinc-700 flex items-center justify-center"
               aria-label="Next"
-              disabled={activeIndex === carouselItems.length - 1}
+              disabled={false}
             >
               <CaretRight className="w-5 h-5" />
             </button>
           </div>
 
-          <div
-            ref={listRef}
-            onScroll={handleScroll}
-            className="snap-x snap-mandatory overflow-x-auto no-scrollbar scroll-smooth flex gap-6 pb-2"
-          >
-            {carouselItems.map((template) => {
+          <div className="overflow-hidden pb-2">
+            <div
+              ref={trackRef}
+              onTransitionEnd={onTransitionEnd}
+              className={`flex gap-6 will-change-transform ${disableTransition ? 'transition-none' : 'transition-transform duration-300 ease-out'}`}
+              style={{ transform: `translate3d(${translatePx}px, 0, 0)` }}
+            >
+              {displayedItems.map((template, idx) => {
             const colors = getColorClasses(template.color)
               const isHovered = hoveredTemplate === template.id
 
               return (
-                <motion.div
+                <div
                   key={template.id}
-                  className={`snap-start flex-none relative bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border-2 transition-all duration-300 overflow-hidden group cursor-pointer ${colors.border} ${colors.hover} ${isHovered ? 'scale-[1.02] shadow-2xl' : 'hover:scale-[1.01]'}`}
+                  className={`flex-none relative bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border-2 overflow-hidden group cursor-pointer ${colors.border} ${colors.hover}`}
                   style={{
                     width: `calc((100% - ${(itemsPerView - 1) * GAP_PX}px) / ${itemsPerView})`
                   }}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4 }}
-                  onHoverStart={() => setHoveredTemplate(template.id)}
-                  onHoverEnd={() => setHoveredTemplate(null)}
-                  whileHover={{ y: -5 }}
+                  onMouseEnter={() => setHoveredTemplate(template.id)}
+                  onMouseLeave={() => setHoveredTemplate(null)}
                 >
                 {/* Preview Image Section */}
                 <div className="relative h-48 overflow-hidden">
@@ -360,9 +384,10 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
                     )}
                   </AnimatePresence>
                 </div>
-                </motion.div>
-              )
-            })}
+                </div>
+                )
+              })}
+            </div>
           </div>
         </div>
 
