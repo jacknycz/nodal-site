@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Brain, Users, FileText, Target, Cloud, Share } from '@phosphor-icons/react'
-import ConversationalHero from './components/ConversationalHero'
+import Hero from './components/Hero'
+import ConversationalNodes from './components/ConversationalNodes'
 import WhatsANodeSection from './components/WhatsANodeSection'
 import ConnectThoughtsSection from './components/ConnectThoughtsSection'
 import AIIntegrationSection from './components/AIIntegrationSection'
@@ -29,8 +30,11 @@ function App() {
       
       {/* <TypewriterHero isDark={isDark} /> */}
 
-      {/* A SECOND TEST HERO */}
-      <ConversationalHero isDark={isDark} />
+      {/* Hero */}
+      <Hero isDark={isDark} />
+
+      {/* Conversational Nodes */}
+      <ConversationalNodes isDark={isDark} />
 
       {/* New Landing Page Sections */}
       <WhatsANodeSection isDark={isDark} />

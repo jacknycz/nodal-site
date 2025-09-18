@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import NodalBlackLogo from '../assets/nodal-black.svg'
 import NodalWhiteLogo from '../assets/nodal-white.svg'
 
-interface ConversationalHeroProps {
+interface HeroProps {
   isDark: boolean;
 }
 
-export default function ConversationalHero({ isDark }: ConversationalHeroProps) {
+export default function Hero({ isDark }: HeroProps) {
   const [currentStep, setCurrentStep] = useState(0)
 
   const conversation = [
@@ -72,7 +72,7 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
       {/* Optional subtle overlay to tone down the dots */}
       <div className="absolute inset-0 bg-white/70 dark:bg-zinc-950/70 pointer-events-none" />
 
-      <div className="max-w-6xl mx-auto grid md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-10">
 
         {/* Left Column - Brand */}
         <motion.div
@@ -81,14 +81,18 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="max-w-md">
+          <div className="w-full font-heading">
             <img
               src={isDark ? NodalWhiteLogo : NodalBlackLogo}
               alt="Nodal Logo"
               className="transition-opacity duration-200"
             />
           </div>
-          <h1 className="text-xl md:text-3xl font-bold text-zinc-900 dark:text-white">for ideas.</h1>
+          <h1 
+            className="font-heading mt-6 text-xl md:text-3xl font-medium text-zinc-900 dark:text-white"
+          >
+            for ideas.
+          </h1>
 
           <div className="mt-6 flex gap-4">
             <div className="flex gap-4">
