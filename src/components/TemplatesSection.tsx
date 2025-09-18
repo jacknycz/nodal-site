@@ -121,6 +121,9 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
   }, [M, clones, carouselItems])
   const [current, setCurrent] = useState(() => clones) // index on displayed items
   const [disableTransition, setDisableTransition] = useState(false)
+  const dragging = useRef(false)
+  const dragStartX = useRef(0)
+  const dragDelta = useRef(0)
   const trackRef = useRef<HTMLDivElement | null>(null)
   const GAP_PX = 24 // matches gap-6
 
@@ -190,6 +193,47 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
   const prev = () => setCurrent((c) => c - 1)
   const next = () => setCurrent((c) => c + 1)
 
+  // Touch / drag handlers
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    dragging.current = true
+    dragStartX.current = e.clientX
+    dragDelta.current = 0
+    setDisableTransition(true)
+    ;(e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId)
+  }
+  const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging.current) return
+    dragDelta.current = e.clientX - dragStartX.current
+    const offset = translatePx + dragDelta.current
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${offset}px, 0, 0)`
+    }
+  }
+  const settleDrag = () => {
+    setDisableTransition(false)
+    const threshold = stepPx * 0.25
+    if (Math.abs(dragDelta.current) > threshold) {
+      if (dragDelta.current < 0) next()
+      else prev()
+    } else {
+      // snap back
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translate3d(${translatePx}px, 0, 0)`
+      }
+    }
+    dragging.current = false
+    dragDelta.current = 0
+  }
+  const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dragging.current) return
+    settleDrag()
+    ;(e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId)
+  }
+  const onPointerCancel = () => {
+    if (!dragging.current) return
+    settleDrag()
+  }
+
   return (
     <section className="py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
       <div className="max-w-7xl mx-auto">
@@ -227,9 +271,9 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
         </div>
 
         {/* Carousel */}
-        <div className="relative mb-12">
+        <div className="relative mb-12" role="region" aria-roledescription="carousel" aria-label="Templates carousel">
           {/* Progress indicator */}
-          <div className="absolute -top-8 left-0 text-sm font-medium text-zinc-500 dark:text-zinc-400">
+          <div className="absolute -top-8 left-0 text-sm font-medium text-zinc-500 dark:text-zinc-400" aria-live="polite">
             {((current - clones + M) % M) + 1}/{M}
           </div>
 
@@ -239,7 +283,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               type="button"
               onClick={prev}
               className="w-9 h-9 rounded-full bg-zinc-800 text-white/90 hover:text-white dark:bg-zinc-700 flex items-center justify-center"
-              aria-label="Previous"
+              aria-label="Previous slide"
               disabled={false}
             >
               <CaretLeft className="w-5 h-5" />
@@ -248,19 +292,30 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               type="button"
               onClick={next}
               className="w-9 h-9 rounded-full bg-zinc-800 text-white/90 hover:text-white dark:bg-zinc-700 flex items-center justify-center"
-              aria-label="Next"
+              aria-label="Next slide"
               disabled={false}
             >
               <CaretRight className="w-5 h-5" />
             </button>
           </div>
 
-          <div className="overflow-hidden pb-2">
+          <div className="overflow-hidden pb-2" aria-live="polite">
             <div
               ref={trackRef}
               onTransitionEnd={onTransitionEnd}
               className={`flex gap-6 will-change-transform ${disableTransition ? 'transition-none' : 'transition-transform duration-300 ease-out'}`}
               style={{ transform: `translate3d(${translatePx}px, 0, 0)` }}
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+              onPointerCancel={onPointerCancel}
+              role="list"
+              tabIndex={0}
+              aria-label={`Slide ${(current - clones + M) % M + 1} of ${M}`}
+              onKeyDown={(e) => {
+                if (e.key === 'ArrowLeft') prev()
+                if (e.key === 'ArrowRight') next()
+              }}
             >
               {displayedItems.map((template, idx) => {
             const colors = getColorClasses(template.color)
@@ -275,6 +330,8 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
                   }}
                   onMouseEnter={() => setHoveredTemplate(template.id)}
                   onMouseLeave={() => setHoveredTemplate(null)}
+                    role="listitem"
+                    aria-label={`${template.title} ${template.subtitle}`}
                 >
                 {/* Preview Image Section */}
                 <div className="relative h-48 overflow-hidden">

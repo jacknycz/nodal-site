@@ -3,7 +3,7 @@ import { Brain, Users, FileText, Target, Cloud, Share } from '@phosphor-icons/re
 import Hero from './components/Hero'
 import ConversationalNodes from './components/ConversationalNodes'
 import WhatsANodeSection from './components/WhatsANodeSection'
-import ConnectThoughtsSection from './components/ConnectThoughtsSection'
+import WelcomeToTheBoard from './components/WelcomeToTheBoard'
 import AIIntegrationSection from './components/AIIntegrationSection'
 import TemplatesSection from './components/TemplatesSection'
 import FinalCTASection from './components/FinalCTASection'
@@ -37,9 +37,8 @@ function App() {
       <ConversationalNodes isDark={isDark} />
 
       {/* New Landing Page Sections */}
-      <WhatsANodeSection isDark={isDark} />
-      <ConnectThoughtsSection isDark={isDark} />  
-      <AIIntegrationSection isDark={isDark} />
+      <WelcomeToTheBoard isDark={isDark} />  
+      <WhatsANodeSection isDark={isDark} />      <AIIntegrationSection isDark={isDark} />
       <TemplatesSection isDark={isDark} />
 
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">

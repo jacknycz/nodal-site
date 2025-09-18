@@ -35,7 +35,7 @@ export default function ConversationalNodes({ isDark }: ConversationalNodesProps
   }
 
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
+    <section className="py-20 px-4 md:px-8 lg:px-16 min-h-screen bg-white dark:bg-zinc-950 transition-colors duration-200">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col items-center relative">
           <div className="space-y-12 relative w-full">
