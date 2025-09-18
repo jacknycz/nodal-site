@@ -88,10 +88,8 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
               className="transition-opacity duration-200"
             />
           </div>
-          <HeroTagline />
-          <p className="text-xl text-zinc-600 dark:text-white font-light">
-            For ideas.
-          </p>
+          <h1 className="text-xl md:text-3xl font-bold text-zinc-900 dark:text-white">for ideas.</h1>
+
           <div className="mt-6 flex gap-4">
             <div className="flex gap-4">
               <div className="flex flex-col space-y-1">
@@ -191,65 +189,5 @@ export default function ConversationalHero({ isDark }: ConversationalHeroProps) 
         </div>
       </div>
     </section>
-  )
-}
-
-function HeroTagline() {
-  const phrases = [
-    'showing',
-    'coming up with',
-    'working on',
-    'expanding',
-  ]
-
-  const [index, setIndex] = useState(0)
-  const [done, setDone] = useState(false)
-
-  useEffect(() => {
-    if (done) return
-    const interval = setInterval(() => {
-      if (index < phrases.length - 1) {
-        setIndex((prev) => prev + 1)
-      } else {
-        setDone(true)
-        clearInterval(interval)
-      }
-    }, 1500)
-    return () => clearInterval(interval)
-  }, [index, done])
-
-  return (
-    <div className="text-left w-full">
-      <h1 className="flex items-center gap-2 text-xl md:text-3xl font-bold text-zinc-900 dark:text-white w-full">
-        <span className="shrink-0 h-8 whitespace-nowrap">is for{' '}</span>
-        <span className="block h-8 relative overflow-hidden flex-1 min-w-0">
-          <AnimatePresence mode="wait">
-            {!done ? (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35 }}
-                className="absolute inset-0 line-through text-zinc-400 dark:text-zinc-500"
-              >
-                {phrases[index]}
-              </motion.span>
-            ) : (
-              <motion.span
-                key="final"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.35 }}
-                className="text-zinc-900 dark:text-white"
-              >
-                is for ideas.
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </span>
-      </h1>
-    </div>
   )
 }
