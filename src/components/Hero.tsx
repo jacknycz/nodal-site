@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+//
 import { motion } from 'framer-motion'
 import NodalBlackLogo from '../assets/nodal-black.svg'
 import NodalWhiteLogo from '../assets/nodal-white.svg'
-import NodalLaptop from '../assets/nodal-laptop.svg'
+// import NodalLaptop from '../assets/nodal-laptop.svg'
+import DraggableBoard from './DraggableBoard'
 
 interface HeroProps {
   isDark: boolean;
@@ -12,14 +13,12 @@ export default function Hero({ isDark }: HeroProps) {
   return (
     
     <section
-      className="min-h-[70vh] py-48 pb-20 flex items-center justify-center px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200 relative"
-      style={{
-        backgroundImage: `radial-gradient(circle, ${isDark ? '#666666' : '#cccccc'} 1px, transparent 1px)`,
-        backgroundSize: '20px 20px',
-        backgroundPosition: '0 0'
-      }}
+      className="min-h-[70vh] py-48 pb-20 flex items-center justify-center px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200 relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-white/70 dark:bg-zinc-950/70 pointer-events-none" />
+      {/* Optional dim overlay to increase legibility */}
+      <div className="absolute inset-0 z-10 bg-transparent pointer-events-none" />
+
+      {/* Background draggable board */}
 
       <div className="absolute top-2 left-4 max-w-md font-heading flex flex-col items-start space-y-2 mb-12">
         <img
@@ -30,7 +29,7 @@ export default function Hero({ isDark }: HeroProps) {
         <h1 className="font-heading text-xl md:text-2xl font-medium text-zinc-900 dark:text-white">for ideas.</h1>
       </div>
 
-      <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-10">
+      <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-20">
         <motion.div
           className="flex flex-col items-start space-y-6"
           initial={{ opacity: 0, x: -50 }}
@@ -65,7 +64,9 @@ export default function Hero({ isDark }: HeroProps) {
           </div>
         </motion.div>
 
-        <motion.div
+        
+
+        {/* <motion.div
           className="flex flex-col items-start space-y-6"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -79,7 +80,11 @@ export default function Hero({ isDark }: HeroProps) {
             />
             <span className="text-zinc-900 dark:text-white text-sm max-w-sm text-center">*yes there is AI, you all have got to be as burned out on that marketing as I am right?</span>
           </div>
-        </motion.div>
+        </motion.div> */}
+      </div>
+
+      <div className="absolute inset-0 z-30">
+        <DraggableBoard fillParent className="bg-transparent border-none" />
       </div>
     </section>
   )

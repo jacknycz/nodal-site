@@ -23,22 +23,24 @@ function App() {
       {/* Global Dev Toggle - temporary */}
       <button
         onClick={() => setIsDark(prev => !prev)}
-        className="fixed top-4 left-4 z-50 px-3 py-2 text-sm bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded border border-zinc-300 dark:border-zinc-600 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
+        className="fixed top-4 right-4 z-50 px-3 py-2 text-sm bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded border border-zinc-300 dark:border-zinc-600 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
       >
         {isDark ? '☀️ Light' : '🌙 Dark'}
       </button>
-      
+
       {/* <TypewriterHero isDark={isDark} /> */}
 
       {/* Hero */}
       <Hero isDark={isDark} />
 
       {/* Conversational Nodes */}
-      <WhatsANodeSection isDark={isDark} />  
+      <WhatsANodeSection isDark={isDark} />
 
       {/* New Landing Page Sections */}
-      <WelcomeToTheBoard isDark={isDark} />  
-          
+      <WelcomeToTheBoard isDark={isDark} />
+
+      {/* Draggable board now lives inside Hero as background */}
+
       <AIIntegrationSection isDark={isDark} />
       <TemplatesSection isDark={isDark} />
 
