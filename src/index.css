@@ -68,4 +68,64 @@
 /* Hide scrollbars on carousels */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Hero animated dots drift */
+.dots-animate {
+  animation: dotsDrift 24s linear infinite;
+}
+@keyframes dotsDrift {
+  0% { background-position: 0 0; }
+  50% { background-position: 60px 40px; }
+  100% { background-position: 0 0; }
+}
+
+/* Hero subtle radial color pulse */
+.hero-pulse-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.28;
+  mix-blend-mode: overlay;
+  background:
+    radial-gradient(70rem 70rem at 70% 20%, rgba(0, 207, 245, 0.45), transparent 62%),
+    radial-gradient(60rem 60rem at 25% 75%, rgba(255, 0, 168, 0.35), transparent 62%),
+    radial-gradient(50rem 50rem at 10% 10%, rgba(255, 222, 0, 0.28), transparent 62%);
+  animation: heroPulse 22s ease-in-out infinite;
+}
+@keyframes heroPulse {
+  0%   { transform: scale(1);   filter: hue-rotate(0deg);   opacity: 0.20; }
+  25%  { transform: scale(1.06); filter: hue-rotate(10deg); opacity: 0.28; }
+  50%  { transform: scale(1.12); filter: hue-rotate(25deg); opacity: 0.34; }
+  75%  { transform: scale(1.06); filter: hue-rotate(10deg); opacity: 0.28; }
+  100% { transform: scale(1);   filter: hue-rotate(0deg);   opacity: 0.20; }
+}
+
+/* Hero ripple mask: hides a circular ring of the dots that expands outward */
+.hero-ripple-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  /* Background color will hide the dots where the mask reveals */
+  /* Use Tailwind classes in JSX to set bg-white / dark:bg-zinc-950 */
+  --r: 0%;            /* current ring radius */
+  --t: 9%;            /* ring thickness */
+  --cx: 50%;          /* center x */
+  --cy: 60%;          /* center y */
+  -webkit-mask-image: radial-gradient(circle at var(--cx) var(--cy),
+    transparent calc(var(--r) - var(--t)),
+    black var(--r),
+    transparent calc(var(--r) + var(--t)));
+  mask-image: radial-gradient(circle at var(--cx) var(--cy),
+    transparent calc(var(--r) - var(--t)),
+    black var(--r),
+    transparent calc(var(--r) + var(--t)));
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  animation: heroRipple 6s ease-in-out infinite;
+}
+@keyframes heroRipple {
+  0%   { --r: 0%; }
+  50%  { --r: 120%; }
+  100% { --r: 120%; }
+}
   

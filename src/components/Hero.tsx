@@ -15,13 +15,13 @@ export default function Hero({ isDark }: HeroProps) {
     <section
       className="min-h-[70vh] py-48 pb-20 flex items-center justify-center px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200 relative overflow-hidden"
       style={{
-        backgroundImage: `radial-gradient(circle, ${isDark ? '#666666' : '#cccccc'} 1px, transparent 1px)`,
+        backgroundImage: `radial-gradient(circle, ${isDark ? '#333333' : '#c9c9c9'} 1px, transparent 1px)`,
         backgroundSize: '20px 20px',
         backgroundPosition: '0 0'
       }}
     >
-      {/* Optional dim overlay to increase legibility */}
-      <div className="absolute inset-0 z-10 bg-transparent pointer-events-none" />
+      {/* Ripple mask that hides a ring of dots expanding outward */}
+      <div className={`absolute inset-0 z-10 hero-ripple-mask ${isDark ? 'bg-zinc-950' : 'bg-white'}`} />
 
       {/* Background draggable board */}
 
