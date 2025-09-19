@@ -34,11 +34,12 @@ function App() {
       <Hero isDark={isDark} />
 
       {/* Conversational Nodes */}
-      <ConversationalNodes isDark={isDark} />
+      <WhatsANodeSection isDark={isDark} />  
 
       {/* New Landing Page Sections */}
       <WelcomeToTheBoard isDark={isDark} />  
-      <WhatsANodeSection isDark={isDark} />      <AIIntegrationSection isDark={isDark} />
+          
+      <AIIntegrationSection isDark={isDark} />
       <TemplatesSection isDark={isDark} />
 
       <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
@@ -148,6 +149,8 @@ function App() {
 
       {/* Final CTA with Confetti */}
       <FinalCTASection isDark={isDark} />
+
+      <ConversationalNodes isDark={isDark} />
     </>
   )
 }

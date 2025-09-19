@@ -71,15 +71,15 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
         {/* Header */}
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6"
+            className="text-4xl md:text-5xl font-heading font-medium font-bold text-zinc-900 dark:text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            What's a Node?
+            meet the nodes
           </motion.h2>
-          <motion.p 
+          {/* <motion.p 
             className="text-2xl md:text-3xl text-zinc-700 dark:text-zinc-200 mb-4 font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -87,7 +87,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             it's whatever you want it to be
-          </motion.p>
+          </motion.p> */}
         </div>
       </div>
 
