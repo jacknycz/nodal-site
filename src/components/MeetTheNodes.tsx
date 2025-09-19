@@ -136,8 +136,8 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-12
-        border border-dashed border-zinc-300 dark:border-zinc-700/40
+        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-6
+        border border-dashed border-zinc-300 dark:border-zinc-400/40
         shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
           <DraggableWrapper>
             <div data-node className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
@@ -151,15 +151,6 @@ function TabsSection() {
               </div>
             </div>
           </DraggableWrapper>
-
-          {/* <video
-            src={demoVideo}
-            muted
-            playsInline
-            loop
-            autoPlay
-            className="w-full h-56 md:h-64 lg:h-72 rounded-xl object-cover border border-zinc-300/60 dark:border-zinc-700/60"
-          /> */}
         </div>
       )
     },
@@ -177,7 +168,7 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-12
+        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-6
         border border-dashed border-zinc-300 dark:border-zinc-700/40
         shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
           <DraggableWrapper>
@@ -217,7 +208,7 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-12
+        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-6
         border border-dashed border-zinc-300 dark:border-zinc-700/40
         shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
           <DraggableWrapper>
@@ -324,7 +315,7 @@ function TabsSection() {
             className={`px-8 py-4 rounded-lg text-sm font-medium transition-colors cursor-pointer border border-transparent flex flex-col items-center gap-2
               ${active === tab
                 ? 'text-white !border-primary-500'
-                : 'bg-white dark:bg-slate-900/50 text-zinc-700 dark:text-zinc-300 hover:border-zinc-200 hover:bg-zinc-100 dark:hover:bg-slate-900/50 dark:hover:border-primary-500'}`}
+                : 'bg-white dark:bg-slate-800/50 text-zinc-700 dark:text-zinc-300 hover:border-zinc-200 hover:bg-zinc-100 dark:hover:bg-slate-900/50 dark:hover:border-primary-500'}`}
           >
             {tabMeta[tab].imageSrc ? (
               <img src={tabMeta[tab].imageSrc!} alt="" className="w-20 h-20 object-contain" />
@@ -340,7 +331,7 @@ function TabsSection() {
         initial={false}
         animate={{ height: 'auto' }}
         transition={{ duration: 0.2 }}
-        className="mt-16"
+        className="mt-12"
       >
         <div id={`panel-${active}`} role="tabpanel">
           {panel}

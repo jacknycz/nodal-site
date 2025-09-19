@@ -30,7 +30,7 @@ function App() {
 
       {/* Site-wide fixed background dots (behind everything) */}
       <div
-        className="fixed inset-0 -z-50 pointer-events-none"
+        className="fixed inset-0 -z-50 pointer-events-none bg-white dark:bg-gray-950"
         style={{
           backgroundImage: `radial-gradient(circle, ${isDark ? '#333333' : '#c9c9c9'} 1px, transparent 1px)`,
           backgroundSize: '20px 20px',
