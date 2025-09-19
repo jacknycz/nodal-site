@@ -4,6 +4,7 @@ import Hero from './components/Hero'
 import ConversationalNodes from './components/ConversationalNodes'
 import WhatsANodeSection from './components/WhatsANodeSection'
 import WelcomeToTheBoard from './components/WelcomeToTheBoard'
+import AISection from './components/AISection'
 import AIIntegrationSection from './components/AIIntegrationSection'
 import TemplatesSection from './components/TemplatesSection'
 import FinalCTASection from './components/FinalCTASection'
@@ -38,8 +39,7 @@ function App() {
 
       {/* New Landing Page Sections */}
       <WelcomeToTheBoard isDark={isDark} />
-
-      {/* Draggable board now lives inside Hero as background */}
+      <AISection />
 
       <AIIntegrationSection isDark={isDark} />
       <TemplatesSection isDark={isDark} />

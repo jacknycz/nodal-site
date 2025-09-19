@@ -11,9 +11,10 @@ export default function AIIntegrationSection({ isDark: _isDark }: AIIntegrationS
 
   const aiFeatures = [
     { icon: Sparkle, text: 'ask questions', delay: 0 },
-    { icon: ChatCircle, text: 'expand on ideas', delay: 0.2 },
-    { icon: Brain, text: 'talk about documents', delay: 0.4 },
-    { icon: Lightning, text: 'or brainstorm your next move', delay: 0.6 }
+    { icon: ChatCircle, text: 'generate new nodes', delay: 0.2 },
+    { icon: Brain, text: 'chat about the board - your docs, ideas, whatever', delay: 0.4 },
+    { icon: Lightning, text: 'brainstorm your next move', delay: 0.6 },
+    { icon: Brain, text: 'or reorganize your mess', delay: 0.8 }
   ]
 
   // (demo timers removed)
@@ -26,13 +27,13 @@ export default function AIIntegrationSection({ isDark: _isDark }: AIIntegrationS
           {/* Left Column - Content */}
           <div>
             <motion.h2 
-              className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6"
+              className="text-4xl md:text-5xl font-medium font-heading text-zinc-900 dark:text-white mb-6"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              Meet Nobot
+              meet Nobot
             </motion.h2>
             
             <motion.p 
@@ -42,7 +43,7 @@ export default function AIIntegrationSection({ isDark: _isDark }: AIIntegrationS
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Your co‑thinker, right on the board
+              look how well the AI section is hidden
             </motion.p>
 
             <motion.p 
@@ -52,7 +53,7 @@ export default function AIIntegrationSection({ isDark: _isDark }: AIIntegrationS
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              The whole point of the board is to help you think. Nobot is here to help you think better. Nobot is a bit of a mind reader, but with better boundaries. He's got access to the whole board, so he can help you think about your ideas in context. Those PDFs you dropped in? Nobots' got you.
+              The whole point of the board is to help you think. Nobot is here to help you think better. So we'll skip all the AI BS say he's just a chatbot, but right click on the board and generate some nodes and Nobot can do some pretty cool stuff. It's basically mind reading, but with better boundaries.
             </motion.p>
 
             <div className="space-y-4 mb-8">
@@ -99,14 +100,14 @@ export default function AIIntegrationSection({ isDark: _isDark }: AIIntegrationS
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <video
+            {/* <video
               src={meetNobotVideo}
               muted
               loop
               autoPlay
               playsInline
               className="w-full h-64 md:h-80 lg:h-96 rounded-2xl object-cover border border-zinc-200 dark:border-zinc-700 shadow-xl"
-            />
+            /> */}
           </motion.div>
         </div>
       </div>

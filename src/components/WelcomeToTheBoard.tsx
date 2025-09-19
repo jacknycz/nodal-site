@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Lightning } from '@phosphor-icons/react'
 import nodalBoard from '../assets/nodal-board.png'
+import bgVideo from '../assets/nodal-test.mp4'
 
 interface ConnectThoughtsSectionProps {
   isDark: boolean;
@@ -8,22 +8,43 @@ interface ConnectThoughtsSectionProps {
 
 export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectionProps) {
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative overflow-hidden py-16 min-h-screen flex justify-start items-end px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
+      {/* Background video */}
+      <video
+        src={bgVideo}
+        autoPlay
+        loop
+        muted
+        playsInline
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute inset-0 w-full h-full object-cover z-0"
+      />
+
+      {/* Overlay above video, below content */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background: isDark
+            ? 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
+            : 'linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0.45) 70%, rgba(255,255,255,0.25) 100%)'
+        }}
+      />
+
+      <div className="relative z-20 w-full mx-auto">
         {/* Centered heading above columns */}
-        <div className="text-center mb-12">
+        <div className="bg-zinc-900/50 p--4">
           <motion.h2
-            className="font-heading text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-4"
+            className="font-heading text-4xl md:text-5xl font-medium text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Welcome to the board
+            welcome to the board
           </motion.h2>
 
           <motion.p
-            className="text-2xl text-zinc-700 dark:text-zinc-200 font-light"
+            className="text-2xl text-zinc-200 font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -31,9 +52,17 @@ export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectio
           >
             Link what matters. See what unfolds. (or just drag and drop stuff onto the board)
           </motion.p>
+          <div className="mt-8">
+            <a
+              href="https://app.nodalapp.com/"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold bg-primary-500 hover:bg-primary-400 text-white transition-colors"
+            >
+              just try it
+            </a>
+          </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        {/* <div className="grid lg:grid-cols-2 gap-16 items-center">
 
           <div className="space-y-6">
             <motion.div
@@ -75,18 +104,7 @@ export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectio
               </p>
             </motion.div>
           </div>
-
-          {/* Right Column - Interactive Demo */}
-          <motion.div
-            className="relative"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <img src={nodalBoard} alt="Connect Thoughts" />
-          </motion.div>
-        </div>
+        </div> */}
       </div>
     </section>
   )
