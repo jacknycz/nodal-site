@@ -24,7 +24,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   // }
 
   return (
-    <section className="relative py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
+    <section className="relative overflow-hidden py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
       <motion.h2
         className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -35,15 +35,28 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
         meet the nodes
       </motion.h2>
 
-      <motion.img
-        src={nobotPeek}
-        alt="Nobot peeking"
-        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 w-40 md:w-48 lg:w-56"
-        initial={{ x: 120, opacity: 0 }}
-        whileInView={{ x: [-20, 8, 0], opacity: [1, 1, 1] }}
-        viewport={{ once: true, amount: 0.4 }}
-        transition={{ duration: 1.8, ease: 'easeOut' }}
-      />
+      {(() => {
+        const [peekComplete, setPeekComplete] = useState(false)
+        return (
+          <motion.div
+            className="absolute right-0 top-1/2 -translate-y-1/2"
+            style={{ willChange: 'transform, opacity' }}
+            initial={{ x: 24, opacity: 0 }}
+            whileInView={{ x: [0, -4, 0], opacity: 1 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 1.4, ease: 'easeOut', delay: 1.5 }}
+            onAnimationComplete={() => setPeekComplete(true)}
+          >
+            <motion.img
+              src={nobotPeek}
+              alt="Nobot peeking"
+              className="pointer-events-none select-none w-36"
+              animate={peekComplete ? { rotate: [0, -1, 0, .7, 0], y: [0, -1, 0, -1, 0] } : undefined}
+              transition={peekComplete ? { duration: 3.0, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' } : undefined}
+            />
+          </motion.div>
+        )
+      })()}
 
       {/* Tabs */}
       <TabsSection />

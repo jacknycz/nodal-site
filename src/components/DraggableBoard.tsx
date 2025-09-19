@@ -73,7 +73,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       </DraggableNode>
 
       {/* Node 2 */}
-      <DraggableNode initial={{ x: 1100, y: 360 }}>
+      <DraggableNode initial={{ x: 700, y: 320 }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -87,7 +87,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       </DraggableNode>
 
       {/* Node 3 */}
-      <DraggableNode initial={{ x: 900, y: 60 }}>
+      <DraggableNode initial={{ x: 940, y: 60 }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
