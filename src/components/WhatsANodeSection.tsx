@@ -1,56 +1,14 @@
 import { motion } from 'framer-motion'
-import { useState, type ReactNode } from 'react'
-import demoVideo from '../assets/nodal-test.mp4'
-import pdfDrag from '../assets/pdf-drag.mp4'
+import { useState, type ReactNode, useRef } from 'react'
 import videoNode from '../assets/video-node.mp4'
-import { FileText, PlayCircle, ImageSquare, CheckSquare } from '@phosphor-icons/react'
+import { FilePdf } from '@phosphor-icons/react'
+import nobotPeek from '../assets/nobot-peek.png'
 
 interface WhatsANodeSectionProps {
   isDark: boolean;
 }
 
 export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
-  // Use three public SVGs and repeat them for now
-  const images = ['/document-node.svg', '/image-node.svg', '/nodal-node.svg']
-
-  const nodeTypes = [
-    {
-      img: images[2],
-      label: 'it contains content',
-      description: 'seriously - think it and throw it in a node',
-      delay: 0
-    },
-    {
-      img: images[1],
-      label: 'picture perfect',
-      description: 'bring all kinds of imagery goodness to the board',
-      delay: 0.2
-    },
-    {
-      img: images[0],
-      label: 'got documents?',
-      description: 'load them up and throw them in a node - Nobot\'s ready to talk about it',
-      delay: 0.4
-    },
-    {
-      img: images[0],
-      label: 'of course, tasks',
-      description: 'lorem ipsum dolor sit amet consectutar',
-      delay: 0.6
-    },
-    {
-      img: images[1],
-      label: 'a PDF',
-      description: 'lorem ipsum dolor sit amet consectutar',
-      delay: 0.8
-    },
-    {
-      img: images[2],
-      label: 'or a full‑blown concept',
-      description: 'lorem ipsum dolor sit amet consectutar',
-      delay: 1.0
-    }
-  ]
 
   // const getColorClasses = (color: string) => {
   //   switch (color) {
@@ -67,29 +25,25 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
 
   return (
     <section className="relative py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <motion.h2
-            className="text-4xl md:text-5xl font-heading font-medium font-bold text-zinc-900 dark:text-white mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            meet the nodes
-          </motion.h2>
-          {/* <motion.p 
-            className="text-2xl md:text-3xl text-zinc-700 dark:text-zinc-200 mb-4 font-light"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            it's whatever you want it to be
-          </motion.p> */}
-        </div>
-      </div>
+      <motion.h2
+        className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        meet the nodes
+      </motion.h2>
+
+      <motion.img
+        src={nobotPeek}
+        alt="Nobot peeking"
+        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 w-40 md:w-48 lg:w-56"
+        initial={{ x: 120, opacity: 0 }}
+        whileInView={{ x: [-20, 8, 0], opacity: [1, 1, 1] }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ duration: 1.8, ease: 'easeOut' }}
+      />
 
       {/* Tabs */}
       <TabsSection />
@@ -114,6 +68,44 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
 function TabsSection() {
   type TabKey = 'Default' | 'Docs' | 'Video' | 'Image' | 'Task'
 
+  function DraggableWrapper({ children }: { children: React.ReactNode }) {
+    const containerRef = useRef<HTMLDivElement | null>(null)
+    const posRef = useRef({ x: 0, y: 0 })
+    const startRef = useRef({ x: 0, y: 0 })
+    const draggingRef = useRef(false)
+
+    return (
+      <div
+        ref={containerRef}
+        className="cursor-grab active:cursor-grabbing touch-none p-6"
+        onPointerDown={(e) => {
+          draggingRef.current = true
+          startRef.current = { x: e.clientX - posRef.current.x, y: e.clientY - posRef.current.y }
+          e.currentTarget.setPointerCapture(e.pointerId)
+        }}
+        onPointerMove={(e) => {
+          if (!draggingRef.current) return
+          const x = e.clientX - startRef.current.x
+          const y = e.clientY - startRef.current.y
+          posRef.current = { x, y }
+          if (containerRef.current) {
+            containerRef.current.style.transform = `translate(${x}px, ${y}px)`
+          }
+        }}
+        onPointerUp={(e) => {
+          draggingRef.current = false
+          e.currentTarget.releasePointerCapture(e.pointerId)
+        }}
+        onPointerCancel={(e) => {
+          draggingRef.current = false
+          e.currentTarget.releasePointerCapture(e.pointerId)
+        }}
+      >
+        {children}
+      </div>
+    )
+  }
+
   const tabsContent: Record<TabKey, { left: ReactNode; right: ReactNode }> = {
     Default: {
       left: (
@@ -131,17 +123,21 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center">
-          <div class="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
-            <div class="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
-            <div class="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
-            <div class="flex items-center gap-2 mb-1">
-              <h3 class="text-sm font-medium text-gray-900 dark:text-white">Hey! I'm a regular ole' node</h3>
+        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-12
+        border border-dashed border-zinc-300 dark:border-zinc-700/40
+        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
+          <DraggableWrapper>
+            <div data-node className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+              <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
+              <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
+              <div className="flex items-center gap-2 mb-1">
+                <h3 className="text-sm font-medium text-gray-900 dark:text-white">Hey! I'm a regular ole' node</h3>
+              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-200 mb-2">
+                ...but I am pretty cool. I hold whatever you throw at me - I just have some text here to show you, but you can text edit with images up in me too.
+              </div>
             </div>
-            <div class="text-xs text-gray-600 dark:text-gray-200 mb-2">
-              ...but I am pretty cool. I hold whatever you throw at me - I just have some text here to show you, but you can text edit with images up in me too.
-            </div>
-          </div>
+          </DraggableWrapper>
 
           {/* <video
             src={demoVideo}
@@ -168,14 +164,30 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <video
-          src={pdfDrag}
-          muted
-          playsInline
-          loop
-          autoPlay
-          className="w-full h-56 md:h-64 lg:h-72 rounded-xl object-cover border border-zinc-300/60 dark:border-zinc-700/60"
-        />
+        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-12
+        border border-dashed border-zinc-300 dark:border-zinc-700/40
+        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
+          <DraggableWrapper>
+            <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[320px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+              <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
+              <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-11 h-11 flex items-center justify-center text-red-600"><FilePdf size={32} weight="duotone" /></div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-semibold text-gray-900 dark:text-white truncate">You can do docs and stuff too.pdf</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400">1.8 MB • application/pdf</div>
+                </div>
+              </div>
+              <div className="flex items-center gap-1 mb-2">
+                <span className="inline-flex w-3 h-3 rounded-full bg-green-500"></span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">Ready</span>
+              </div>
+              <div className="text-xs text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 rounded p-2">
+                Extracted Text: “Yup. It extracts the text. You can use it for things. Talk to Nobot about it. Seriously that's an option, he loves PDFs.”
+              </div>
+            </div>
+          </DraggableWrapper>
+        </div>
       )
     },
     Video: {
@@ -192,14 +204,30 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <video
-          src={videoNode}
-          muted
-          playsInline
-          loop
-          autoPlay
-          className="w-full h-56 md:h-64 lg:h-72 rounded-xl object-cover border border-zinc-300/60 dark:border-zinc-700/60"
-        />
+        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-12
+        border border-dashed border-zinc-300 dark:border-zinc-700/40
+        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
+          <DraggableWrapper>
+            <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+              <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
+              <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
+              <div className="relative w-full">
+                <video
+                  src={videoNode}
+                  muted
+                  playsInline
+                  loop
+                  autoPlay
+                  className="w-full h-[160px] rounded-md object-cover"
+                />
+              </div>
+              <div className="mt-2">
+                <div className="text-sm font-medium text-gray-900 dark:text-white">nodes can hold all kinds of stuff - like this video</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 truncate">https://youtu.be/just-an-example</div>
+              </div>
+            </div>
+          </DraggableWrapper>
+        </div>
       )
     },
     Image: {
@@ -286,7 +314,7 @@ function TabsSection() {
                 : 'bg-white dark:bg-slate-900/50 text-zinc-700 dark:text-zinc-300 hover:border-zinc-200 hover:bg-zinc-100 dark:hover:bg-slate-900/50 dark:hover:border-primary-500'}`}
           >
             {tabMeta[tab].imageSrc ? (
-              <img src={tabMeta[tab].imageSrc!} alt="" className="w-24 h-24 object-contain" />
+              <img src={tabMeta[tab].imageSrc!} alt="" className="w-20 h-20 object-contain" />
             ) : (
               <span className="inline-flex items-center justify-center">{tabMeta[tab].icon}</span>
             )}

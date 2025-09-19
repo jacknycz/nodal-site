@@ -13,7 +13,7 @@ export default function Hero({ isDark }: HeroProps) {
   return (
     
     <section
-      className="min-h-[70vh] py-48 pb-20 flex items-center justify-center px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200 relative overflow-hidden"
+      className="min-h-[70vh] py-48 flex items-center justify-center px-4 md:px-8 lg:px-16 bg-slate-100 dark:bg-zinc-950 transition-colors duration-200 relative overflow-hidden"
       style={{
         backgroundImage: `radial-gradient(circle, ${isDark ? '#333333' : '#c9c9c9'} 1px, transparent 1px)`,
         backgroundSize: '20px 20px',
@@ -21,11 +21,18 @@ export default function Hero({ isDark }: HeroProps) {
       }}
     >
       {/* Ripple mask that hides a ring of dots expanding outward */}
-      <div className={`absolute inset-0 z-10 hero-ripple-mask ${isDark ? 'bg-zinc-950' : 'bg-white'}`} />
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: isDark
+            ? 'radial-gradient(60% 60% at 50% 50%, rgba(9,9,11,.6) 0%, rgba(9,9,11,0.55) 65%, rgba(9,9,11,0.2) 85%)'
+            : 'radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.55) 65%, rgba(255,255,255,0.3) 85%)'
+        }}
+      />
 
       {/* Background draggable board */}
 
-      <div className="absolute top-2 left-4 max-w-md font-heading flex flex-col items-start space-y-2 mb-12">
+      <div className="absolute z-20 top-2 left-4 max-w-md font-heading flex flex-col items-start space-y-2 mb-12">
         <img
           src={isDark ? NodalWhiteLogo : NodalBlackLogo}
           alt="Nodal Logo"
@@ -34,9 +41,9 @@ export default function Hero({ isDark }: HeroProps) {
         <h1 className="font-heading text-xl md:text-2xl font-medium text-zinc-900 dark:text-white">for ideas.</h1>
       </div>
 
-      <div className="max-w-7xl mx-auto grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-20">
+      <div className="w-full grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-20">
         <motion.div
-          className="flex flex-col items-start space-y-6"
+          className="flex flex-col max-w-md items-start space-y-6"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
