@@ -14,41 +14,41 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   const images = ['/document-node.svg', '/image-node.svg', '/nodal-node.svg']
 
   const nodeTypes = [
-    { 
-      img: images[2], 
-      label: 'it contains content', 
+    {
+      img: images[2],
+      label: 'it contains content',
       description: 'seriously - think it and throw it in a node',
-      delay: 0 
+      delay: 0
     },
-    { 
-      img: images[1], 
-      label: 'picture perfect', 
+    {
+      img: images[1],
+      label: 'picture perfect',
       description: 'bring all kinds of imagery goodness to the board',
-      delay: 0.2 
+      delay: 0.2
     },
-    { 
-      img: images[0], 
-      label: 'got documents?', 
+    {
+      img: images[0],
+      label: 'got documents?',
       description: 'load them up and throw them in a node - Nobot\'s ready to talk about it',
-      delay: 0.4 
+      delay: 0.4
     },
-    { 
-      img: images[0], 
-      label: 'of course, tasks', 
+    {
+      img: images[0],
+      label: 'of course, tasks',
       description: 'lorem ipsum dolor sit amet consectutar',
-      delay: 0.6 
+      delay: 0.6
     },
-    { 
-      img: images[1], 
-      label: 'a PDF', 
+    {
+      img: images[1],
+      label: 'a PDF',
       description: 'lorem ipsum dolor sit amet consectutar',
-      delay: 0.8 
+      delay: 0.8
     },
-    { 
-      img: images[2], 
-      label: 'or a full‑blown concept', 
+    {
+      img: images[2],
+      label: 'or a full‑blown concept',
       description: 'lorem ipsum dolor sit amet consectutar',
-      delay: 1.0 
+      delay: 1.0
     }
   ]
 
@@ -70,7 +70,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.h2 
+          <motion.h2
             className="text-4xl md:text-5xl font-heading font-medium font-bold text-zinc-900 dark:text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,19 +94,19 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
       {/* Tabs */}
       <TabsSection />
 
-       {/* Bottom Text */}
-       <motion.div 
-          className="text-center max-w-4xl mx-auto mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-        >
-          <p className="text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed">
-            Nodes are flexible building blocks for your brainwaves — and they're always 
-            <span className="text-primary-500 font-medium"> one click away</span> from becoming something bigger.
-          </p>
-        </motion.div>
+      {/* Bottom Text */}
+      <motion.div
+        className="text-center max-w-4xl mx-auto mt-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 1.2 }}
+      >
+        <p className="text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed">
+          Nodes are flexible building blocks for your brainwaves — and they're always
+          <span className="text-primary-500 font-medium"> one click away</span> from becoming something bigger.
+        </p>
+      </motion.div>
     </section>
   )
 }
@@ -131,14 +131,27 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <video
-          src={demoVideo}
-          muted
-          playsInline
-          loop
-          autoPlay
-          className="w-full h-56 md:h-64 lg:h-72 rounded-xl object-cover border border-zinc-300/60 dark:border-zinc-700/60"
-        />
+        <div className="flex flex-col gap-6 items-center justify-center">
+          <div class="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+            <div class="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
+            <div class="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="text-sm font-medium text-gray-900 dark:text-white">Hey! I'm a regular ole' node</h3>
+            </div>
+            <div class="text-xs text-gray-600 dark:text-gray-200 mb-2">
+              ...but I am pretty cool. I hold whatever you throw at me - I just have some text here to show you, but you can text edit with images up in me too.
+            </div>
+          </div>
+
+          {/* <video
+            src={demoVideo}
+            muted
+            playsInline
+            loop
+            autoPlay
+            className="w-full h-56 md:h-64 lg:h-72 rounded-xl object-cover border border-zinc-300/60 dark:border-zinc-700/60"
+          /> */}
+        </div>
       )
     },
     Docs: {
