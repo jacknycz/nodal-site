@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ChatCircle, Sparkle, Brain, Lightning } from '@phosphor-icons/react'
-import meetNobotVideo from '../assets/meet-nobot.mp4'
 
 interface AIIntegrationSectionProps {
   isDark: boolean;

@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-interface ConversationalNodesProps {
-  isDark: boolean;
-}
-
-export default function ConversationalNodes({ isDark }: ConversationalNodesProps) {
+export default function ConversationalNodes() {
   const [currentStep, setCurrentStep] = useState(0)
 
   const conversation = [

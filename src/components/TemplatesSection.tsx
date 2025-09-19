@@ -317,7 +317,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
                 if (e.key === 'ArrowRight') next()
               }}
             >
-              {displayedItems.map((template, idx) => {
+              {displayedItems.map((template) => {
             const colors = getColorClasses(template.color)
               const isHovered = hoveredTemplate === template.id
 

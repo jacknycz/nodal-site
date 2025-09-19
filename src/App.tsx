@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Brain, Users, FileText, Target, Cloud, Share } from '@phosphor-icons/react'
 import Hero from './components/Hero'
-import ConversationalNodes from './components/ConversationalNodes'
+// import ConversationalNodes from './components/ConversationalNodes'
 import MeetTheNodes from './components/MeetTheNodes'
 import WelcomeToTheBoard from './components/WelcomeToTheBoard'
 import AISection from './components/AISection'
-import AIIntegrationSection from './components/AIIntegrationSection'
+// import AIIntegrationSection from './components/AIIntegrationSection'
 import TemplatesSection from './components/TemplatesSection'
 import FinalCTASection from './components/FinalCTASection'
 import './App.css'
@@ -59,7 +58,7 @@ function App() {
       {/* New Landing Page Sections */}
       <WelcomeToTheBoard isDark={isDark} />
 
-      <AISection isDark={isDark} />
+      <AISection />
 
       {/* <AIIntegrationSection isDark={isDark} /> */}
 

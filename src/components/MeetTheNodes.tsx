@@ -282,7 +282,7 @@ function TabsSection() {
     }
   }
 
-  const tabs = Object.keys(tabsContent) as TabKey[]
+  // const tabs = Object.keys(tabsContent) as TabKey[]
   const [active, setActive] = useState<TabKey>('Default')
 
   // Tab configuration for buttons (supports either icon or image)

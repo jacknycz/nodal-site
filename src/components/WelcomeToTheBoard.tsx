@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import nodalBoard from '../assets/nodal-board.png'
 import bgVideo from '../assets/nodal-test.mp4'
 
 interface ConnectThoughtsSectionProps {
