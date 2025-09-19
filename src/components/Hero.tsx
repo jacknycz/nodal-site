@@ -13,22 +13,8 @@ export default function Hero({ isDark }: HeroProps) {
   return (
     
     <section
-      className="min-h-[70vh] py-48 flex items-center justify-center px-4 md:px-8 lg:px-16 bg-slate-100 dark:bg-zinc-950 transition-colors duration-200 relative overflow-hidden"
-      style={{
-        backgroundImage: `radial-gradient(circle, ${isDark ? '#333333' : '#c9c9c9'} 1px, transparent 1px)`,
-        backgroundSize: '20px 20px',
-        backgroundPosition: '0 0'
-      }}
+      className="min-h-[70vh] py-64 flex items-center justify-center px-4 md:px-8 lg:px-16 transition-colors duration-200 relative overflow-hidden"
     >
-      {/* Ripple mask that hides a ring of dots expanding outward */}
-      <div
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={{
-          background: isDark
-            ? 'radial-gradient(60% 60% at 50% 50%, rgba(9,9,11,.6) 0%, rgba(9,9,11,0.55) 65%, rgba(9,9,11,0.2) 85%)'
-            : 'radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.55) 65%, rgba(255,255,255,0.3) 85%)'
-        }}
-      />
 
       {/* Background draggable board */}
 

@@ -2,7 +2,7 @@ import { Brain, Users, FileText, Target, Cloud, Share } from '@phosphor-icons/re
 
 export default function AISection() {
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
+    <section className="py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 dark:text-white mb-4">

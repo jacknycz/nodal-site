@@ -29,6 +29,25 @@ function App() {
         {isDark ? '☀️ Light' : '🌙 Dark'}
       </button>
 
+      {/* Site-wide fixed background dots (behind everything) */}
+      <div
+        className="fixed inset-0 -z-50 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle, ${isDark ? '#333333' : '#c9c9c9'} 1px, transparent 1px)`,
+          backgroundSize: '20px 20px',
+          backgroundPosition: '0 0'
+        }}
+      />
+      {/* Radial overlay above dots, still behind content */}
+      <div
+        className="fixed inset-0 -z-40 pointer-events-none"
+        style={{
+          background: isDark
+            ? 'radial-gradient(60% 60% at 50% 50%, rgba(9,9,11,.6) 0%, rgba(9,9,11,0.55) 65%, rgba(9,9,11,0.2) 85%)'
+            : 'radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.55) 65%, rgba(255,255,255,0.3) 85%)'
+        }}
+      />
+
       {/* <TypewriterHero isDark={isDark} /> */}
 
       {/* Hero */}
@@ -40,16 +59,16 @@ function App() {
       {/* New Landing Page Sections */}
       <WelcomeToTheBoard isDark={isDark} />
 
-      <AISection />
+      <AISection isDark={isDark} />
 
-      <AIIntegrationSection isDark={isDark} />
+      {/* <AIIntegrationSection isDark={isDark} /> */}
 
       <TemplatesSection isDark={isDark} />
 
       {/* Final CTA with Confetti */}
       <FinalCTASection isDark={isDark} />
 
-      <ConversationalNodes isDark={isDark} />
+      {/* <ConversationalNodes isDark={isDark} /> */}
     </>
   )
 }

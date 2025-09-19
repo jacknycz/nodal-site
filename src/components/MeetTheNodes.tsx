@@ -24,7 +24,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   // }
 
   return (
-    <section className="relative overflow-hidden py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-gray-800 transition-colors duration-200">
+    <section className="relative overflow-hidden py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <motion.h2
         className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
         initial={{ opacity: 0, y: 20 }}

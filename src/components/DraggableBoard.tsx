@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import demoVideo from '../assets/nodal-test.mp4'
+import winstonChen from '../assets/nodal-winston-chen.jpg'
 
 interface Pos { x: number; y: number }
 
@@ -57,7 +58,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
   return (
     <section className={`w-full ${fillParent ? 'h-full' : 'h-[80vh]'} bg-transparent relative overflow-hidden pointer-events-none ${className}`}>
       {/* Node 1 - centered top */}
-      <DraggableNode initial={{ x: 0, y: 24 }} centerX>
+      <DraggableNode initial={{ x: 0, y: 40 }} centerX>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -73,12 +74,12 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       </DraggableNode>
 
       {/* Node 2 */}
-      <DraggableNode initial={{ x: 700, y: 320 }}>
+      <DraggableNode initial={{ x: 630, y: 260 }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
           <div className="flex items-center gap-2 mb-1">
-            <h3 className="text-sm font-medium text-gray-900 dark:text-white">A kinder to-do list</h3>
+            <h3 className="text-sm font-medium text-gray-900 dark:text-white">A TASK NODE</h3>
           </div>
           <div className="text-xs text-gray-600 dark:text-gray-200 mb-2">
             Plan like you’re human. Fewer tasks, more momentum. Add one thing you can finish now.
@@ -87,12 +88,12 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       </DraggableNode>
 
       {/* Node 3 */}
-      <DraggableNode initial={{ x: 940, y: 60 }}>
+      <DraggableNode initial={{ x: 1040, y: 60 }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
           <div className="relative w-full">
-            <img src="/nodal.png" alt="Nodal" className="w-full pointer-events-none h-[160px] rounded-md object-cover" />
+            <img src={winstonChen} alt="Winston Chen" className="w-full pointer-events-none h-[160px] rounded-md object-cover" />
           </div>
           <div className="mt-2 flex items-center gap-2">
             <div className="flex-1 min-w-0">
@@ -104,7 +105,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       </DraggableNode>
 
       {/* Node 4 */}
-      <DraggableNode initial={{ x: 600, y: 460 }}>
+      <DraggableNode initial={{ x: 600, y: 560 }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
