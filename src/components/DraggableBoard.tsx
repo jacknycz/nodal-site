@@ -16,6 +16,17 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
   const start = useRef<Pos>({ x: 0, y: 0 })
 
   const resolveBreakpoint = (w: number): BreakpointKey => (w >= 1280 ? 'xl' : w >= 1024 ? 'lg' : w >= 768 ? 'md' : 'base')
+  const clampToBounds = (position: Pos): Pos => {
+    const el = ref.current
+    const parent = el?.parentElement
+    if (!el || !parent) return position
+    const maxX = Math.max(0, parent.clientWidth - el.offsetWidth)
+    const maxY = Math.max(0, parent.clientHeight - el.offsetHeight)
+    return {
+      x: Math.min(Math.max(position.x, 0), maxX),
+      y: Math.min(Math.max(position.y, 0), maxY)
+    }
+  }
   const resolveInitial = (): Pos => {
     if (initialByWidth && typeof window !== 'undefined') {
       const bp = resolveBreakpoint(window.innerWidth)
@@ -31,7 +42,7 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
     const apply = () => {
       if (hasUserMoved) return
       const next = resolveInitial()
-      setPos(next)
+      setPos(clampToBounds(next))
     }
     apply()
     window.addEventListener('resize', apply)
@@ -50,7 +61,7 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
       if (hasUserMoved) return
       const parentWidth = parent.clientWidth
       const nodeWidth = el.offsetWidth
-      setPos(prev => ({ x: Math.max(0, (parentWidth - nodeWidth) / 2), y: prev.y }))
+      setPos(prev => clampToBounds({ x: Math.max(0, (parentWidth - nodeWidth) / 2), y: prev.y }))
     }
 
     center()
@@ -70,7 +81,7 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
       if (hasUserMoved) return
       const bp = resolveBreakpoint(window.innerWidth)
       const y = initialYByWidth[bp] ?? initialYByWidth.base
-      if (typeof y === 'number') setPos(prev => ({ x: prev.x, y }))
+      if (typeof y === 'number') setPos(prev => clampToBounds({ x: prev.x, y }))
     }
     applyY()
     window.addEventListener('resize', applyY)
@@ -85,7 +96,7 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!dragging) return
     const next = { x: e.clientX - start.current.x, y: e.clientY - start.current.y }
-    setPos(next)
+    setPos(clampToBounds(next))
     if (!hasUserMoved) setHasUserMoved(true)
   }
   const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {

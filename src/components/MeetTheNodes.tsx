@@ -24,7 +24,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   // }
 
   return (
-    <section className="relative overflow-hidden py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+    <section id="meet-nodes-section" className="relative overflow-hidden py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <motion.h2
         className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -98,8 +98,24 @@ function TabsSection() {
         }}
         onPointerMove={(e) => {
           if (!draggingRef.current) return
-          const x = e.clientX - startRef.current.x
-          const y = e.clientY - startRef.current.y
+          let x = e.clientX - startRef.current.x
+          let y = e.clientY - startRef.current.y
+          const el = containerRef.current
+          const section = document.getElementById('meet-nodes-section')
+          if (el && section) {
+            const bounds = section.getBoundingClientRect()
+            const elemRect = el.getBoundingClientRect()
+            const dx = x - posRef.current.x
+            const dy = y - posRef.current.y
+            const newLeft = elemRect.left + dx
+            const newRight = elemRect.right + dx
+            const newTop = elemRect.top + dy
+            const newBottom = elemRect.bottom + dy
+            if (newLeft < bounds.left) x += bounds.left - newLeft
+            if (newRight > bounds.right) x -= newRight - bounds.right
+            if (newTop < bounds.top) y += bounds.top - newTop
+            if (newBottom > bounds.bottom) y -= newBottom - bounds.bottom
+          }
           posRef.current = { x, y }
           if (containerRef.current) {
             containerRef.current.style.transform = `translate(${x}px, ${y}px)`
