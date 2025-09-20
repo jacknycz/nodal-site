@@ -13,18 +13,18 @@ export default function Hero({ isDark }: HeroProps) {
   return (
     
     <section
-      className="min-h-[70vh] py-64 flex items-center justify-center px-4 md:px-8 lg:px-16 transition-colors duration-200 relative overflow-hidden"
+      className="min-h-[70vh] pt-72 md:py-64 flex items-center justify-center px-4 md:px-8 lg:px-16 transition-colors duration-200 relative overflow-hidden"
     >
 
       {/* Background draggable board */}
 
-      <div className="absolute z-20 top-2 left-4 max-w-md font-heading flex flex-col items-start space-y-2 mb-12">
+      <div className="absolute z-20 top-2 left-4 max-w-md font-heading flex flex-col items-start space-y-1 md:space-y-2 mb-12">
         <img
           src={isDark ? NodalWhiteLogo : NodalBlackLogo}
           alt="Nodal Logo"
-          className="transition-opacity duration-200 max-w-48"
+          className="transition-opacity duration-200 max-w-32 md:max-w-48"
         />
-        <h1 className="font-heading text-xl md:text-2xl font-medium text-zinc-900 dark:text-white">for ideas.</h1>
+        <h1 className="font-heading text-lg md:text-2xl font-medium text-zinc-900 dark:text-white">for ideas.</h1>
       </div>
 
       <div className="w-full grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-20">
