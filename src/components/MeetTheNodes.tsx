@@ -312,7 +312,7 @@ function TabsSection() {
 
   return (
     <div className="max-w-6xl mx-auto mt-12">
-      <div className="flex flex-wrap gap-2 md:gap-6 justify-center mb-8" role="tablist" aria-label="Content tabs">
+      <div className="flex flex-wrap gap-0 md:gap-6 justify-center mb-8" role="tablist" aria-label="Content tabs">
         {tabOrder.map((tab) => (
           <button
             key={tab}
