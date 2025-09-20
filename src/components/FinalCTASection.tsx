@@ -37,8 +37,8 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
   const generateConfetti = () => {
     const pieces: ConfettiPiece[] = []
     
-    // Generate 50 confetti pieces
-    for (let i = 0; i < 50; i++) {
+    // Generate ~30% more confetti pieces (65)
+    for (let i = 0; i < 65; i++) {
       pieces.push({
         id: i,
         x: Math.random() * 100,
@@ -61,7 +61,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
   }
 
   return (
-    <section className="relative py-32 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 overflow-hidden">
+    <section className="relative py-32 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-white/10 via-white/10 to-primary-500/20 dark:from-gray-950/10 dark:via-gray-950/10 dark:to-zinc-950 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated background dots */}
@@ -135,22 +135,22 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
                 {piece.type === 'node' ? (
                   <div 
                     className="w-4 h-3 rounded-sm shadow-sm"
-                    style={{ backgroundColor: piece.color }}
+                    style={{ backgroundColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 ) : piece.type === 'circle' ? (
                   <div 
                     className="w-3 h-3 rounded-full"
-                    style={{ backgroundColor: piece.color }}
+                    style={{ backgroundColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 ) : piece.type === 'triangle' ? (
                   <div 
                     className="w-0 h-0 border-l-2 border-r-2 border-b-4 border-l-transparent border-r-transparent"
-                    style={{ borderBottomColor: piece.color }}
+                    style={{ borderBottomColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 ) : (
                   <div 
                     className="w-3 h-3"
-                    style={{ backgroundColor: piece.color }}
+                    style={{ backgroundColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 )}
               </motion.div>
@@ -177,7 +177,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
           </h2>
           
           <motion.p 
-            className="text-2xl text-zinc-300 mb-4 font-light"
+            className="text-2xl text-zinc-900 dark:text-zinc-300 mb-4 font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -199,7 +199,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             <div className="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <Sparkle className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">start with a single thought</h3>
+            <h3 className="text-xl font-medium font-heading text-zinc-600 dark:text-white mb-2">start with a single thought</h3>
             <p className="text-zinc-400">there's a button for that or you can right click</p>
           </div>
 
@@ -207,7 +207,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             <div className="w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <Lightning className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">end with something bigger than you imagined</h3>
+            <h3 className="text-xl font-medium font-heading text-zinc-600 dark:text-white mb-2">end with something bigger than you imagined</h3>
             <p className="text-zinc-400">honestly you'll be surprised</p>
           </div>
 
@@ -215,7 +215,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             <div className="w-16 h-16 bg-tertiary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <Star className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">no downloads. no pressure.</h3>
+            <h3 className="text-xl font-medium font-heading text-zinc-600 dark:text-white mb-2">no downloads. no pressure.</h3>
             <p className="text-zinc-400">again, it's free. also literally no downloads, it's in the browser</p>
           </div>
         </motion.div>

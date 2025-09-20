@@ -43,20 +43,23 @@ export default function Hero({ isDark }: HeroProps) {
               <div className="flex flex-col space-y-1">
                 <a
                   href="https://app.nodalapp.com/"
-                  className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-semibold px-6 py-3 rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors duration-200"
+                  className="bg-primary-600 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100
+                  text-white text-center dark:text-zinc-900 font-medium font-heading 
+                  px-6 py-3 rounded-full transition-colors duration-200"
                 >
-                  Try Nodal (it's free)
+                  sign up free
                 </a>
-                <span className="text-gray-400 dark:text-gray-400 text-xs">like you don't need a credit card</span>
+                <span className="text-gray-400 dark:text-gray-400 text-xs">no credit card needed</span>
               </div>
               <div className="flex flex-col space-y-1">
                 <a
                   href="#"
-                  className="border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-white px-6 py-3 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors duration-200"
+                  className="border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800
+                  text-zinc-900 text-center font-medium font-heading dark:text-white px-6 py-3 rounded-full transition-colors duration-200"
                 >
-                  Checkout the Fancy Stuff
+                  see pro features
                 </a>
-                <span className="text-gray-400 dark:text-gray-400 text-xs">if you're feeling $9.99 kinda ambitious</span>
+                <span className="text-gray-400 dark:text-gray-400 text-xs">feeling $9.99 ambitious?</span>
               </div>
             </div>
           </div>
