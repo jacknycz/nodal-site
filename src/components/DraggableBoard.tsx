@@ -31,7 +31,7 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
     const apply = () => {
       if (hasUserMoved) return
       const next = resolveInitial()
-      setPos(prev => ({ x: next.x, y: next.y }))
+      setPos(next)
     }
     apply()
     window.addEventListener('resize', apply)
