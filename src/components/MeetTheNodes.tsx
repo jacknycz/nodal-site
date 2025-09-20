@@ -123,22 +123,19 @@ function TabsSection() {
     Default: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">
-            The Humble Node
+          <h3 className="text-2xl md:text-3xl font-medium font-heading text-zinc-900 dark:text-white mb-3">
+            the regular ole' node - like a sticky note with more sticky notes
           </h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>
-              "Nodes are the building blocks of your thoughts" is something that would probably be said in a board room. We don't have a a board room.
-            </p>
+            <p>That's a terrible description and I'm sorry for that but the hope was you kept reading because it was so dumb.</p>
+            <p>"Nodes are the building blocks of your thoughts" is something that would probably be said in a board room. We don't have a a board room.</p>
             <p>So, nodes are flexible little building blocks that you can use on the board to build out ideas, make lists, or just connect them to other nodes.</p>
             <p>We like things flexible around here.</p>
           </div>
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-6
-        border border-dashed border-zinc-300 dark:border-zinc-400/40
-        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
+        <div className="flex flex-col items-center justify-center">
           <DraggableWrapper>
             <div data-node className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
               <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
@@ -157,7 +154,7 @@ function TabsSection() {
     Docs: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">Bring Your Documents</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">we take your docs, turn them into nodes and hope they treat you better that way</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
             <p>Attach PDFs and docs to the board</p>
             <ul>
@@ -168,9 +165,7 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-6
-        border border-dashed border-zinc-300 dark:border-zinc-700/40
-        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
+        <div className="flex flex-col items-center justify-center">
           <DraggableWrapper>
             <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[320px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
               <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
@@ -197,7 +192,7 @@ function TabsSection() {
     Video: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">Add Video for Context</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">if nodal is for ideas, and video is for showing people stuff, the heck yeah we got video nodes</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
             <p>Simply add a YouTube URL and bam - you've got a video node.</p>
             <ul>
@@ -208,9 +203,7 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="flex flex-col gap-6 items-center justify-center rounded-xl p-6 md:p-6
-        border border-dashed border-zinc-300 dark:border-zinc-700/40
-        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40">
+        <div className="flex flex-col items-center justify-center">
           <DraggableWrapper>
             <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
               <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
@@ -315,11 +308,11 @@ function TabsSection() {
             className={`px-8 py-4 rounded-lg text-sm font-medium transition-colors cursor-pointer border border-transparent flex flex-col items-center gap-2
               ${active === tab
                 ? 'text-white !border-primary-500'
-                : 'bg-white dark:bg-slate-800/50 text-zinc-700 dark:text-zinc-300 hover:border-zinc-200 hover:bg-zinc-100 dark:hover:bg-slate-900/50 dark:hover:border-primary-500'}`}
+                : 'bg-white dark:bg-transparent text-zinc-700 dark:text-zinc-300 hover:border-zinc-200 hover:bg-zinc-100 dark:hover:bg-slate-900/50 dark:hover:border-primary-500'}`}
           >
             {tabMeta[tab].imageSrc ? (
               <img src={tabMeta[tab].imageSrc!} alt="" className="w-20 h-20 object-contain" />
-            ) : (
+            ) : ( 
               <span className="inline-flex items-center justify-center">{tabMeta[tab].icon}</span>
             )}
             <span>{tabMeta[tab].label}</span>
@@ -331,7 +324,9 @@ function TabsSection() {
         initial={false}
         animate={{ height: 'auto' }}
         transition={{ duration: 0.2 }}
-        className="mt-12"
+        className="mt-12 p-6 md:p-12 rounded-xl bg-white dark:bg-gray-950
+        border border-dashed border-zinc-300 dark:border-zinc-400/40
+        shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40"
       >
         <div id={`panel-${active}`} role="tabpanel">
           {panel}

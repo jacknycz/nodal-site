@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Airplane, Book, Trophy, Lightbulb, ArrowRight, Play, CaretLeft, CaretRight } from '@phosphor-icons/react'
+import { motion } from 'framer-motion'
+import { Airplane, Book, Trophy, Lightbulb, ArrowRight, CaretLeft, CaretRight } from '@phosphor-icons/react'
+import templateCell from '../assets/template-cell.png'
+import codeDesk from '../assets/code-desk.png'
+import templatePenguin from '../assets/template-penguin.png'
+import templateGarden from '../assets/template-garden.png'
 
 interface TemplatesSectionProps {
   isDark: boolean;
@@ -18,47 +22,46 @@ interface Template {
 }
 
 export default function TemplatesSection({ }: TemplatesSectionProps) {
-  const [hoveredTemplate, setHoveredTemplate] = useState<string | null>(null)
 
   const templates: Template[] = [
     {
       id: 'vacation',
-      title: 'Vacation to Greece',
-      subtitle: '✈️ Travel Planning',
-      description: 'Itinerary, must‑see spots, and packing list ready to customize.',
+      title: 'Something about cells',
+      subtitle: 'Healthcare',
+      description: 'A background on some cellular stuff, Shelby will fill this in.',
       icon: Airplane,
       color: 'primary',
-      preview: '/api/placeholder/400/250',
+      preview: templateCell,
       features: ['Pre-planned itinerary', 'Budget tracker', 'Packing checklist', 'Local recommendations']
     },
     {
       id: 'research',
       title: 'My Research Paper',
-      subtitle: '📚 Academic Structure',
+      subtitle: 'Academic Structure',
       description: 'Sections outlined with sources placeholder nodes.',
       icon: Book,
       color: 'secondary',
-      preview: '/api/placeholder/400/250',
+      preview: codeDesk,
       features: ['Chapter outlines', 'Citation management', 'Research timeline', 'Source organization']
     },
     {
       id: 'fantasy',
       title: 'Fantasy Football Draft',
-      subtitle: '🏈 Sports Strategy',
+      subtitle: 'Sports Strategy',
       description: 'Player tiers, strategy notes, and live update space.',
       icon: Trophy,
       color: 'tertiary',
-      preview: '/api/placeholder/400/250',
+      preview: templatePenguin,
       features: ['Player rankings', 'Draft strategy', 'Team analysis', 'Trade tracker']
     },
     {
       id: 'brainstorm',
       title: 'Brainstorm Board',
-      subtitle: '🧠 Free Thinking',
+      subtitle: 'Free Thinking',
       description: 'Empty but structured for free‑flow thinking.',
       icon: Lightbulb,
       color: 'primary',
-      preview: '/api/placeholder/400/250',
+      preview: templateGarden,
       features: ['Idea clusters', 'Mind mapping zones', 'Priority matrix', 'Action items']
     }
   ]
@@ -108,9 +111,8 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
 
   // Looping carousel driven by translateX
   const M = carouselItems.length
-  const initialItemsPerView = typeof window !== 'undefined'
-    ? (window.innerWidth >= 1024 ? 3 : window.innerWidth >= 768 ? 2 : 1)
-    : 1
+  const calcItemsPerView = (w: number) => (w >= 1024 ? 4 : w >= 768 ? 2 : 1)
+  const initialItemsPerView = typeof window !== 'undefined' ? calcItemsPerView(window.innerWidth) : 1
   const [itemsPerView, setItemsPerView] = useState(initialItemsPerView)
   const clones = useMemo(() => Math.min(itemsPerView, M), [itemsPerView, M])
   const displayedItems = useMemo(() => {
@@ -162,15 +164,10 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
 
   // Responsively set how many cards are fully visible and compute widths
   useEffect(() => {
-    const calc = () => {
-      const w = window.innerWidth
-      if (w >= 1024) setItemsPerView(3)
-      else if (w >= 768) setItemsPerView(2)
-      else setItemsPerView(1)
-    }
-    calc()
-    window.addEventListener('resize', calc)
-    return () => window.removeEventListener('resize', calc)
+    const onResize = () => setItemsPerView(calcItemsPerView(window.innerWidth))
+    onResize()
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
   }, [])
 
   const onTransitionEnd = () => {
@@ -199,7 +196,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
     dragStartX.current = e.clientX
     dragDelta.current = 0
     setDisableTransition(true)
-    ;(e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId)
+      ; (e.currentTarget as HTMLDivElement).setPointerCapture(e.pointerId)
   }
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!dragging.current) return
@@ -227,7 +224,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
   const onPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!dragging.current) return
     settleDrag()
-    ;(e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId)
+      ; (e.currentTarget as HTMLDivElement).releasePointerCapture(e.pointerId)
   }
   const onPointerCancel = () => {
     if (!dragging.current) return
@@ -235,31 +232,31 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
   }
 
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 bg-white dark:bg-zinc-950 transition-colors duration-200">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-20 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+      <div className="max-w-3xl mx-auto mb-16">
         {/* Header */}
         <div className="text-center mb-16">
-          <motion.h2 
-            className="text-4xl md:text-5xl font-bold text-zinc-900 dark:text-white mb-6"
+          <motion.h2
+            className="text-4xl md:text-5xl font-medium font-heading text-zinc-900 dark:text-white mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Templates & Starters
+            templates &amp; starters
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-2xl text-zinc-700 dark:text-zinc-200 mb-4 font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Jump in with a head start.
+            some templates mostly to get an idea of what nodals all about. the hope is to grow this section MASSIVELY with user galleries, submissions, learning stuff - all kinds of good stuff.
           </motion.p>
-          
-          <motion.p 
+
+          <motion.p
             className="text-xl text-zinc-600 dark:text-zinc-300 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -269,7 +266,9 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
             Nodal comes with pre‑made boards so you can focus on ideas, not setup:
           </motion.p>
         </div>
+      </div>
 
+      <div className="max-w-7xl mx-auto">
         {/* Carousel */}
         <div className="relative mb-12" role="region" aria-roledescription="carousel" aria-label="Templates carousel">
           {/* Progress indicator */}
@@ -278,7 +277,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
           </div>
 
           {/* Controls */}
-          <div className="absolute -top-10 right-0 flex items-center gap-2">
+          <div className="absolute -top-12 right-0 flex items-center gap-2">
             <button
               type="button"
               onClick={prev}
@@ -286,7 +285,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               aria-label="Previous slide"
               disabled={false}
             >
-              <CaretLeft className="w-5 h-5" />
+              <CaretLeft weight="duotone" className="w-5 h-5" />
             </button>
             <button
               type="button"
@@ -295,7 +294,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               aria-label="Next slide"
               disabled={false}
             >
-              <CaretRight className="w-5 h-5" />
+              <CaretRight weight="duotone" className="w-5 h-5" />
             </button>
           </div>
 
@@ -318,130 +317,73 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
               }}
             >
               {displayedItems.map((template) => {
-            const colors = getColorClasses(template.color)
-              const isHovered = hoveredTemplate === template.id
+                const colors = getColorClasses(template.color)
 
-              return (
-                <div
-                  key={template.id}
-                  className={`flex-none relative bg-white dark:bg-zinc-800 rounded-2xl shadow-lg border-2 overflow-hidden group cursor-pointer ${colors.border} ${colors.hover}`}
-                  style={{
-                    width: `calc((100% - ${(itemsPerView - 1) * GAP_PX}px) / ${itemsPerView})`
-                  }}
-                  onMouseEnter={() => setHoveredTemplate(template.id)}
-                  onMouseLeave={() => setHoveredTemplate(null)}
+                return (
+                  <div
+                    key={template.id}
+                    className={`flex-none relative bg-white dark:bg-zinc-800 rounded-2xl 
+                    shadow-lg overflow-hidden ${colors.border}`}
+                    style={{
+                      width: `calc((100% - ${(itemsPerView - 1) * GAP_PX}px) / ${itemsPerView})`
+                    }}
                     role="listitem"
                     aria-label={`${template.title} ${template.subtitle}`}
-                >
-                {/* Preview Image Section */}
-                <div className="relative h-48 overflow-hidden">
-                  {/* FPO Image */}
-                  <div className="w-full h-full bg-gradient-to-br from-zinc-100 to-zinc-200 dark:from-zinc-700 dark:to-zinc-800 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className={`w-16 h-16 ${colors.bg} rounded-2xl flex items-center justify-center mx-auto mb-3`}>
-                        <template.icon className="w-8 h-8 text-white" />
-                      </div>
-                      <p className="text-sm text-zinc-500 dark:text-zinc-400 font-medium">
-                        [FPO - Template Preview]
-                      </p>
-                      <p className="text-xs text-zinc-400 dark:text-zinc-500 mt-1">
-                        {template.title} Board Layout
-                      </p>
+                  >
+                    {/* Preview Image Section */}
+                    <div className="relative overflow-hidden py-4">
+                      <img src={template.preview} alt={`${template.title} preview`} className="w-full" />
                     </div>
-                  </div>
 
-                  {/* Play button overlay */}
-                  <AnimatePresence>
-                    {isHovered && (
-                      <motion.div
-                        className="absolute inset-0 bg-black/20 flex items-center justify-center"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      >
-                        <motion.div
-                          className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg"
-                          initial={{ scale: 0.8 }}
-                          animate={{ scale: 1 }}
-                          exit={{ scale: 0.8 }}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.95 }}
+                    {/* Content Section */}
+                    <div className="p-6">
+                      <div className="flex items-start justify-between mb-3">
+                        <div>
+                          <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1">
+                            {template.title}
+                          </h3>
+                          <p className={`text-sm font-medium ${colors.text}`}>
+                            {template.subtitle}
+                          </p>
+                        </div>
+                        <div
+                          className={`w-10 h-10 ${colors.bg} rounded-lg flex items-center justify-center flex-shrink-0`}
                         >
-                          <Play className="w-7 h-7 text-zinc-700 ml-1" />
-                        </motion.div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                          <template.icon className="w-5 h-5 text-white" />
+                        </div>
+                      </div>
 
-                  {/* Live indicator */}
-                  <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/60 px-3 py-1 rounded-full">
-                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-white text-xs font-medium">Live Preview</span>
-                  </div>
-                </div>
-
-                {/* Content Section */}
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-1">
-                        {template.title}
-                      </h3>
-                      <p className={`text-sm font-medium ${colors.text}`}>
-                        {template.subtitle}
+                      <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm leading-relaxed">
+                        {template.description}
                       </p>
-                    </div>
-                    <motion.div
-                      className={`w-10 h-10 ${colors.bg} rounded-lg flex items-center justify-center flex-shrink-0`}
-                      whileHover={{ rotate: 5 }}
-                    >
-                      <template.icon className="w-5 h-5 text-white" />
-                    </motion.div>
-                  </div>
 
-                  <p className="text-zinc-600 dark:text-zinc-300 mb-4 text-sm leading-relaxed">
-                    {template.description}
-                  </p>
+                      {/* Features List */}
+                      <div className="space-y-2 mb-4">
+                        {template.features.map((feature, featureIndex) => (
+                          <div
+                            key={featureIndex}
+                            className="flex items-center gap-2"
+                          >
+                            <div className={`w-1.5 h-1.5 ${colors.bg} rounded-full flex-shrink-0`} />
+                            <span className="text-xs text-zinc-500 dark:text-zinc-400">
+                              {feature}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
 
-                  {/* Features List */}
-                  <div className="space-y-2 mb-4">
-                    {template.features.slice(0, isHovered ? 4 : 2).map((feature, featureIndex) => (
-                      <motion.div 
-                        key={featureIndex}
-                        className="flex items-center gap-2"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: featureIndex * 0.1 }}
-                      >
-                        <div className={`w-1.5 h-1.5 ${colors.bg} rounded-full flex-shrink-0`} />
-                        <span className="text-xs text-zinc-500 dark:text-zinc-400">
-                          {feature}
-                        </span>
-                      </motion.div>
-                    ))}
-                  </div>
-
-                  {/* Use Template Button */}
-                  <AnimatePresence>
-                    {isHovered && (
-                      <motion.button
+                      {/* Use Template Button */}
+                      <button
                         className={`
-                          w-full ${colors.button} text-white font-semibold py-3 px-4 rounded-lg 
-                          flex items-center justify-center gap-2 transition-all duration-200 shadow-lg
-                        `}
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
+                      w-full ${colors.button} text-white font-semibold py-3 px-4 rounded-lg 
+                      flex items-center justify-center gap-2 shadow-lg
+                    `}
                       >
                         <span>Use This Template</span>
                         <ArrowRight className="w-4 h-4" />
-                      </motion.button>
-                    )}
-                  </AnimatePresence>
-                </div>
-                </div>
+                      </button>
+                    </div>
+                  </div>
                 )
               })}
             </div>
@@ -449,7 +391,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
         </div>
 
         {/* Bottom Text */}
-        <motion.div 
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -457,7 +399,7 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           <p className="text-xl text-zinc-600 dark:text-zinc-300 max-w-3xl mx-auto">
-            Start with a template, or 
+            Start with a template, or
             <span className="text-primary-500 font-medium"> remix one into your own creation</span>.
           </p>
         </motion.div>

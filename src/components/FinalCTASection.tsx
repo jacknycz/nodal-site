@@ -168,11 +168,11 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
-            Start Mapping
+          <h2 className="text-5xl md:text-7xl font-medium font-heading text-white mb-6 leading-tight">
+            if you made it this far...
             <br />
             <span className="bg-gradient-to-r from-primary-400 via-secondary-400 to-tertiary-400 bg-clip-text text-transparent">
-              What Matters
+              click the button
             </span>
           </h2>
           
@@ -183,7 +183,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Create your first board.
+            create your first board. it's free.
           </motion.p>
         </motion.div>
 
@@ -199,24 +199,24 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             <div className="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <Sparkle className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">Start with a single thought.</h3>
-            <p className="text-zinc-400">One idea becomes a node</p>
+            <h3 className="text-xl font-semibold text-white mb-2">start with a single thought</h3>
+            <p className="text-zinc-400">there's a button for that or you can right click</p>
           </div>
 
           <div className="text-center">
             <div className="w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <Lightning className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">End with something bigger than you imagined.</h3>
-            <p className="text-zinc-400">Watch your ideas connect and grow</p>
+            <h3 className="text-xl font-semibold text-white mb-2">end with something bigger than you imagined</h3>
+            <p className="text-zinc-400">honestly you'll be surprised</p>
           </div>
 
           <div className="text-center">
             <div className="w-16 h-16 bg-tertiary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
               <Star className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-semibold text-white mb-2">No downloads. No pressure.</h3>
-            <p className="text-zinc-400">Just thinking—upgraded</p>
+            <h3 className="text-xl font-semibold text-white mb-2">no downloads. no pressure.</h3>
+            <p className="text-zinc-400">again, it's free. also literally no downloads, it's in the browser</p>
           </div>
         </motion.div>
 
@@ -230,17 +230,17 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
         >
           {/* Glowing ring effect */}
           <motion.div
-            className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary-500 via-secondary-500 to-tertiary-500 opacity-30 blur-xl"
+            className="absolute inset-0 scale-y-200 rounded-full bg-radial from-primary-500 via-secondary-500/50 to-tertiary-500/20 opacity-20 blur-2xl"
             animate={{
-              scale: isGlowing ? [1, 1.1, 1] : 1,
-              opacity: isGlowing ? [0.3, 0.6, 0.3] : 0.3
+              scale: isGlowing ? [.7, 1.1, .7] : .7,
+              opacity: isGlowing ? [0.2, 0.6, 0.2] : 0.2
             }}
             transition={{ duration: 2, ease: "easeInOut" }}
           />
 
           {/* Main button */}
           <motion.button
-            className="relative bg-gradient-to-r from-primary-500 via-secondary-500 to-tertiary-500 text-white font-bold text-2xl px-12 py-6 rounded-2xl shadow-2xl overflow-hidden group"
+            className="relative cursor-pointer bg-gradient-to-r from-primary-500 via-secondary-500 to-tertiary-500 text-white font-bold text-2xl px-12 py-6 rounded-2xl shadow-2xl overflow-hidden group"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0 25px 50px -12px rgba(0, 207, 245, 0.4)"
@@ -258,17 +258,17 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             
             {/* Button content */}
             <div className="relative flex items-center justify-center gap-3">
-              <span>Start a Board</span>
+              <span>start a board</span>
               <motion.div
                 animate={{ x: [0, 5, 0] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               >
-                <ArrowRight className="w-7 h-7" />
+                <ArrowRight weight="duotone" className="w-7 h-7" />
               </motion.div>
             </div>
 
             {/* Ripple effect */}
-            <motion.div
+            {/* <motion.div
               className="absolute inset-0 bg-white/10 rounded-2xl"
               initial={{ scale: 0, opacity: 0 }}
               whileTap={{
@@ -276,7 +276,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
                 opacity: [0, 0.3, 0],
                 transition: { duration: 0.3 }
               }}
-            />
+            /> */}
           </motion.button>
 
           {/* Floating action hint */}
@@ -287,7 +287,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             viewport={{ once: true }}
             transition={{ delay: 1 }}
           >
-            Click for a surprise! 🎉
+            the button makes confetti too
           </motion.p>
         </motion.div>
 
