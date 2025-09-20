@@ -24,7 +24,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   // }
 
   return (
-    <section className="relative overflow-hidden py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+    <section className="relative overflow-hidden py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <motion.h2
         className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -296,7 +296,7 @@ function TabsSection() {
 
   return (
     <div className="max-w-6xl mx-auto mt-12">
-      <div className="flex flex-wrap gap-6 justify-center mb-8" role="tablist" aria-label="Content tabs">
+      <div className="flex flex-wrap gap-2 md:gap-6 justify-center mb-8" role="tablist" aria-label="Content tabs">
         {tabOrder.map((tab) => (
           <button
             key={tab}
@@ -305,13 +305,13 @@ function TabsSection() {
             aria-selected={active === tab}
             aria-controls={`panel-${tab}`}
             onClick={() => setActive(tab)}
-            className={`px-8 py-4 rounded-lg text-sm font-medium transition-colors cursor-pointer border border-transparent flex flex-col items-center gap-2
+            className={`px-2 md:px-8 py-4 rounded-lg text-sm font-medium transition-colors cursor-pointer border border-transparent flex flex-col items-center gap-2
               ${active === tab
                 ? 'text-white !border-primary-500'
                 : 'bg-white dark:bg-transparent text-zinc-700 dark:text-zinc-300 hover:border-zinc-200 hover:bg-zinc-100 dark:hover:bg-slate-900/50 dark:hover:border-primary-500'}`}
           >
             {tabMeta[tab].imageSrc ? (
-              <img src={tabMeta[tab].imageSrc!} alt="" className="w-20 h-20 object-contain" />
+              <img src={tabMeta[tab].imageSrc!} alt="" className="w-12 h-12 md:w-20 md:h-20 object-contain" />
             ) : ( 
               <span className="inline-flex items-center justify-center">{tabMeta[tab].icon}</span>
             )}

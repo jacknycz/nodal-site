@@ -123,6 +123,13 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
 }
 
 export default function DraggableBoard({ className = '', fillParent = false }: { className?: string; fillParent?: boolean }) {
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
   return (
     <section className={`w-full ${fillParent ? 'h-full' : 'h-[80vh]'} bg-transparent relative overflow-hidden pointer-events-none ${className}`}>
       {/* Node 1 - centered top with responsive Y */}
@@ -142,7 +149,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       </DraggableNode>
 
       {/* Node 2 */}
-      <DraggableNode initialByWidth={{ base: { x: 320, y: 720 }, md: { x: 360, y: 240 }, lg: { x: 630, y: 260 }, xl: { x: 780, y: 260 } }}>
+      <DraggableNode initialByWidth={{ base: { x: 120, y: 720 }, md: { x: 360, y: 240 }, lg: { x: 630, y: 260 }, xl: { x: 780, y: 260 } }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -155,44 +162,48 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
         </div>
       </DraggableNode>
 
-      {/* Node 3 */}
-      <DraggableNode initialByWidth={{ base: { x: 500, y: 200 }, md: { x: 520, y: 60 }, lg: { x: 1040, y: 60 }, xl: { x: 1200, y: 60 } }}>
-        <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
-          <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
-          <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
-          <div className="relative w-full">
-            <img src={winstonChen} alt="Winston Chen" className="w-full pointer-events-none h-[160px] rounded-md object-cover" />
-          </div>
-          <div className="mt-2 flex items-center gap-2">
-            <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium text-gray-900 dark:text-white truncate">Images? Of course.jpg</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400 truncate">420 KB • image/png</div>
+      {/* Node 3 - hide on mobile */}
+      {!isMobile && (
+        <DraggableNode initialByWidth={{ base: { x: -600, y: 740 }, md: { x: 520, y: 60 }, lg: { x: 1040, y: 60 }, xl: { x: 1200, y: 60 } }}>
+          <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+            <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
+            <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
+            <div className="relative w-full">
+              <img src={winstonChen} alt="Winston Chen" className="w-full pointer-events-none h-[160px] rounded-md object-cover" />
+            </div>
+            <div className="mt-2 flex items-center gap-2">
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium text-gray-900 dark:text-white truncate">Images? Of course.jpg</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 truncate">420 KB • image/png</div>
+              </div>
             </div>
           </div>
-        </div>
-      </DraggableNode>
+        </DraggableNode>
+      )}
 
-      {/* Node 4 */}
-      <DraggableNode initialByWidth={{ base: { x: 40, y: 720 }, md: { x: 360, y: 480 }, lg: { x: 600, y: 560 }, xl: { x: 760, y: 560 } }}>
-        <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
-          <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
-          <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
-          <div className="relative w-full">
-            <video
-              src={demoVideo}
-              muted
-              playsInline
-              loop
-              autoPlay
-              className="w-full h-[160px] rounded-md object-cover"
-            />
+      {/* Node 4 - hide on mobile */}
+      {!isMobile && (
+        <DraggableNode initialByWidth={{ base: { x: -600, y: 720 }, md: { x: 360, y: 480 }, lg: { x: 600, y: 560 }, xl: { x: 760, y: 560 } }}>
+          <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+            <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
+            <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
+            <div className="relative w-full">
+              <video
+                src={demoVideo}
+                muted
+                playsInline
+                loop
+                autoPlay
+                className="w-full h-[160px] rounded-md object-cover"
+              />
+            </div>
+            <div className="mt-2">
+              <div className="text-sm font-medium text-gray-900 dark:text-white">nodes can hold all kinds of stuff - like this video</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400 truncate">https://youtu.be/just-an-example</div>
+            </div>
           </div>
-          <div className="mt-2">
-            <div className="text-sm font-medium text-gray-900 dark:text-white">nodes can hold all kinds of stuff - like this video</div>
-            <div className="text-xs text-gray-500 dark:text-gray-400 truncate">https://youtu.be/just-an-example</div>
-          </div>
-        </div>
-      </DraggableNode>
+        </DraggableNode>
+      )}
     </section>
   )
 }

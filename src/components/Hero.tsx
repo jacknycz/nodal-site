@@ -13,7 +13,7 @@ export default function Hero({ isDark }: HeroProps) {
   return (
     
     <section
-      className="min-h-[70vh] pt-72 md:py-64 flex items-center justify-center px-4 md:px-8 lg:px-16 transition-colors duration-200 relative overflow-hidden"
+      className="min-h-[70vh] pt-72 pb-48 md:py-64 flex items-center justify-center px-4 md:px-8 lg:px-16 transition-colors duration-200 relative overflow-hidden"
     >
 
       {/* Background draggable board */}
@@ -43,8 +43,8 @@ export default function Hero({ isDark }: HeroProps) {
               <div className="flex flex-col space-y-1">
                 <a
                   href="https://app.nodalapp.com/"
-                  className="bg-primary-600 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100
-                  text-white text-center dark:text-zinc-900 font-medium font-heading 
+                  className="bg-primary-600 hover:bg-primary-500
+                  text-white text-center font-medium font-heading 
                   px-6 py-3 rounded-full transition-colors duration-200"
                 >
                   sign up free
