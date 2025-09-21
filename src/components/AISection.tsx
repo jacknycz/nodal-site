@@ -3,18 +3,21 @@ import nobotLeft from '../assets/nobot-left.svg'
 
 export default function AISection() {
   return (
-    <section className="py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+    <section className="py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <div className="max-w-6xl mx-auto flex items-start justify-between space-x-16">
-        <div className="mb-16 flex flex-col items-start justify-start">
-          <h2 className="text-3xl md:text-4xl font-medium font-heading text-zinc-900 dark:text-white mb-4">
-            meet nobot! and look how well we hid this AI stuff
-          </h2>
+        <div className="mb-16 flex flex-col items-start justify-start space-y-4">
+          <div className="flex w-full space-x-6 md:space-x-8 justify-between items-end">
+            <h2 className="text-3xl md:text-4xl font-medium font-heading text-zinc-900 dark:text-white">
+              meet nobot! and look how well we hid this AI stuff
+            </h2>
+
+            <img src={nobotLeft} alt="Nobot" className="h-full object-cover w-16 md:w-24" />
+          </div>
+          
           <p className="text-xl text-zinc-600 dark:text-zinc-300">
             of course nodal does do cool AI stuff but everybody's doing that so we didn't wanna talk about it but our investor said we should so here it is. also this is "seriously" here's your assistant he's a robot named Nobot.
           </p>
         </div>
-
-        <img src={nobotLeft} alt="Nobot" className="h-full object-cover w-24" />
       </div>
 
       <div className="max-w-6xl mx-auto">
