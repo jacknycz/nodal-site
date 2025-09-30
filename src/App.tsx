@@ -21,12 +21,21 @@ function App() {
   return (
     <>
       {/* Global Dev Toggle - temporary */}
-      <button
+      {/* <button
         onClick={() => setIsDark(prev => !prev)}
         className="fixed top-4 right-4 z-50 px-3 py-2 text-sm bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white rounded border border-zinc-300 dark:border-zinc-600 hover:bg-zinc-300 dark:hover:bg-zinc-700 transition-colors"
       >
         {isDark ? '☀️ Light' : '🌙 Dark'}
-      </button>
+      </button> */}
+
+      <a
+        href="https://app.nodalapp.com/"
+        className="bg-primary-600 hover:bg-primary-500 fixed top-4 right-4 z-50
+        text-white text-center font-medium font-heading 
+        px-6 py-3 rounded-full transition-colors duration-200"
+      >
+        login / sign up (it's free)
+      </a>
 
       {/* Site-wide fixed background dots (behind everything) */}
       <div

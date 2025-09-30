@@ -79,7 +79,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
 }
 
 function TabsSection() {
-  type TabKey = 'Default' | 'Docs' | 'Video' | 'Image' | 'Task'
+  type TabKey = 'Default' | 'Doc' | 'Video' | 'Image' | 'Task'
 
   function DraggableWrapper({ children }: { children: React.ReactNode }) {
     const containerRef = useRef<HTMLDivElement | null>(null)
@@ -167,7 +167,7 @@ function TabsSection() {
         </div>
       )
     },
-    Docs: {
+    Doc: {
       left: (
         <div>
           <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">we take your docs, turn them into nodes and hope they treat you better that way</h3>
@@ -286,10 +286,10 @@ function TabsSection() {
   const [active, setActive] = useState<TabKey>('Default')
 
   // Tab configuration for buttons (supports either icon or image)
-  const tabOrder: TabKey[] = ['Default', 'Docs', 'Video', 'Image', 'Task']
+  const tabOrder: TabKey[] = ['Default', 'Doc', 'Video', 'Image', 'Task']
   const tabMeta: Record<TabKey, { label: string; icon?: ReactNode; imageSrc?: string }> = {
     Default: { label: 'Default', imageSrc: '/nodal-node.svg' },
-    Docs: { label: 'Docs', imageSrc: '/document-node.svg' },
+    Doc: { label: 'Doc', imageSrc: '/document-node.svg' },
     Video: { label: 'Video', imageSrc: '/image-node.svg' },
     Image: { label: 'Image', imageSrc: '/image-node.svg' },
     Task: { label: 'Task', imageSrc: '/nodal-node.svg' }

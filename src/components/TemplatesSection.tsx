@@ -117,8 +117,13 @@ export default function TemplatesSection({ }: TemplatesSectionProps) {
   const clones = useMemo(() => Math.min(itemsPerView, M), [itemsPerView, M])
   const displayedItems = useMemo(() => {
     if (M === 0) return [] as Template[]
-    const head = carouselItems.slice(0, clones)
-    const tail = carouselItems.slice(M - clones)
+    // Create uniquely-keyed clones to avoid duplicate React keys
+    const head = carouselItems
+      .slice(0, clones)
+      .map((t, i) => ({ ...t, id: `head-${i}-${t.id}` }))
+    const tail = carouselItems
+      .slice(M - clones)
+      .map((t, i) => ({ ...t, id: `tail-${i}-${t.id}` }))
     return [...tail, ...carouselItems, ...head]
   }, [M, clones, carouselItems])
   const [current, setCurrent] = useState(() => clones) // index on displayed items
