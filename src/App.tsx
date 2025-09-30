@@ -12,7 +12,7 @@ import './App.css'
 
 
 function App() {
-  const [isDark, setIsDark] = useState(true)
+  const [isDark] = useState(true)
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDark)
