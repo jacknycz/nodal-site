@@ -1,4 +1,3 @@
-import { Brain, Users, FileText, Target, Cloud, Share } from '@phosphor-icons/react'
 import nobotLeft from '../assets/nobot-left.svg'
 
 export default function AISection() {
