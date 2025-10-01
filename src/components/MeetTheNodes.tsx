@@ -140,12 +140,11 @@ function TabsSection() {
       left: (
         <div>
           <h3 className="text-2xl md:text-3xl font-medium font-heading text-zinc-900 dark:text-white mb-3">
-            the regular ole' node - like a sticky note with more sticky notes
+            the regular ole' node
           </h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>That's a terrible description and I'm sorry for that but the hope was you kept reading because it was so dumb.</p>
-            <p>"Nodes are the building blocks of your thoughts" is something that would probably be said in a board room. We don't have a a board room.</p>
-            <p>So, nodes are flexible little building blocks that you can use on the board to build out ideas, make lists, or just connect them to other nodes.</p>
+            <p>The flexible building blocks to this whole things.</p>
+            <p>Add text, jot down thoughts, make lists. Form connections and move them around. Add notes, hints, or reminders.</p>
             <p>We like things flexible around here.</p>
           </div>
         </div>
@@ -157,10 +156,10 @@ function TabsSection() {
               <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
               <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
               <div className="flex items-center gap-2 mb-1">
-                <h3 className="text-sm font-medium text-gray-900 dark:text-white">Hey! I'm a regular ole' node</h3>
+                <h3 className="text-sm font-medium text-gray-900 dark:text-white">hey! I'm a regular ole' node</h3>
               </div>
               <div className="text-xs text-gray-600 dark:text-gray-200 mb-2">
-                ...but I am pretty cool. I hold whatever you throw at me - I just have some text here to show you, but you can text edit with images up in me too.
+                ...but I am pretty cool. I hold whatever you throw at me.
               </div>
             </div>
           </DraggableWrapper>
@@ -172,11 +171,7 @@ function TabsSection() {
         <div>
           <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">we take your docs, turn them into nodes and hope they treat you better that way</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>Attach PDFs and docs to the board</p>
-            <ul>
-              <li>The board "reads" the docs and you can the reference them wherever you want</li>
-              <li>You can also just drag and drop the docs onto the board and we'll make them into nodes for you</li>
-            </ul>
+            <p>We'll hold your docs for you. Upload them or drag and drop them and we'll make them into nodes for you. Not just that, we'll read it for you. scan documents quickly with our search too. Works with with .pdf, .docx, .txt, .md, and more.</p>
           </div>
         </div>
       ),
@@ -189,7 +184,7 @@ function TabsSection() {
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-11 h-11 flex items-center justify-center text-red-600"><FilePdf size={32} weight="duotone" /></div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm font-semibold text-gray-900 dark:text-white truncate">You can do docs and stuff too.pdf</div>
+                  <div className="text-sm font-semibold text-gray-900 dark:text-white truncate">You can use docs and stuff too.pdf</div>
                   <div className="text-xs text-gray-500 dark:text-gray-400">1.8 MB • application/pdf</div>
                 </div>
               </div>
@@ -198,7 +193,7 @@ function TabsSection() {
                 <span className="text-xs text-gray-600 dark:text-gray-400">Ready</span>
               </div>
               <div className="text-xs text-gray-600 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 rounded p-2">
-                Extracted Text: “Yup. It extracts the text. You can use it for things. Talk to Nobot about it. Seriously that's an option, he loves PDFs.”
+                Extracted Text: “Yup. It extracts the text. You can use it for things. Talk to Nobot about it. Seriously, that's an option, he loves PDFs.”
               </div>
             </div>
           </DraggableWrapper>
@@ -208,13 +203,10 @@ function TabsSection() {
     Video: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">if nodal is for ideas, and video is for showing people stuff, the heck yeah we got video nodes</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">upload videos or link to youtube. watch while you work.</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>Simply add a YouTube URL and bam - you've got a video node.</p>
-            <ul>
-              <li>It's great for adding context to your ideas</li>
-              <li>...and honestly it's pretty sweet dragging and dropping videos</li>
-            </ul>
+            <p>Reference content and take notes, all in one place.</p>
+            <p>Add visual aids and add context for your ideas.</p>
           </div>
         </div>
       ),
@@ -246,12 +238,10 @@ function TabsSection() {
     Image: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">Ideas Need Images</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">visual thinking thrives when imagery is one node away. </h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>Moodboards, diagrams, and snapshots — visual thinking thrives when imagery is one node away.</p>
-            <ul>
-              <li>(there's more cool image stuff coming)</li>
-            </ul>
+            <p>Add photos, images, screenshots. upload to the board or drag and drop, and keep it anywhere on your board.</p>
+            <p>Plan content, look at images side-by-side. Create captions or let our AI generate one for you.</p>
           </div>
         </div>
       ),
@@ -264,13 +254,9 @@ function TabsSection() {
     Task: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">Tasks Nodes</h3>
+          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">need to come back to that idea later? add a task node and we’ll remind you.</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>Want to come back to that idea later? Add a task node and we'll remind you.</p>
-            <ul>
-              <li>You can also add a due date and we'll remind you</li>
-              <li>It'll show up in your board room too so it's easy to keep track of (we mean so you don't forget)</li>
-            </ul>
+            <p>Assign a due date and we'll bug you again. See all your tasks at once in your boardroom.</p>
           </div>
         </div>
       ),

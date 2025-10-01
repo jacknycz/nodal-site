@@ -15,80 +15,12 @@ export default function AISection() {
           </div>
           
           <p className="text-xl text-zinc-600 dark:text-zinc-300">
-            of course nodal does do cool AI stuff but everybody's doing that so we didn't wanna talk about it but our investor said we should so here it is. also this is "seriously" here's your assistant he's a robot named Nobot.
+          yes, nodal does cool AI stuff, but everyone’s doing that. we weren’t even going to bring it up but our investor said we should.
           </p>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {/* AI-Powered Ideation */}
-          <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
-              <Brain className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-900 dark:text-white mb-2">ai-powered brainstorming</h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              Generate ideas, expand thoughts, and get context-aware suggestions. Your AI creative partner that understands your thinking process.
-            </p>
-          </div>
-
-          {/* Real-time Collaboration */}
-          <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <div className="w-12 h-12 bg-secondary-500 rounded-lg flex items-center justify-center mb-4">
-              <Users className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-900 dark:text-white mb-2">real-time collaboration</h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              Work together seamlessly with live cursors, presence indicators, and smart conflict prevention. See who's thinking what, when.
-            </p>
-          </div>
-
-          {/* Rich Content */}
-          <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <div className="w-12 h-12 bg-tertiary-500 rounded-lg flex items-center justify-center mb-4">
-              <FileText className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-900 dark:text-white mb-2">rich text & media</h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              Full WYSIWYG editing with document uploads, PDF previews, and rich formatting. Every node can hold detailed content.
-            </p>
-          </div>
-
-          {/* Focus & Organization */}
-          <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mb-4">
-              <Target className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-900 dark:text-white mb-2">focus tree & navigation</h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              Hierarchical organization with focus modes. Zoom into specific areas or see the big picture with intelligent navigation.
-            </p>
-          </div>
-
-          {/* Cloud-First */}
-          <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <div className="w-12 h-12 bg-secondary-500 rounded-lg flex items-center justify-center mb-4">
-              <Cloud className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-900 dark:text-white mb-2">cloud-first storage</h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              Automatic saves, thumbnail previews, and seamless sync across devices. Your boards are always available, everywhere.
-            </p>
-          </div>
-
-          {/* Board Sharing */}
-          <div className="bg-white dark:bg-zinc-800 p-6 rounded-xl shadow-sm border border-zinc-200 dark:border-zinc-700">
-            <div className="w-12 h-12 bg-tertiary-500 rounded-lg flex items-center justify-center mb-4">
-              <Share className="text-white w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-900 dark:text-white mb-2">easy board sharing</h3>
-            <p className="text-zinc-600 dark:text-zinc-300">
-              Invite collaborators via email, manage permissions, and track who's active. Share ideas as easily as sending a link.
-            </p>
-          </div>
-        </div>
-
         {/* Call to Action */}
         <div className="text-center">
           <div className="bg-gradient-to-r from-primary-500 to-blue-600 text-white p-8 rounded-2xl flex flex-col items-center justify-center">

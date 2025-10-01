@@ -7,6 +7,7 @@ import AISection from './components/AISection'
 // import AIIntegrationSection from './components/AIIntegrationSection'
 import TemplatesSection from './components/TemplatesSection'
 import FinalCTASection from './components/FinalCTASection'
+import FeatureTabsSection from './components/FeatureTabsSection'
 import './App.css'
 
 
@@ -66,6 +67,8 @@ function App() {
 
       {/* New Landing Page Sections */}
       <WelcomeToTheBoard isDark={isDark} />
+
+      <FeatureTabsSection />
 
       <AISection />
 
