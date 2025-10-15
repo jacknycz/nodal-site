@@ -5,8 +5,8 @@ import MeetTheNodes from './components/MeetTheNodes'
 import WelcomeToTheBoard from './components/WelcomeToTheBoard'
 import AISection from './components/AISection'
 // import AIIntegrationSection from './components/AIIntegrationSection'
-import TemplatesSection from './components/TemplatesSection'
-import FinalCTASection from './components/FinalCTASection'
+// import TemplatesSection from './components/TemplatesSection'
+// import FinalCTASection from './components/FinalCTASection'
 import FeatureTabsSection from './components/FeatureTabsSection'
 import './App.css'
 
@@ -74,10 +74,10 @@ function App() {
 
       {/* <AIIntegrationSection isDark={isDark} /> */}
 
-      <TemplatesSection isDark={isDark} />
+      {/* <TemplatesSection isDark={isDark} /> */}
 
       {/* Final CTA with Confetti */}
-      <FinalCTASection isDark={isDark} />
+      {/* <FinalCTASection isDark={isDark} /> */}
 
       {/* <ConversationalNodes isDark={isDark} /> */}
     </>

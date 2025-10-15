@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import bgVideo from '../assets/nodal-test.mp4'
+import bgVideo from '../assets/search-and-zoom.mp4'
 
 interface ConnectThoughtsSectionProps {
   isDark: boolean;

@@ -34,8 +34,8 @@ export default function Hero({ isDark }: HeroProps) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-lg md:text-2xl lg:text-3xl font-medium text-zinc-900 dark:text-white">nodal is a place to put your ideas down on a board and organize them how you see fit. it’s flexible.</h3>
-          <p className="md:text-base text-zinc-900 dark:text-white">seriously flexible. jot down ideas, drop in files, quickly save summarized links and more to get that idea down while it makes sense. tasks, videos, images, documents, and more. all in one place.</p>
+          <h3 className="font-heading text-lg md:text-2xl lg:text-3xl font-medium text-zinc-900 dark:text-white">planning a vacation? have a new app idea? nodal is your brainstorm board.</h3>
+          <p className="md:text-base text-zinc-900 dark:text-white">seriously flexible. keep track of all those ideas - jot down quick thoughts, drop in files, quickly save summarized links and more to get that idea down while it makes sense. tasks, videos, images, documents, and more. all in one place.</p>
           <p className="md:text-base text-zinc-900 dark:text-white">drag and drop - for ideas.</p>
 
           <div className="mt-6 flex gap-4">
@@ -47,7 +47,7 @@ export default function Hero({ isDark }: HeroProps) {
                   text-white text-center font-medium font-heading 
                   px-6 py-3 rounded-full transition-colors duration-200"
                 >
-                  sign up free
+                  use nodal free
                 </a>
                 <span className="text-gray-400 dark:text-gray-400 text-xs">no credit card needed</span>
               </div>
