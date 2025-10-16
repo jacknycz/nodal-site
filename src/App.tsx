@@ -3,7 +3,7 @@ import Hero from './components/Hero'
 // import ConversationalNodes from './components/ConversationalNodes'
 import MeetTheNodes from './components/MeetTheNodes'
 import WelcomeToTheBoard from './components/WelcomeToTheBoard'
-import AISection from './components/AISection'
+// import AISection from './components/AISection'
 // import AIIntegrationSection from './components/AIIntegrationSection'
 // import TemplatesSection from './components/TemplatesSection'
 // import FinalCTASection from './components/FinalCTASection'
@@ -70,7 +70,7 @@ function App() {
 
       <FeatureTabsSection />
 
-      <AISection />
+      {/* <AISection /> */}
 
       {/* <AIIntegrationSection isDark={isDark} /> */}
 
