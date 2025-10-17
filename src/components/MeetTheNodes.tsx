@@ -39,7 +39,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
         const [peekComplete, setPeekComplete] = useState(false)
         return (
           <motion.div
-            className="absolute right-0 top-1/2 -translate-y-1/2"
+            className="absolute -right-6 bottom-12 md:right-0 md:top-3/5 md:-translate-y-1/2 z-20"
             style={{ willChange: 'transform, opacity' }}
             initial={{ x: 24, opacity: 0 }}
             whileInView={{ x: [0, -4, 0], opacity: 1 }}
