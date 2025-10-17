@@ -24,8 +24,6 @@ export default function AISection() {
         </div>
       </div>
 
-      NEW SECTION
-
       <div className="max-w-6xl mx-auto">
         {/* Call to Action */}
         <div className="text-center">

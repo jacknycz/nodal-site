@@ -7,7 +7,7 @@ interface ConnectThoughtsSectionProps {
 
 export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectionProps) {
   return (
-    <section className="relative overflow-hidden min-h-screen flex justify-start items-end bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
+    <section className="relative overflow-hidden min-h-[80dvh] flex justify-start items-end bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
       {/* Background video */}
       <video
         src={bgVideo}

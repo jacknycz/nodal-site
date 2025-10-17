@@ -24,7 +24,7 @@ export default function Hero({ isDark }: HeroProps) {
           alt="Nodal Logo"
           className="transition-opacity duration-200 max-w-32 md:max-w-48"
         />
-        <h1 className="font-heading text-lg md:text-2xl font-medium text-zinc-900 dark:text-white">for ideas.</h1>
+        <h1 className="font-heading text-lg md:text-2xl font-medium text-zinc-900 dark:text-white">go idea.</h1>
       </div>
 
       <div className="w-full grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-20">
@@ -34,12 +34,18 @@ export default function Hero({ isDark }: HeroProps) {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-lg md:text-2xl lg:text-3xl font-medium text-zinc-900 dark:text-white">planning a vacation? have a new app idea? nodal is your brainstorm board.</h3>
-          <p className="md:text-base text-zinc-900 dark:text-white">seriously flexible. keep track of all those ideas - jot down quick thoughts, drop in files, quickly save summarized links and more to get that idea down while it makes sense. tasks, videos, images, documents, and more. all in one place.</p>
-          <p className="md:text-base text-zinc-900 dark:text-white">drag and drop - for ideas.</p>
+          <h3 className="font-heading text-lg md:text-2xl lg:text-3xl font-medium text-zinc-900 dark:text-white">
+            it's a sandbox for your ideas.
+          </h3>
+          <p className="md:text-base text-zinc-900 dark:text-white">
+            seriously flexible. brainstorm, study, learn, plan, organize, reorganize... use your media, your files, dump your thoughts, make connections - all in one place.
+          </p>
+          <p className="md:text-base text-zinc-900 dark:text-white">
+            make a plan. write a story. build a business. <span className="font-bold">go idea.</span>
+          </p>
 
-          <div className="mt-6 flex gap-4">
-            <div className="flex gap-4">
+          <div className="mt-6 flex w-full gap-4">
+            <div className="flex w-full gap-4 justify-center md:justify-start">
               <div className="flex flex-col space-y-1">
                 <a
                   href="https://app.nodalapp.com/"
@@ -51,15 +57,15 @@ export default function Hero({ isDark }: HeroProps) {
                 </a>
                 <span className="text-gray-400 dark:text-gray-400 text-xs">no credit card needed</span>
               </div>
-              <div className="flex flex-col space-y-1">
+              <div className="hidden md:flex flex-col space-y-1">
                 <a
                   href="#"
                   className="border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800
-                  text-zinc-900 text-center font-medium font-heading dark:text-white px-6 py-3 rounded-full transition-colors duration-200"
+                  text-zinc-900 text-center font-medium font-heading dark:text-white px-6 py-3 rounded-full transition-colors duration-200 cursor-not-allowed"
                 >
-                  see pro features
+                  see pro features (coming soon)
                 </a>
-                <span className="text-gray-400 dark:text-gray-400 text-xs">feeling $9.99 ambitious?</span>
+                <span className="text-gray-400 dark:text-gray-400 text-xs">feeling $9.99 ambitious? not yet.</span>
               </div>
             </div>
           </div>

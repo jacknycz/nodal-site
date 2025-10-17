@@ -43,7 +43,7 @@ export default function FeatureTabsSection() {
           everything in its place
         </h2>
         <p className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
-          Find, create, and organize without friction. Switch the tabs to preview.
+          the board is infinite and flexible - so you'll need some tools along the way.
         </p>
       </div>
 
@@ -66,7 +66,7 @@ export default function FeatureTabsSection() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveIndex(index)}
-                className={`w-full text-left rounded-xl border px-4 py-3 transition-colors
+                className={`w-full text-left rounded-xl border px-4 py-3 transition-colors cursor-pointer
                 ${isActive
                     ? 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900'
                     : 'border-zinc-200/70 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700'}`}
@@ -98,14 +98,15 @@ export default function FeatureTabsSection() {
                 role="tabpanel"
                 id={`${baseId}-panel-${activeIndex}`}
                 aria-labelledby={`${baseId}-tab-${activeIndex}`}
-                className="relative overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl"
+                className="relative overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl min-h-[220px] md:min-h-[360px] lg:min-h-[420px]"
+                style={{ aspectRatio: '16 / 9' }}
               >
                 <motion.video
                   key={`video-${activeIndex}`}
                   initial={{ scale: 1.01 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="w-full h-full"
+                  className="absolute inset-0 w-full h-full object-cover"
                   src={TABS[activeIndex].src}
                   autoPlay
                   muted

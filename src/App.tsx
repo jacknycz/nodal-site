@@ -32,8 +32,8 @@ function App() {
       <a
         href="https://app.nodalapp.com/"
         className="bg-primary-600 hover:bg-primary-500 fixed top-4 right-4 z-50
-        text-white text-center font-medium font-heading 
-        px-6 py-3 rounded-full transition-colors duration-200"
+        text-white text-center font-normal md:font-medium font-heading text-sm md:text-base
+        px-4 md:px-6 py-2 md:py-3 rounded-full transition-colors duration-200"
       >
         login / sign up (it's free)
       </a>
