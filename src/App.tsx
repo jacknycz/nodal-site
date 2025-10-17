@@ -6,7 +6,7 @@ import WelcomeToTheBoard from './components/WelcomeToTheBoard'
 // import AISection from './components/AISection'
 // import AIIntegrationSection from './components/AIIntegrationSection'
 // import TemplatesSection from './components/TemplatesSection'
-// import FinalCTASection from './components/FinalCTASection'
+import FinalCTASection from './components/FinalCTASection'
 import FeatureTabsSection from './components/FeatureTabsSection'
 import './App.css'
 
@@ -62,11 +62,11 @@ function App() {
       {/* Hero */}
       <Hero isDark={isDark} />
 
-      {/* Conversational Nodes */}
-      <MeetTheNodes isDark={isDark} />
-
       {/* New Landing Page Sections */}
       <WelcomeToTheBoard isDark={isDark} />
+
+      {/* Conversational Nodes */}
+      <MeetTheNodes isDark={isDark} />
 
       <FeatureTabsSection />
 
@@ -77,7 +77,7 @@ function App() {
       {/* <TemplatesSection isDark={isDark} /> */}
 
       {/* Final CTA with Confetti */}
-      {/* <FinalCTASection isDark={isDark} /> */}
+      <FinalCTASection isDark={isDark} />
 
       {/* <ConversationalNodes isDark={isDark} /> */}
     </>

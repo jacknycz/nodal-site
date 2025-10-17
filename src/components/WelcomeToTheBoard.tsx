@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import bgVideo from '../assets/search-and-zoom.mp4'
+import bgVideo from '../assets/welcome-to-the-board.mp4'
 
 interface ConnectThoughtsSectionProps {
   isDark: boolean;
@@ -22,12 +22,12 @@ export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectio
       {/* Overlay above video, below content */}
       <div
         className="absolute inset-0 z-10"
-        style={{
-          background: isDark
-            ? 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
-            : 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
-            // : 'linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0.45) 70%, rgba(255,255,255,0.25) 100%)'
-        }}
+        // style={{
+        //   background: isDark
+        //     ? 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
+        //     : 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
+        //     // : 'linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0.45) 70%, rgba(255,255,255,0.25) 100%)'
+        // }}
       />
 
       <div className="relative z-20 w-full">
@@ -43,7 +43,7 @@ export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectio
             welcome to the board
           </motion.h2>
 
-          <motion.p
+          {/* <motion.p
             className="text-2xl text-zinc-200 font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectio
             >
               just try it
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

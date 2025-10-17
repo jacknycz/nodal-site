@@ -183,41 +183,8 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            create your first board. it's free.
+            or don't, it is free though - and most people think it's nifty at the very least.
           </motion.p>
-        </motion.div>
-
-        {/* Three-step flow */}
-        <motion.div 
-          className="grid md:grid-cols-3 gap-8 mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <div className="text-center">
-            <div className="w-16 h-16 bg-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Sparkle className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-600 dark:text-white mb-2">start with a single thought</h3>
-            <p className="text-zinc-400">there's a button for that or you can right click</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-16 h-16 bg-secondary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Lightning className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-600 dark:text-white mb-2">end with something bigger than you imagined</h3>
-            <p className="text-zinc-400">honestly you'll be surprised</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-16 h-16 bg-tertiary-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-              <Star className="w-8 h-8 text-white" />
-            </div>
-            <h3 className="text-xl font-medium font-heading text-zinc-600 dark:text-white mb-2">no downloads. no pressure.</h3>
-            <p className="text-zinc-400">again, it's free. also literally no downloads, it's in the browser</p>
-          </div>
         </motion.div>
 
         {/* Main CTA Button */}
