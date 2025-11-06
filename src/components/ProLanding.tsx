@@ -1,34 +1,11 @@
-import { useEffect, useId, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 import videoSearchAndZoom from '../assets/search-and-zoom.mp4'
 import videoRightClickSuperpowers from '../assets/right-click-superpowers.mp4'
 import nobotSvg from '/nobot.svg'
 import videoWriteWithConfidence from '../assets/write-with-confidence.mp4'
 import { Database, ShareNetwork } from '@phosphor-icons/react'
-
-type TabKey = 'solo' | 'teams' | 'power'
-
-const tabs: { key: TabKey; label: string; items: string[] }[] = [
-  { key: 'solo', label: 'Solo Creators', items: [
-    'Quick idea capture',
-    'Offline editing (local cache)',
-    'Fast AI responses',
-    'Minimal distractions',
-  ]},
-  { key: 'teams', label: 'Teams', items: [
-    'Shared spaces',
-    'Real-time collaboration',
-    'Comment threads',
-    'Board version history',
-  ]},
-  { key: 'power', label: 'AI Power Users', items: [
-    'Model selector (GPT-3.5 → GPT-5)',
-    'Custom API key integration',
-    'Token usage tracker',
-    'Advanced prompt tuning',
-  ]},
-]
 
 const callouts = [
   { title: 'AI That Learns You', copy: 'Persistent board memory, tone customization, and reasoning depth that adapts over time.', video: videoWriteWithConfidence },
@@ -38,10 +15,7 @@ const callouts = [
 ]
 
 export default function ProLanding() {
-  const [activeTab, setActiveTab] = useState<TabKey>('solo')
-  const [carouselIndex, setCarouselIndex] = useState(0)
-  const baseId = useId()
-  const panelRef = useRef<HTMLDivElement | null>(null)
+  const [, setCarouselIndex] = useState(0)
 
   useEffect(() => {
     const id = setInterval(() => setCarouselIndex((i) => (i + 1) % callouts.length), 5000)

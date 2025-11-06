@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { useState, type ReactNode, useRef } from 'react'
 import videoNode from '../assets/video-node.mp4'
 import { FilePdf } from '@phosphor-icons/react'
-import nobotPeek from '../assets/nobot-peek.png'
 
 interface WhatsANodeSectionProps {
   isDark: boolean;
@@ -34,7 +33,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
       >
         meet the nodes
       </motion.h2>
-      
+
       <motion.p
         className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
@@ -46,7 +45,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
       </motion.p>
 
       {(() => {
-        const [peekComplete, setPeekComplete] = useState(false)
+        const [, setPeekComplete] = useState(false)
         return (
           <motion.div
             className="absolute -right-6 bottom-12 md:right-0 md:top-3/5 md:-translate-y-1/2 z-20"
@@ -162,7 +161,7 @@ function TabsSection() {
       right: (
         <div className="flex flex-col items-center justify-center">
           <DraggableWrapper>
-            <div data-node className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
+            <div data-node className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-primary-200 dark:border-primary-700 rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
               <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
               <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
               <div className="flex items-center gap-2 mb-1">
@@ -256,8 +255,20 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="w-full h-56 md:h-64 lg:h-72 rounded-xl bg-zinc-200 dark:bg-zinc-800 border border-zinc-300/60 dark:border-zinc-700/60 flex items-center justify-center overflow-hidden">
-          <img src="/image-node.svg" alt="Image" className="max-h-full max-w-full object-contain" />
+        <div className="flex flex-col items-center justify-center">
+          <DraggableWrapper>
+            <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm w-[260px]">
+              <div className="relative w-full h-[160px]">
+                <img src="/nobot.svg" alt="Nodal" className="rounded-md object-cover w-full h-full" />
+              </div>
+              <div className="mt-2 flex items-center gap-2">
+                <div className="flex-1 min-w-0">
+                  <div className="text-sm font-medium text-gray-900 dark:text-white truncate">Nobot.svg</div>
+                  <div className="text-xs text-gray-500 dark:text-gray-400 truncate">420 KB • image/svg</div>
+                </div>
+              </div>
+            </div>
+          </DraggableWrapper>
         </div>
       )
     },
@@ -271,8 +282,16 @@ function TabsSection() {
         </div>
       ),
       right: (
-        <div className="w-full h-56 md:h-64 lg:h-72 rounded-xl bg-zinc-200 dark:bg-zinc-800 border border-zinc-300/60 dark:border-zinc-700/60 flex items-center justify-center overflow-hidden">
-          <img src="/nodal-board-template.svg" alt="Tasks" className="max-h-full max-w-full object-contain" />
+        <div className="flex flex-col items-center justify-center">
+          <DraggableWrapper>
+            <div className="relative flex flex-col p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm w-[360px]">
+              <div className="flex items-center gap-3">
+                <span className="inline-flex w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900"></span>
+                <input className="flex-1 text-sm bg-transparent outline-none text-gray-900 dark:text-white placeholder:text-gray-500" placeholder="New task" />
+                <div className="w-8 h-8 rounded-full bg-primary-200 dark:bg-secondary-700 flex items-center justify-center text-[10px] font-bold">AN</div>
+              </div>
+            </div>
+          </DraggableWrapper>
         </div>
       )
     }
@@ -324,7 +343,7 @@ function TabsSection() {
           >
             {tabMeta[tab].imageSrc ? (
               <img src={tabMeta[tab].imageSrc!} alt="" className="w-12 h-12 md:w-20 md:h-20 object-contain" />
-            ) : ( 
+            ) : (
               <span className="inline-flex items-center justify-center">{tabMeta[tab].icon}</span>
             )}
             <span>{tabMeta[tab].label}</span>

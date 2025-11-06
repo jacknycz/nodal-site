@@ -36,7 +36,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
   // Generate confetti
   const generateConfetti = () => {
     const pieces: ConfettiPiece[] = []
-    
+
     // Generate ~30% more confetti pieces (65)
     for (let i = 0; i < 65; i++) {
       pieces.push({
@@ -49,10 +49,10 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
         delay: Math.random() * 0.5
       })
     }
-    
+
     setConfetti(pieces)
     setShowConfetti(true)
-    
+
     // Clear confetti after animation
     setTimeout(() => {
       setShowConfetti(false)
@@ -65,7 +65,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated background dots */}
-        <div 
+        <div
           className="absolute inset-0 opacity-20"
           style={{
             backgroundImage: `radial-gradient(circle, ${isDark ? '#444' : '#666'} 1px, transparent 1px)`,
@@ -73,7 +73,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
             animation: 'backgroundFloat 20s linear infinite'
           }}
         />
-        
+
         {/* Floating particles */}
         {[...Array(20)].map((_, i) => (
           <motion.div
@@ -109,20 +109,20 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
                   left: `${piece.x}%`,
                   top: `${piece.y}%`,
                 }}
-                initial={{ 
-                  scale: 0, 
-                  opacity: 0, 
+                initial={{
+                  scale: 0,
+                  opacity: 0,
                   y: 50,
                   rotate: 0
                 }}
-                animate={{ 
+                animate={{
                   scale: [0, 1.2, 0.8, 1],
                   opacity: [0, 1, 1, 0],
                   y: [-100, -200, -300],
                   rotate: [0, piece.rotation, piece.rotation * 2],
                   x: [0, Math.random() * 40 - 20]
                 }}
-                exit={{ 
+                exit={{
                   opacity: 0,
                   scale: 0
                 }}
@@ -133,22 +133,22 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
                 }}
               >
                 {piece.type === 'node' ? (
-                  <div 
+                  <div
                     className="w-4 h-3 rounded-sm shadow-sm"
                     style={{ backgroundColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 ) : piece.type === 'circle' ? (
-                  <div 
+                  <div
                     className="w-3 h-3 rounded-full"
                     style={{ backgroundColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 ) : piece.type === 'triangle' ? (
-                  <div 
+                  <div
                     className="w-0 h-0 border-l-2 border-r-2 border-b-4 border-l-transparent border-r-transparent"
                     style={{ borderBottomColor: piece.color, transform: 'scale(1.3)' }}
                   />
                 ) : (
-                  <div 
+                  <div
                     className="w-3 h-3"
                     style={{ backgroundColor: piece.color, transform: 'scale(1.3)' }}
                   />
@@ -175,8 +175,8 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
               click the button
             </span>
           </h2>
-          
-          <motion.p 
+
+          <motion.p
             className="text-2xl text-zinc-900 dark:text-zinc-300 mb-4 font-light"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -209,7 +209,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
           <motion.button
             className="relative cursor-pointer bg-gradient-to-r from-primary-500 via-secondary-500 to-tertiary-500 
             text-white font-bold text-2xl px-12 py-6 rounded-full shadow-2xl overflow-hidden group"
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
               boxShadow: "0 25px 50px -12px rgba(0, 207, 245, 0.4)"
             }}
@@ -228,7 +228,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
               whileHover={{ x: '200%' }}
               transition={{ duration: 0.6 }}
             />
-            
+
             {/* Button content */}
             <div className="relative flex items-center justify-center gap-3">
               <span>start a board</span>
@@ -253,7 +253,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
           </motion.button>
 
           {/* Floating action hint */}
-          <motion.p 
+          <motion.p
             className="text-zinc-400 text-sm mt-6"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
