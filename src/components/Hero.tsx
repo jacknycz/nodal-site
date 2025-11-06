@@ -4,6 +4,7 @@ import NodalBlackLogo from '../assets/nodal-black.svg'
 import NodalWhiteLogo from '../assets/nodal-white.svg'
 // import NodalLaptop from '../assets/nodal-laptop.svg'
 import DraggableBoard from './DraggableBoard'
+import bgVideo from '../assets/welcome-to-nodal-short.mp4'
 
 interface HeroProps {
   isDark: boolean;
@@ -11,9 +12,9 @@ interface HeroProps {
 
 export default function Hero({ isDark }: HeroProps) {
   return (
-    
+
     <section
-      className="min-h-[70vh] pt-72 pb-48 md:py-64 flex items-center justify-center px-4 md:px-8 lg:px-16 transition-colors duration-200 relative overflow-hidden"
+      className="lg:min-h-screen pt-32 pb-16 lg:pt-32 lg:pb-12 flex-col items-center justify-center px-4 lg:px-16 transition-colors duration-200 relative overflow-hidden"
     >
 
       {/* Background draggable board */}
@@ -27,25 +28,25 @@ export default function Hero({ isDark }: HeroProps) {
         <h1 className="font-heading text-lg md:text-2xl font-medium text-zinc-900 dark:text-white">go idea.</h1>
       </div>
 
-      <div className="w-full grid gap-8 md:grid-cols-2 md:gap-12 lg:gap-32 items-center relative z-20">
+      <div className="w-full max-w-md lg:max-w-xl mx-auto text-center relative z-20">
         <motion.div
-          className="flex flex-col max-w-md items-start space-y-6"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col space-y-6"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-lg md:text-2xl lg:text-3xl font-medium text-zinc-900 dark:text-white">
-            it's a sandbox for your ideas.
+          <h3 className="font-heading text-2xl md:text-4xl lg:text-5xl font-medium text-zinc-900 dark:text-white">
+            a sandbox for ideas
           </h3>
           <p className="md:text-base text-zinc-900 dark:text-white">
-            seriously flexible. brainstorm, study, learn, plan, organize, reorganize... use your media, your files, dump your thoughts, make connections - all in one place.
+            seriously flexible. brainstorm and share. study, learn, plan, organize, reorganize... use your media, your files, dump your thoughts, make connections - all in one place.
           </p>
           <p className="md:text-base text-zinc-900 dark:text-white">
             make a plan. write a story. build a business. <span className="font-bold">go idea.</span>
           </p>
 
           <div className="mt-6 flex w-full gap-4">
-            <div className="flex w-full gap-4 justify-center md:justify-start">
+            <div className="flex w-full gap-4 justify-center">
               <div className="flex flex-col space-y-1">
                 <a
                   href="https://app.nodalapp.com/"
@@ -59,39 +60,94 @@ export default function Hero({ isDark }: HeroProps) {
               </div>
               <div className="hidden md:flex flex-col space-y-1">
                 <a
-                  href="#"
+                  href="#pro"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const el = document.getElementById('pro')
+                    if (el) {
+                      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    } else {
+                      window.location.hash = 'pro'
+                    }
+                  }}
                   className="border border-zinc-300 dark:border-zinc-700 hover:bg-zinc-50 dark:hover:bg-zinc-800
-                  text-zinc-900 text-center font-medium font-heading dark:text-white px-6 py-3 rounded-full transition-colors duration-200 cursor-not-allowed"
+                  text-zinc-900 text-center font-medium font-heading dark:text-white px-6 py-3 rounded-full transition-colors duration-200"
                 >
-                  see pro features (coming soon)
+                  see pro features
                 </a>
-                <span className="text-gray-400 dark:text-gray-400 text-xs">feeling $9.99 ambitious? not yet.</span>
+                <span className="text-gray-400 dark:text-gray-400 text-xs">feeling $9.99 ambitious?</span>
               </div>
             </div>
           </div>
         </motion.div>
-
-        
-
-        {/* <motion.div
-          className="flex flex-col items-start space-y-6"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <div className="w-full flex flex-col items-center justify-center space-y-2 font-heading">
-            <img
-              src={NodalLaptop}
-              alt="Nodal Logo"
-              className="transition-opacity duration-200 w-full max-w-[420px]"
-            />
-            <span className="text-zinc-900 dark:text-white text-sm max-w-sm text-center">*yes there is AI, you all have got to be as burned out on that marketing as I am right?</span>
-          </div>
-        </motion.div> */}
       </div>
 
-      <div className="absolute inset-0 z-30 pointer-events-none">
-        <DraggableBoard fillParent className="bg-transparent border-none" />
+      {/* Background video (full-bleed <md, contained and styled on md+) */}
+      <motion.div
+        className="flex flex-col space-y-6"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+      >
+        <div className="z-0 w-full md:mx-auto md:max-w-2xl mt-12 lg:mt-32 md:rounded-2xl md:overflow-hidden md:shadow-2xl dark:shadow-black/70 md:bg-black/20 md:backdrop-blur-sm aspect-[1.94/1]">
+          <video
+            src={bgVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            aria-hidden="true"
+            className="pointer-events-none select-none w-full h-auto md:h-full object-contain"
+          />
+        </div>
+      </motion.div>
+
+      {/* Overlay above video, below content */}
+      <div
+        className="absolute inset-0 z-10"
+      // style={{
+      //   background: isDark
+      //     ? 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
+      //     : 'linear-gradient(180deg, rgba(9,9,11,0.75) 0%, rgba(9,9,11,0.55) 40%, rgba(9,9,11,0.35) 70%, rgba(9,9,11,0.2) 100%)'
+      //     // : 'linear-gradient(180deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0.45) 70%, rgba(255,255,255,0.25) 100%)'
+      // }}
+      />
+
+      <div className="relative z-20 w-full">
+        {/* Centered heading above columns */}
+        <div className="text-center">
+          <motion.h2
+            className="font-heading hidden text-4xl md:text-5xl font-medium text-white mb-4"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            welcome to the board
+          </motion.h2>
+
+          {/* <motion.p
+            className="text-2xl text-zinc-200 font-light"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Link what matters. See what unfolds. (or just drag and drop stuff onto the board)
+          </motion.p>
+          <div className="mt-8">
+            <a
+              href="https://app.nodalapp.com/"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold bg-primary-500 hover:bg-primary-400 text-white transition-colors"
+            >
+              just try it
+            </a>
+          </div> */}
+        </div>
+      </div>
+
+      <div className="hidden lg:block absolute inset-0 z-30 h-screen pointer-events-none">
+        <DraggableBoard fillParent className="h-full bg-transparent border-none" />
       </div>
     </section>
   )

@@ -1,23 +1,26 @@
 import { motion } from 'framer-motion'
-import bgVideo from '../assets/welcome-to-the-board.mp4'
+import bgVideo from '../assets/welcome-to-nodal-short.mp4'
 
 interface ConnectThoughtsSectionProps {
   isDark: boolean;
 }
 
-export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectionProps) {
+export default function ConnectThoughtsSection({ isDark: _isDark }: ConnectThoughtsSectionProps) {
   return (
-    <section className="relative overflow-hidden min-h-[80dvh] flex justify-start items-end bg-zinc-50 dark:bg-zinc-900 transition-colors duration-200">
-      {/* Background video */}
-      <video
-        src={bgVideo}
-        autoPlay
-        loop
-        muted
-        playsInline
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute inset-0 w-full h-full object-cover z-0"
-      />
+    <section className="relative mt-6 md:-mt-24 overflow-hidden flex flex-col items-stretch md:items-center md:justify-center 
+    transition-colors duration-200 md:py-12">
+      {/* Background video (full-bleed <md, contained and styled on md+) */}
+      <div className="z-0 w-full md:mx-auto md:max-w-2xl md:rounded-2xl md:border md:border-zinc-800/60 md:overflow-hidden md:shadow-lg md:bg-black/20 md:backdrop-blur-sm aspect-[1.94/1]">
+        <video
+          src={bgVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          className="pointer-events-none select-none w-full h-auto md:h-full object-contain"
+        />
+      </div>
 
       {/* Overlay above video, below content */}
       <div
@@ -32,9 +35,9 @@ export default function ConnectThoughtsSection({ isDark }: ConnectThoughtsSectio
 
       <div className="relative z-20 w-full">
         {/* Centered heading above columns */}
-        <div className="text-center p-4 pb-16">
+        <div className="text-center">
           <motion.h2
-            className="font-heading text-4xl md:text-5xl font-medium text-white mb-4"
+            className="font-heading hidden text-4xl md:text-5xl font-medium text-white mb-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

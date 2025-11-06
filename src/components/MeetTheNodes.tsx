@@ -24,7 +24,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   // }
 
   return (
-    <section id="meet-nodes-section" className="relative overflow-hidden py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+    <section id="meet-nodes-section" className="relative overflow-hidden flex flex-col items-center justify-center max-w-6xl mx-auto py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <motion.h2
         className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
         initial={{ opacity: 0, y: 20 }}
@@ -34,6 +34,16 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
       >
         meet the nodes
       </motion.h2>
+      
+      <motion.p
+        className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        nodes are the building blocks of your ideas.
+      </motion.p>
 
       {(() => {
         const [peekComplete, setPeekComplete] = useState(false)
@@ -47,13 +57,13 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
             transition={{ duration: 1.4, ease: 'easeOut', delay: 1.5 }}
             onAnimationComplete={() => setPeekComplete(true)}
           >
-            <motion.img
+            {/* <motion.img
               src={nobotPeek}
               alt="Nobot peeking"
               className="pointer-events-none select-none w-36"
               animate={peekComplete ? { rotate: [0, -1, 0, .7, 0], y: [0, -1, 0, -1, 0] } : undefined}
               transition={peekComplete ? { duration: 3.0, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' } : undefined}
-            />
+            /> */}
           </motion.div>
         )
       })()}
@@ -276,9 +286,9 @@ function TabsSection() {
   const tabMeta: Record<TabKey, { label: string; icon?: ReactNode; imageSrc?: string }> = {
     Default: { label: 'Default', imageSrc: '/nodal-node.svg' },
     Doc: { label: 'Doc', imageSrc: '/document-node.svg' },
-    Video: { label: 'Video', imageSrc: '/image-node.svg' },
+    Video: { label: 'Video', imageSrc: '/video-node.svg' },
     Image: { label: 'Image', imageSrc: '/image-node.svg' },
-    Task: { label: 'Task', imageSrc: '/nodal-node.svg' }
+    Task: { label: 'Task', imageSrc: '/task-node.svg' }
   }
 
   const content = tabsContent[active]

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import demoVideo from '../assets/nodal-test.mp4'
+import demoVideo from '../assets/welcome-to-nodal-short.mp4'
 import winstonChen from '../assets/nodal-winston-chen.jpg'
 
 interface Pos { x: number; y: number }
@@ -135,43 +135,52 @@ function DraggableNode({ initial, initialByWidth, initialYByWidth, centerX = fal
 
 export default function DraggableBoard({ className = '', fillParent = false }: { className?: string; fillParent?: boolean }) {
   const [isMobile, setIsMobile] = useState(false)
+  const [isTablet, setIsTablet] = useState(false)
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768)
+    const check = () => {
+      setIsMobile(window.innerWidth < 768)
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024)
+    }
     check()
     window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
+    return () => {
+      window.removeEventListener('resize', check)
+    }
   }, [])
   return (
-    <section className={`w-full ${fillParent ? 'h-full' : 'h-[80vh]'} bg-transparent relative overflow-hidden pointer-events-none ${className}`}>
+    <section className={`w-full ${fillParent ? 'h-full' : 'h-[100vh]'} bg-transparent relative overflow-hidden pointer-events-none ${className}`}>
       {/* Node 1 - centered top with responsive Y */}
-      <DraggableNode initial={{ x: 0, y: 40 }} initialYByWidth={{ base: 100, md: 40, lg: 40, xl: 40 }} centerX>
+      {/* <DraggableNode initial={{ x: 0, y: 40 }} initialYByWidth={{ base: 100, md: 20, lg: 20, xl: 20 }} centerX> */}
+      {!isMobile && !isTablet && (  
+      <DraggableNode initialByWidth={{ base: { x: 820, y: 380 }, md: { x: 520, y: 180 }, lg: { x: 16, y: 240 }, xl: { x: 80, y: 200 } }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
           <div className="flex items-center gap-2 mb-1">
             <h3 className="text-sm font-medium text-gray-900 dark:text-white">sooo... what's a node?</h3>
           </div>
-          <div className="text-xs text-gray-600 dark:text-gray-200 mb-2">
-            I'm a node! well, I'm a sample node. sometimes I'm text. sometimes I'm a task. I can be all kinds of stuff - an image, a video, a document.. you get it.
+          <div className="text-xs text-gray-600 dark:text-gray-200 mb-1">
+            I'm a node! well, I'm a sample node. I'm text, a task, an image, a video, a document.. you get it.
 
-            <div className="mt-4 font-bold">BEST thing though? I'm draggable - try me. do it.</div>
+            <div className="mt-4 font-bold">I'm <em>draggable</em> - try me. do it.</div>
           </div>
         </div>
       </DraggableNode>
+      )}
 
       {/* Node 2 */}
-      <DraggableNode initialByWidth={{ base: { x: 120, y: 720 }, md: { x: 460, y: 390 }, lg: { x: 630, y: 420 }, xl: { x: 650, y: 300 } }}>
+      {/* <DraggableNode initialByWidth={{ base: { x: 120, y: 720 }, md: { x: 460, y: 390 }, lg: { x: 630, y: 420 }, xl: { x: 650, y: 300 } }}>
         <div className="relative flex flex-col p-3 bg-white dark:bg-gray-800 rounded-lg shadow-sm w-[360px]">
           <div className="flex items-center gap-3">
             <span className="inline-flex w-5 h-5 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900"></span>
             <input className="flex-1 text-sm bg-transparent outline-none text-gray-900 dark:text-white placeholder:text-gray-500" placeholder="I'm a task node! (try typing)" />
           </div>
         </div>
-      </DraggableNode>
+      </DraggableNode> */}
 
       {/* Node 3 - hide on mobile */}
-      {!isMobile && (
-        <DraggableNode initialByWidth={{ base: { x: -600, y: 740 }, md: { x: 660, y: 60 }, lg: { x: 1040, y: 80 }, xl: { x: 1200, y: 80 } }}>
+      {!isMobile && !isTablet && (
+        <DraggableNode initialByWidth={{ base: { x: -600, y: 740 }, md: { x: 660, y: 60 }, lg: { x: 1040, y: 80 }, xl: { x: 1800, y: 100 } }}>
           <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
             <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
             <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -182,7 +191,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium text-gray-900 dark:text-white truncate">images? that too.jpg</div>
                 <div className="text-xs text-gray-500 dark:text-gray-400 truncate">420 KB • image/png</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">upload from your desktop or your phone. see photos side-by-side. generate AI descriptions of your images. plan content visually, make a diagram, or start a mood board.</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">drag and drop, link, whatever is easiest</div>
               </div>
             </div>
           </div>
@@ -190,8 +199,8 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       )}
 
       {/* Node 4 - hide on mobile */}
-      {!isMobile && (
-        <DraggableNode initialByWidth={{ base: { x: -600, y: 720 }, md: { x: 360, y: 480 }, lg: { x: 600, y: 560 }, xl: { x: 760, y: 560 } }}>
+      {!isMobile && !isTablet && (
+        <DraggableNode initialByWidth={{ base: { x: -600, y: 720 }, md: { x: 360, y: 480 }, lg: { x: -1020, y: 560 }, xl: { x: 60, y: 1560 } }}>
           <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
             <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
             <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -206,7 +215,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
               />
             </div>
             <div className="mt-2">
-              <div className="text-sm font-medium text-gray-900 dark:text-white">and video</div>
+              <div className="text-sm font-medium text-gray-900 dark:text-white">add (and drag) your videos</div>
               <div className="text-xs text-gray-500 dark:text-gray-400 truncate">https://youtu.be/just-an-example</div>
               <div className="text-xs text-gray-500 dark:text-gray-400 mt-2">link to videos or upload your own. watch content in-frame while using your board. </div>
             </div>

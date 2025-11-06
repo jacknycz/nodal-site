@@ -39,20 +39,36 @@ export default function FeatureTabsSection() {
   return (
     <section className="py-20 px-4 md:px-8 lg:px-16 transition-colors duration-200">
       <div className="max-w-5xl mx-auto text-center mb-14">
-        <h2 className="text-4xl md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-4">
+        <motion.h2
+          className="text-4xl md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           everything in its place
-        </h2>
-        <p className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto">
+        </motion.h2>
+        <motion.p
+          className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
           the board is infinite and flexible - so you'll need some tools along the way.
-        </p>
+        </motion.p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
         {/* Tabs */}
-        <div
+        <motion.div
           role="tablist"
           aria-orientation="vertical"
           className="md:col-span-1 space-y-2"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5 }}
         >
           {TABS.map((tab, index) => {
             const isActive = index === activeIndex
@@ -68,10 +84,10 @@ export default function FeatureTabsSection() {
                 onClick={() => setActiveIndex(index)}
                 className={`w-full text-left rounded-xl border px-4 py-3 transition-colors cursor-pointer
                 ${isActive
-                    ? 'border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900'
-                    : 'border-zinc-200/70 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700'}`}
+                    ? 'border-zinc-300 dark:border-zinc-950/50 bg-white dark:bg-zinc-700/40 text-zinc-900 dark:text-white'
+                    : 'border-zinc-200/70 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'}`}
               >
-                <div className="text-zinc-900 dark:text-white font-semibold">
+                <div className="font-semibold">
                   {tab.title}
                 </div>
                 {isActive && (
@@ -82,10 +98,16 @@ export default function FeatureTabsSection() {
               </button>
             )
           })}
-        </div>
+        </motion.div>
 
         {/* Video Panel */}
-        <div className="md:col-span-3">
+        <motion.div
+          className="md:col-span-3"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
@@ -98,7 +120,7 @@ export default function FeatureTabsSection() {
                 role="tabpanel"
                 id={`${baseId}-panel-${activeIndex}`}
                 aria-labelledby={`${baseId}-tab-${activeIndex}`}
-                className="relative overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-xl min-h-[220px] md:min-h-[360px] lg:min-h-[420px]"
+                className="relative overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900 shadow-2xl dark:shadow-black/70 min-h-[220px] md:min-h-[360px] lg:min-h-[420px]"
                 style={{ aspectRatio: '16 / 9' }}
               >
                 <motion.video
@@ -116,7 +138,7 @@ export default function FeatureTabsSection() {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

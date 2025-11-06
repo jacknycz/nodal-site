@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react'
-import Hero from './components/Hero'
-// import ConversationalNodes from './components/ConversationalNodes'
-import MeetTheNodes from './components/MeetTheNodes'
-import WelcomeToTheBoard from './components/WelcomeToTheBoard'
-// import AISection from './components/AISection'
-// import AIIntegrationSection from './components/AIIntegrationSection'
-// import TemplatesSection from './components/TemplatesSection'
-import FinalCTASection from './components/FinalCTASection'
-import FeatureTabsSection from './components/FeatureTabsSection'
+import { Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
+import Terms from './pages/Terms'
+import Privacy from './pages/Privacy'
 import './App.css'
+import Footer from './components/Footer.tsx'
 
 
 
@@ -57,29 +53,13 @@ function App() {
         }}
       />
 
-      {/* <TypewriterHero isDark={isDark} /> */}
+      <Routes>
+        <Route path="/" element={<Home isDark={isDark} />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
+      </Routes>
 
-      {/* Hero */}
-      <Hero isDark={isDark} />
-
-      {/* New Landing Page Sections */}
-      <WelcomeToTheBoard isDark={isDark} />
-
-      {/* Conversational Nodes */}
-      <MeetTheNodes isDark={isDark} />
-
-      <FeatureTabsSection />
-
-      {/* <AISection /> */}
-
-      {/* <AIIntegrationSection isDark={isDark} /> */}
-
-      {/* <TemplatesSection isDark={isDark} /> */}
-
-      {/* Final CTA with Confetti */}
-      <FinalCTASection isDark={isDark} />
-
-      {/* <ConversationalNodes isDark={isDark} /> */}
+      <Footer />
     </>
   )
 }

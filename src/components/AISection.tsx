@@ -43,7 +43,7 @@ export default function AISection() {
                 href="#"
                 className="border border-white/30 text-white px-8 py-3 rounded-lg hover:bg-white/10 transition-colors duration-200"
               >
-                See Pro Features
+                See Pro Features (coming soon)
               </a>
             </div>
           </div>

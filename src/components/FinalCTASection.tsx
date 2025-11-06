@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkle, ArrowRight, Star, Lightning } from '@phosphor-icons/react'
+import { ArrowRight } from '@phosphor-icons/react'
 
 interface FinalCTASectionProps {
   isDark: boolean;
@@ -61,7 +61,7 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
   }
 
   return (
-    <section className="relative py-32 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-white/10 via-white/10 to-primary-500/20 dark:from-gray-950/10 dark:via-gray-950/10 dark:to-zinc-950 overflow-hidden">
+    <section className="relative py-32 md:py-48 px-4 md:px-8 lg:px-16 bg-gradient-to-br from-white/10 via-white/10 to-primary-500/20 dark:from-gray-950/10 dark:via-gray-950/10 dark:to-zinc-950 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
         {/* Animated background dots */}
@@ -207,13 +207,19 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
 
           {/* Main button */}
           <motion.button
-            className="relative cursor-pointer bg-gradient-to-r from-primary-500 via-secondary-500 to-tertiary-500 text-white font-bold text-2xl px-12 py-6 rounded-2xl shadow-2xl overflow-hidden group"
+            className="relative cursor-pointer bg-gradient-to-r from-primary-500 via-secondary-500 to-tertiary-500 
+            text-white font-bold text-2xl px-12 py-6 rounded-full shadow-2xl overflow-hidden group"
             whileHover={{ 
               scale: 1.05,
               boxShadow: "0 25px 50px -12px rgba(0, 207, 245, 0.4)"
             }}
             whileTap={{ scale: 0.98 }}
-            onClick={generateConfetti}
+            onClick={() => {
+              generateConfetti()
+              window.setTimeout(() => {
+                window.location.href = 'https://app.nodalapp.com'
+              }, 1500)
+            }}
           >
             {/* Button shine effect */}
             <motion.div
@@ -256,36 +262,6 @@ export default function FinalCTASection({ isDark }: FinalCTASectionProps) {
           >
             the button makes confetti too
           </motion.p>
-        </motion.div>
-
-        {/* Secondary actions */}
-        <motion.div 
-          className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <a
-            href="#"
-            className="text-zinc-300 hover:text-white transition-colors duration-200 font-medium"
-          >
-            See Pro Features
-          </a>
-          <span className="text-zinc-600 hidden sm:block">•</span>
-          <a
-            href="#"
-            className="text-zinc-300 hover:text-white transition-colors duration-200 font-medium"
-          >
-            Watch Demo Video
-          </a>
-          <span className="text-zinc-600 hidden sm:block">•</span>
-          <a
-            href="#"
-            className="text-zinc-300 hover:text-white transition-colors duration-200 font-medium"
-          >
-            Join the Community
-          </a>
         </motion.div>
       </div>
 
