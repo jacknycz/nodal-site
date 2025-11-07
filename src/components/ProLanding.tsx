@@ -38,7 +38,7 @@ export default function ProLanding() {
           <p className="mt-4 text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto">Invite your friends, share your boards, and co-edit live. Faster AI, more power, resources and tools for thinkers who don’t stop at “idea.”</p>
           <p className="mt-2 text-zinc-400">It's Nodal with your friends and your files.</p>
           <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
-            <a href="#" className="bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors">Go Pro Now</a>
+            <a href="https://app.nodalapp.com/profile" className="bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors">Go Pro Now</a>
           </div>
         </motion.div>
       </div>
@@ -219,9 +219,8 @@ export default function ProLanding() {
               <p className="text-zinc-400">Smoother rendering. Deeper AI. Collaboration that clicks.</p>
               <div className="mt-6">
                 <a href="#" onClick={(e) => {
-                  e.preventDefault()
-                  window.location.href = '#pro'
-                }} className="inline-block bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors cursor-not-allowed">Go Pro (Soon!) →</a>
+                  window.location.href = 'https://app.nodalapp.com/profile'
+                }} className="inline-block bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors cursor-not-allowed">Go Pro</a>
               </div>
             </div>
           </div>
