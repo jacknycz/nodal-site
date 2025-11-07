@@ -3,8 +3,11 @@ import { motion } from 'framer-motion'
 
 import videoSearchAndZoom from '../assets/search-and-zoom.mp4'
 import videoRightClickSuperpowers from '../assets/right-click-superpowers.mp4'
-import nobotSvg from '/nobot.svg'
 import videoWriteWithConfidence from '../assets/write-with-confidence.mp4'
+import proCollab from '../assets/pro-collab.png'
+import proStorage from '../assets/pro-storage.png'
+import proAI from '../assets/pro-ai.png'
+import nobotSvg from '/nobot.svg'
 import { Database, ShareNetwork } from '@phosphor-icons/react'
 
 const callouts = [
@@ -43,35 +46,99 @@ export default function ProLanding() {
         </motion.div>
       </div>
 
-      {/* Feature Pillars */}
-      <div className="bg-black text-white px-4 md:px-8 lg:px-16 py-16">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {([
-            {
-              icon: (<img src={nobotSvg} alt="Nobot" className="w-7 h-7" />),
-              title: 'Smarter AI',
-              lines: ['The latest models, custom personality sliders, and per-board memory. More options, more integrations.', 'Think deeper.']
-            },
-            {
-              icon: (<Database size={32} weight="duotone" />),
-              title: 'More Power',
-              lines: ['Unlimited boards, 100k AI tokens per month, 10gb of storage. More storage, more power.', 'Think bigger.']
-            },
-            {
-              icon: (<ShareNetwork size={32} weight="duotone" />),
-              title: 'Real Collaboration',
-              lines: ['Invite teammates, share boards, and co-edit live. Assign tasks and keep everyone in the loop.', 'Think together.']
-            }
-          ] as { icon: React.ReactNode; title: string; lines: string[] }[]).map((c, i) => (
-            <motion.div key={c.title} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ delay: i * 0.05 }} className="rounded-xl border border-zinc-800 p-6 bg-gradient-to-b from-zinc-900/40 to-zinc-900/10">
-              <div className="text-2xl mb-3">{c.icon}</div>
-              <div className="font-heading text-xl mb-2">{c.title}</div>
-              <div className="text-zinc-300 text-sm space-y-1">
-                <p>{c.lines[0]}</p>
-                <p className="text-zinc-400">{c.lines[1]}</p>
+      {/* Feature Bands (expanded, alternating layout) */}
+      <div className="bg-black text-white px-4 md:px-8 lg:px-16 py-20">
+        <div className="max-w-7xl mx-auto space-y-20 md:space-y-32">
+
+          {/* Band 1: Real Collaboration (text left, image right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-zinc-800 rounded-2xl p-6 bg-zinc-900/40">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex flex-col lg:gap-4 md:px-8 lg:px-16">
+                <div className="flex items-center gap-3 mb-3 text-primary-300/80">
+                  <ShareNetwork size={28} weight="duotone" />
+                  <span className="text-sm tracking-wide">Real Collaboration</span>
+                </div>
+                <h3 className="font-heading text-2xl md:text-5xl mb-3">idea together.</h3>
+                <p className="text-zinc-300 text-lg">Invite teammates, share boards, and co-edit live. Assign tasks and keep everyone in the loop.</p>
               </div>
             </motion.div>
-          ))}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="relative"
+            >
+              <div className="flex items-center justify-center py-6">
+                <img src={proCollab} alt="Collaboration preview" className="w-full h-full object-contain p-6" />
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Band 2: More Power (image left, text right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-zinc-800 rounded-2xl p-6 bg-zinc-900/40">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="relative"
+            >
+              <div className="flex items-center justify-center py-6 lg:py-16">
+                <img src={proStorage} alt="Performance preview" className="w-full h-full object-contain p-6" />
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+            >
+              <div className="flex flex-col lg:gap-4 md:px-8 lg:px-16">
+                <div className="flex items-center gap-3 mb-3 text-primary-300/80">
+                  <Database size={28} weight="duotone" />
+                  <span className="text-sm tracking-wide">More Power</span>
+                </div>
+                <h3 className="font-heading text-2xl md:text-5xl mb-3">idea bigger.</h3>
+                <p className="text-zinc-300 text-lg">Unlimited boards, 100k AI tokens per month, 10gb of storage. More storage, more power.</p>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Band 3: Smarter AI (text left, image right) */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-zinc-800 rounded-2xl p-6 bg-zinc-900/40">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex flex-col lg:gap-4 md:px-8 lg:px-16">
+                <div className="flex items-center gap-3 mb-3 text-primary-300/80">
+                  <img src={nobotSvg} alt="Nobot" className="w-7 h-7" />
+                  <span className="text-sm tracking-wide">Smarter AI</span>
+                </div>
+                <h3 className="font-heading text-2xl md:text-5xl mb-3">idea deeper.</h3>
+                <p className="text-zinc-300 text-lg">The latest models, custom personality sliders, and per-board memory. More options, more integrations.</p>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.05 }}
+              className="relative"
+            >
+              <div className="flex items-center justify-center py-6">
+                <img src={proAI} alt="Smarter AI preview" className="w-full h-full object-contain p-6" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
@@ -171,40 +238,40 @@ export default function ProLanding() {
       </div> */}
 
       {/* Testimonial */}
-      <div className="bg-black text-white px-4 md:px-8 lg:px-16 py-16">
+      {/* <div className="bg-black text-white px-4 md:px-8 lg:px-16 py-16">
         <div className="max-w-4xl mx-auto text-center">
           <blockquote className="text-2xl md:text-3xl font-heading">“It looks so cool! I have no idea how to use it, but it looks cool.”</blockquote>
           <div className="mt-3 text-zinc-400">- Literally my mom</div>
           <div className="mt-6 text-zinc-500">Guaranteed to make you look cool. Do it for science.</div>
         </div>
-      </div>
+      </div> */}
 
       {/* Pricing / CTA */}
       <div id="pricing" className="bg-gradient-to-b from-black to-zinc-950/0 text-white px-4 md:px-8 lg:px-16 py-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10 items-stretch">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 space-y-10 lg:space-y-0 lg:gap-10 items-stretch">
           <div className="col-span-2">
-            <h3 className="font-heading text-2xl mb-4">Go Pro. Collaboration and More Tools.</h3>
+            <h3 className="font-heading text-xl lg:text-2xl mb-4">Go Pro. Biggest win? Collaboration.</h3>
             <p className="text-zinc-300">Start free, upgrade when you’re ready.</p>
-            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-4">
               <div className="rounded-xl border border-zinc-800 p-4">
                 <div className="font-heading">Free</div>
                 <div className="text-3xl font-heading mt-1">$0</div>
-                <ul className="mt-3 text-sm text-zinc-300 space-y-1">
-                  <li>Unlimited boards (fair use)</li>
-                  <li>GPT-3.5</li>
-                  <li>Solo workspace</li>
+                <ul className="mt-3 text-sm text-zinc-400 space-y-1 list-disc list-outside pl-4">
+                  <li className="marker:text-zinc-400">Unlimited boards (fair use)</li>
+                  <li className="marker:text-zinc-400">GPT-3.5</li>
+                  <li className="marker:text-zinc-400">Solo workspace</li>
                 </ul>
               </div>
               <div className="rounded-xl border border-zinc-800 p-4 bg-zinc-900/60">
                 <div className="font-heading">Pro</div>
                 <div className="text-3xl font-heading mt-1">$9.99/mo</div>
-                <ul className="mt-3 text-sm text-zinc-300 space-y-1">
-                  <li>Latest AI models</li>
-                  <li>Collaboration (invite teammates, share boards, co-edit live)</li>
-                  <li>100k AI tokens per month</li>
-                  <li>10gb of storage</li>
-                  <li>Custom API key integration</li>
-                  <li>Token usage transparency and refill bundles</li>
+                <ul className="mt-3 text-sm text-zinc-300 space-y-1 list-disc list-outside pl-4">
+                  <li className="marker:text-primary-500"><strong>Collaboration</strong> (invite teammates, share boards, live co-editing)</li>
+                  <li className="marker:text-primary-500">100k AI tokens /mo (covers most users)</li>
+                  <li className="marker:text-primary-500">10gb of storage</li>
+                  <li className="marker:text-primary-500">Latest AI models</li>
+                  <li className="marker:text-primary-500">Custom API key integration</li>
+                  <li className="marker:text-primary-500">Token usage transparency</li>
                 </ul>
               </div>
             </div>
@@ -213,12 +280,12 @@ export default function ProLanding() {
             </div> */}
             <div className="mt-4 text-xs text-zinc-500">Your data stays yours. No ads. No nonsense.</div>
           </div>
-          <div className="rounded-2xl border border-zinc-800 p-6 flex items-center justify-center">
+          <div className="rounded-2xl border w-full border-zinc-800 p-6 flex flex-1 items-center justify-center">
             <div className="text-center">
               <div className="font-heading text-2xl mb-2">Ready to go Pro?</div>
               <p className="text-zinc-400">Smoother rendering. Deeper AI. Collaboration that clicks.</p>
               <div className="mt-6">
-                <a href="#" onClick={(e) => {
+                <a href="#" onClick={() => {
                   window.location.href = 'https://app.nodalapp.com/profile'
                 }} className="inline-block bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors cursor-not-allowed">Go Pro</a>
               </div>

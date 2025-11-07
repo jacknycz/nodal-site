@@ -277,7 +277,7 @@ function TabsSection() {
         <div>
           <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">need to come back to that idea later? add a task node and we’ll remind you.</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>Assign a due date and we'll bug you again. See all your tasks at once in your boardroom.</p>
+            <p>Assign a teammate and we'll bug them instead. See all your tasks at once in your boardroom.</p>
           </div>
         </div>
       ),
