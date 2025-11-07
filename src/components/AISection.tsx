@@ -19,7 +19,7 @@ export default function AISection() {
           </div>
           
           <p className="text-xl text-zinc-600 dark:text-zinc-300">
-          yes, nodal does cool AI stuff, but everyone’s doing that. we weren’t even going to bring it up but our investor said we should.
+          yes, nodal does cool AI stuff, but everyone’s doing that. we weren't even going to bring it up but our investor said we should.
           </p>
         </div>
       </div>
@@ -30,7 +30,7 @@ export default function AISection() {
           <div className="bg-gradient-to-r from-primary-500 to-blue-600 text-white p-8 rounded-2xl flex flex-col items-center justify-center">
             <h3 className="text-2xl font-medium font-heading mb-4">you're too smart for a catchy CTA!</h3>
             <p className="text-lg mb-6 opacity-90 max-w-2xl">
-              just give it a try, it's free - and hit that feedback button if you do try it. it's beta - seriously looking for thoughts and where it's screwing up. thanks!
+              just give it a try, it's free - and hit that feedback button if you do try it. seriously looking for thoughts and where it's screwing up. thanks!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
