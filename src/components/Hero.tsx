@@ -14,7 +14,8 @@ export default function Hero({ isDark }: HeroProps) {
   return (
 
     <section
-      className="lg:min-h-screen pt-32 pb-16 lg:pt-32 lg:pb-12 flex-col items-center justify-center px-4 lg:px-16 transition-colors duration-200 relative overflow-hidden"
+      className="lg:min-h-[1000px] pt-32 md:pt-48 pb-16 md:pb-24 lg:pt-32 lg:pb-12 flex-col items-center justify-center px-4 lg:px-16 
+      transition-colors duration-200 relative"
     >
 
       {/* Background draggable board */}
@@ -35,7 +36,7 @@ export default function Hero({ isDark }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-2xl md:text-4xl lg:text-5xl font-medium text-zinc-900 dark:text-white">
+          <h3 className="font-heading text-2xl md:text-5xl lg:text-5xl font-medium text-zinc-900 dark:text-white">
             a sandbox for ideas
           </h3>
           <p className="md:text-base text-zinc-900 dark:text-white">
@@ -89,7 +90,7 @@ export default function Hero({ isDark }: HeroProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        <div className="z-0 w-full md:mx-auto md:max-w-2xl mt-12 lg:mt-32 md:rounded-2xl md:overflow-hidden md:shadow-2xl dark:shadow-black/70 md:bg-black/20 md:backdrop-blur-sm aspect-[1.94/1]">
+        {/* <div className="z-0 w-full md:mx-auto md:max-w-2xl mt-12 lg:mt-32 md:rounded-2xl md:overflow-hidden md:shadow-2xl dark:shadow-black/70 md:bg-black/20 md:backdrop-blur-sm aspect-[1.94/1]">
           <video
             src={bgVideo}
             autoPlay
@@ -99,7 +100,7 @@ export default function Hero({ isDark }: HeroProps) {
             aria-hidden="true"
             className="pointer-events-none select-none w-full h-auto md:h-full object-contain"
           />
-        </div>
+        </div> */}
       </motion.div>
 
       {/* Overlay above video, below content */}
@@ -146,8 +147,8 @@ export default function Hero({ isDark }: HeroProps) {
         </div>
       </div>
 
-      <div className="hidden lg:block absolute inset-0 z-30 h-screen pointer-events-none">
-        <DraggableBoard fillParent className="h-full bg-transparent border-none" />
+      <div className="hidden lg:block absolute inset-0 z-30 pointer-events-none">
+        <DraggableBoard fillParent className="bg-transparent border-none" />
       </div>
     </section>
   )

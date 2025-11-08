@@ -51,7 +51,14 @@ export default function ProLanding() {
         <div className="max-w-7xl mx-auto space-y-20 md:space-y-32">
 
           {/* Band 1: Real Collaboration (text left, image right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-zinc-800 rounded-2xl p-6 bg-zinc-900/40">
+          <div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
+            style={{
+              backgroundImage: `radial-gradient(circle, #222 1px, transparent 1px)`,
+              backgroundSize: '20px 20px',
+              backgroundPosition: '0 0'
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +88,14 @@ export default function ProLanding() {
           </div>
 
           {/* Band 2: More Power (image left, text right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-zinc-800 rounded-2xl p-6 bg-zinc-900/40">
+          <div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
+            style={{
+              backgroundImage: `radial-gradient(circle, #222 1px, transparent 1px)`,
+              backgroundSize: '20px 20px',
+              backgroundPosition: '0 0'
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -111,7 +125,14 @@ export default function ProLanding() {
           </div>
 
           {/* Band 3: Smarter AI (text left, image right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-zinc-800 rounded-2xl p-6 bg-zinc-900/40">
+          <div 
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
+            style={{
+              backgroundImage: `radial-gradient(circle, #222 1px, transparent 1px)`,
+              backgroundSize: '20px 20px',
+              backgroundPosition: '0 0'
+            }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -253,7 +274,7 @@ export default function ProLanding() {
             <h3 className="font-heading text-xl lg:text-2xl mb-4">Go Pro. Biggest win? Collaboration.</h3>
             <p className="text-zinc-300">Start free, upgrade when you’re ready.</p>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-10 lg:gap-4">
-              <div className="rounded-xl border border-zinc-800 p-4">
+              <div className="rounded-xl border border-zinc-800 p-4 lg:p-6">
                 <div className="font-heading">Free</div>
                 <div className="text-3xl font-heading mt-1">$0</div>
                 <ul className="mt-3 text-sm text-zinc-400 space-y-1 list-disc list-outside pl-4">
@@ -262,7 +283,10 @@ export default function ProLanding() {
                   <li className="marker:text-zinc-400">Solo workspace</li>
                 </ul>
               </div>
-              <div className="rounded-xl border border-zinc-800 p-4 bg-zinc-900/60">
+              <div 
+              className="rounded-xl border border-primary-800/40 p-4 lg:p-6 bg-gray-950/60
+              hover:border-primary-800/60 transition-colors duration-200 shadow-xl shadow-primary-800/20 hover:shadow-primary-800/40"
+              >
                 <div className="font-heading">Pro</div>
                 <div className="text-3xl font-heading mt-1">$9.99/mo</div>
                 <ul className="mt-3 text-sm text-zinc-300 space-y-1 list-disc list-outside pl-4">

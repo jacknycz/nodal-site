@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { useState, type ReactNode, useRef } from 'react'
 import videoNode from '../assets/video-node.mp4'
-import { FilePdf } from '@phosphor-icons/react'
+import { ArrowBendRightDown, FilePdf, HandWaving } from '@phosphor-icons/react'
 
 interface WhatsANodeSectionProps {
   isDark: boolean;
@@ -23,15 +23,17 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
   // }
 
   return (
-    <section id="meet-nodes-section" className="relative overflow-hidden flex flex-col items-center justify-center max-w-6xl mx-auto py-24 md:py-48 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+    <section id="meet-nodes-section" className="relative overflow-hidden flex flex-col items-center justify-center max-w-7xl mx-auto py-24 md:pt-32 md:pb-24 transition-colors duration-200">
       <motion.h2
-        className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6"
+        className="text-4xl text-center md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-6 relative"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        meet the nodes
+       <HandWaving size={44} weight="duotone" className="hidden md:inline-block md:mr-4" />
+       <span className="inline-block">meet the nodes</span>
+       <ArrowBendRightDown size={64} weight="duotone" className="hidden md:inline-block absolute top-8 -right-16" />
       </motion.h2>
 
       <motion.p
@@ -71,18 +73,7 @@ export default function WhatsANodeSection({ }: WhatsANodeSectionProps) {
       <TabsSection />
 
       {/* Bottom Text */}
-      <motion.div
-        className="text-center max-w-4xl mx-auto mt-16"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 1.2 }}
-      >
-        <p className="text-xl text-zinc-600 dark:text-zinc-300 leading-relaxed">
-          Nodes are flexible building blocks for your brainwaves — and they're always
-          <span className="text-primary-500 font-medium"> one click away</span> from becoming something bigger.
-        </p>
-      </motion.div>
+     
     </section>
   )
 }
@@ -148,11 +139,11 @@ function TabsSection() {
     Default: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-medium font-heading text-zinc-900 dark:text-white mb-3">
-            the regular ole' node
+          <h3 className="text-2xl md:text-3xl mb-4 md:mb-6 lg:mb-8 font-medium font-heading text-zinc-900 dark:text-white">
+            the regular ole' node (it's the coolest node of all)
           </h3>
-          <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
-            <p>The flexible building blocks to this whole things.</p>
+          <div className="text-zinc-600 dark:text-zinc-300 space-y-4">
+            <p>This node contains ideas - pure and simple.</p>
             <p>Add text, jot down thoughts, make lists. Form connections and move them around. Add notes, hints, or reminders.</p>
             <p>We like things flexible around here.</p>
           </div>
@@ -178,7 +169,7 @@ function TabsSection() {
     Doc: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">we take your docs, turn them into nodes and hope they treat you better that way</h3>
+          <h3 className="text-2xl md:text-3xl mb-4 md:mb-6 lg:mb-8 font-bold text-zinc-900 dark:text-white">we take your docs, turn them into nodes and hope they treat you better that way</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
             <p>We'll hold your docs for you. Upload them or drag and drop them and we'll make them into nodes for you. Not just that, we'll read it for you. scan documents quickly with our search too. Works with with .pdf, .docx, .txt, .md, and more.</p>
           </div>
@@ -212,7 +203,7 @@ function TabsSection() {
     Video: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">upload videos or link to youtube. watch while you work.</h3>
+          <h3 className="text-2xl md:text-3xl mb-4 md:mb-6 lg:mb-8 font-bold text-zinc-900 dark:text-white">upload videos or link to youtube. watch while you work.</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
             <p>Reference content and take notes, all in one place.</p>
             <p>Add visual aids and add context for your ideas.</p>
@@ -247,7 +238,7 @@ function TabsSection() {
     Image: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">visual thinking thrives when imagery is one node away. </h3>
+          <h3 className="text-2xl md:text-3xl mb-4 md:mb-6 lg:mb-8 font-bold text-zinc-900 dark:text-white">visual thinking thrives when imagery is one node away. </h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
             <p>Add photos, images, screenshots. upload to the board or drag and drop, and keep it anywhere on your board.</p>
             <p>Plan content, look at images side-by-side. Create captions or let our AI generate one for you.</p>
@@ -275,7 +266,7 @@ function TabsSection() {
     Task: {
       left: (
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white mb-3">need to come back to that idea later? add a task node and we’ll remind you.</h3>
+          <h3 className="text-2xl md:text-3xl mb-4 md:mb-6 lg:mb-8 font-bold text-zinc-900 dark:text-white">need to come back to that idea later? add a task node and we’ll remind you.</h3>
           <div className="text-zinc-600 dark:text-zinc-300 space-y-2">
             <p>Assign a teammate and we'll bug them instead. See all your tasks at once in your boardroom.</p>
           </div>
@@ -326,7 +317,7 @@ function TabsSection() {
   )
 
   return (
-    <div className="max-w-6xl mx-auto mt-12">
+    <div className="max-w-7xl mx-auto mt-12">
       <div className="flex flex-wrap gap-0 md:gap-6 justify-center mb-8" role="tablist" aria-label="Content tabs">
         {tabOrder.map((tab) => (
           <button
@@ -355,7 +346,7 @@ function TabsSection() {
         initial={false}
         animate={{ height: 'auto' }}
         transition={{ duration: 0.2 }}
-        className="mt-12 p-6 md:p-12 rounded-xl bg-white dark:bg-gray-950
+        className="mt-12 p-6 md:p-12 lg:p-16 rounded-xl bg-white dark:bg-gray-950
         border border-dashed border-zinc-300 dark:border-zinc-400/40
         shadow-2xl shadow-zinc-400/20 dark:shadow-zinc-700/40"
       >

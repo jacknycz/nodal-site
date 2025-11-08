@@ -59,7 +59,7 @@ export default function FeatureTabsSection() {
         </motion.p>
       </div>
 
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
         {/* Tabs */}
         <motion.div
           role="tablist"
@@ -84,8 +84,8 @@ export default function FeatureTabsSection() {
                 onClick={() => setActiveIndex(index)}
                 className={`w-full text-left rounded-xl border px-4 py-3 transition-colors cursor-pointer
                 ${isActive
-                    ? 'border-zinc-300 dark:border-zinc-950/50 bg-white dark:bg-zinc-700/40 text-zinc-900 dark:text-white'
-                    : 'border-zinc-200/70 dark:border-zinc-800/80 hover:border-zinc-300 dark:hover:border-zinc-700 text-zinc-900 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white'}`}
+                    ? 'border-gray-300 dark:border-gray-950/50 bg-white dark:bg-gray-800/50 text-zinc-900 dark:text-white'
+                    : 'border-gray-200/70 dark:border-gray-900/80 hover:border-gray-300 dark:hover:border-gray-700 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}`}
               >
                 <div className="font-semibold">
                   {tab.title}
