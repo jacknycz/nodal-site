@@ -5,7 +5,7 @@ import nobotLeft from '../assets/nobot-left.svg'
 
 export default function MeetNobot() {
   return (
-    <section className="py-24 md:pt-32 pb-16 transition-colors duration-200">
+    <section className="py-24 md:pt-32 pb-16 transition-colors duration-200 mx-4 md:mx-8 lg:mx-16">
       <div className="max-w-7xl mx-auto text-center mb-12 relative">
         <motion.h2
           className="text-4xl md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-4"

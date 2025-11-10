@@ -52,7 +52,7 @@ export default function ProLanding() {
 
           {/* Band 1: Real Collaboration (text left, image right) */}
           <div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
             style={{
               backgroundImage: `radial-gradient(circle, #222 1px, transparent 1px)`,
               backgroundSize: '20px 20px',
@@ -89,24 +89,13 @@ export default function ProLanding() {
 
           {/* Band 2: More Power (image left, text right) */}
           <div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
             style={{
               backgroundImage: `radial-gradient(circle, #222 1px, transparent 1px)`,
               backgroundSize: '20px 20px',
               backgroundPosition: '0 0'
             }}
           >
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="flex items-center justify-center py-6 lg:py-16">
-                <img src={proStorage} alt="Performance preview" className="w-full h-full object-contain p-6" />
-              </div>
-            </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -122,11 +111,23 @@ export default function ProLanding() {
                 <p className="text-zinc-300 text-lg">Unlimited boards, 100k AI tokens per month, 10gb of storage. More storage, more power.</p>
               </div>
             </motion.div>
+
+        <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+          className="relative md:order-first"
+            >
+              <div className="flex items-center justify-center py-6 lg:py-16">
+                <img src={proStorage} alt="Performance preview" className="w-full h-full object-contain p-6" />
+              </div>
+            </motion.div>
           </div>
 
           {/* Band 3: Smarter AI (text left, image right) */}
           <div 
-            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
+            className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center border border-gray-900 rounded-2xl p-6 bg-gray-950/40"
             style={{
               backgroundImage: `radial-gradient(circle, #222 1px, transparent 1px)`,
               backgroundSize: '20px 20px',

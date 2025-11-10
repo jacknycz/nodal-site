@@ -13,9 +13,8 @@ export default function Home({ isDark }: HomeProps) {
   return (
     <>
       <Hero isDark={isDark} />
-      {/* <WelcomeToTheBoard isDark={isDark} /> */}
-      <MeetTheNodes isDark={isDark} />
       <FeatureTabsSection />
+      {/* <MeetTheNodes isDark={isDark} /> */}
       <MeetNobot />
       <ProLanding />
       <FinalCTASection isDark={isDark} />

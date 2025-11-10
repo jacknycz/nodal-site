@@ -29,21 +29,18 @@ export default function Hero({ isDark }: HeroProps) {
         <h1 className="font-heading text-lg md:text-2xl font-medium text-zinc-900 dark:text-white">go idea.</h1>
       </div>
 
-      <div className="w-full max-w-md lg:max-w-xl mx-auto text-center relative z-20">
+      <div className="w-full max-w-md lg:max-w-2xl mx-auto justify-center items-center text-center relative z-20">
         <motion.div
-          className="flex flex-col space-y-6"
+          className="flex flex-col space-y-6 items-center justify-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-2xl md:text-5xl lg:text-5xl font-medium text-zinc-900 dark:text-white">
+          <h3 className="font-heading text-2xl md:text-5xl lg:text-6xl font-medium text-zinc-900 dark:text-white">
             a sandbox for ideas
           </h3>
-          <p className="md:text-base text-zinc-900 dark:text-white">
-            seriously flexible. brainstorm and share. study, learn, plan, organize, reorganize... use your media, your files, dump your thoughts, make connections - all in one place.
-          </p>
-          <p className="md:text-base text-zinc-900 dark:text-white">
-            make a plan. write a story. build a business. <span className="font-bold">go idea.</span>
+          <p className="md:text-2xl max-w-md mx-auto lg:mx-0 xl:max-w-2xl text-zinc-900 dark:text-white">
+            nodal is seriously flexible visual thinking. plan, organize, learn, teach, and share ideas.
           </p>
 
           <div className="mt-6 flex w-full gap-4">

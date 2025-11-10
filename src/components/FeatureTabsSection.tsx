@@ -1,43 +1,109 @@
-import { useState, useId } from 'react'
+import { useState, useId, type ReactNode } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-import videoRightClickSuperpowers from '../assets/right-click-superpowers.mp4'
-import videoSearchAndZoom from '../assets/search-and-zoom.mp4'
-import videoWriteWithConfidence from '../assets/write-with-confidence.mp4'
+import usesBrainstorm from '../assets/uses-brainstorm.png'
+import usesPlan from '../assets/uses-plan.png'
+import usesLearn from '../assets/uses-learn.png'
+import usesCreate from '../assets/uses-create.png'
 
 interface FeatureTab {
   title: string;
-  description: string;
-  src: string;
+  content: ReactNode;
 }
 
 const TABS: FeatureTab[] = [
   {
-    title: 'Search everything',
-    description:
-      'Does your search zoom? Our search zooms. Search all your docs, notes, tasks, in one place.',
-    src: videoSearchAndZoom
+    title: 'brainstorm',
+    content: (
+      <PlaceholderContent
+        contentTitle="brainstorming"
+        imageLabel="Search UI preview"
+        imageSrc={usesBrainstorm}
+        subtitle="got a direction? let's go there"
+        description="Nodal is seriously flexible. Jot down thoughts, word vomit, lay everything down in one place. Find connections and similarities so you can see the bigger picture and build from there. Invite your friends to collaborate. Or ask Nobot to weigh in too - he's good at that."
+      />
+    )
   },
   {
-    title: 'Right-click superpowers',
-    description:
-      'We made creating as simple as a click - just the right one.',
-    src: videoRightClickSuperpowers
+    title: 'plan',
+    content: (
+      <PlaceholderContent
+        contentTitle="planning"
+        imageLabel="Command menu mock"
+        imageSrc={usesPlan}
+        subtitle="ditch the lists"
+        description="Ditch the to-do app, chaotic notes, never-ending browser windows and bookmarks and see your whole project at a glance. Simplify workflows and bring order to the chaos. Create a visual framework for complex ideas and share with others."
+      />
+    )
   },
   {
-    title: 'Write with confidence',
-    description:
-      'Load your board up with everything your next project could possibly need.',
-    src: videoWriteWithConfidence
+    title: 'learn',
+    content: (
+      <PlaceholderContent
+        contentTitle="learning"
+        imageLabel="Drafting space"
+        imageSrc={usesLearn}
+        subtitle="learn the way your brain learns best"
+        description="Turn messy notes into clear visuals, map out concepts and processes, expand on knowledge and quiz yourself. Create study guides and share with students or classmates. Use Nodal to plan writing projects, thought excercises, learning assignments and more. Hate school projects? Collaborate effectively and assign tasks virtually."
+      />
+    )
+  },
+  {
+    title: 'create',
+    content: (
+      <PlaceholderContent
+        contentTitle="creating"
+        imageLabel="Drafting space"
+        imageSrc={usesCreate}
+        subtitle="open up your creative flow"
+        description="Plan content, start an art project, drop in some inspiration if you're feeling stuck. Turn up the creativity and start your project from scratch, or expand on something you've got going now. Watch your ideas bloom as you let your mind wander."
+      />
+    )
   }
 ]
+
+interface PlaceholderContentProps {
+  imageLabel: string;
+  contentTitle: string;
+  subtitle: string;
+  description: string;
+  imageSrc: string;
+}
+
+function PlaceholderContent({
+  imageLabel,
+  contentTitle,
+  subtitle,
+  description,
+  imageSrc
+}: PlaceholderContentProps) {
+  return (
+    <div className="grid items-center gap-8 md:grid-cols-2 lg:gap-12">
+      <div className="flex items-center justify-center">
+        <img src={imageSrc} alt={imageLabel} className="w-full h-full object-contain" />
+      </div>
+
+      <div className="space-y-4 text-left">
+        <p className="text-2xl md:text-3xl font-medium font-heading tracking-wide text-zinc-500 dark:text-white">
+          {contentTitle}
+        </p>
+        <p className="text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
+          {subtitle}
+        </p>
+        <p className="text-lg leading-relaxed text-zinc-700 dark:text-zinc-300">
+          {description}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 export default function FeatureTabsSection() {
   const [activeIndex, setActiveIndex] = useState(0)
   const baseId = useId()
 
   return (
-    <section className="py-20 px-4 md:px-8 lg:px-16 transition-colors duration-200">
+    <section className="py-20 px-4 md:px-8 lg:px-16 mt-12 lg:mt-24 transition-colors duration-200">
       <div className="max-w-5xl mx-auto text-center mb-14">
         <motion.h2
           className="text-4xl md:text-5xl font-heading font-medium text-zinc-900 dark:text-white mb-4"
@@ -46,7 +112,7 @@ export default function FeatureTabsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          everything in its place
+          so many ways to use the board
         </motion.h2>
         <motion.p
           className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto"
@@ -55,18 +121,18 @@ export default function FeatureTabsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          the board is infinite and flexible - so you'll need some tools along the way.
+          the board is infinite and flexible - so just dive in and see what happens.
         </motion.p>
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+      <div className="max-w-7xl mx-auto">
         {/* Tabs */}
         <motion.div
           role="tablist"
-          aria-orientation="vertical"
-          className="md:col-span-1 space-y-2"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          aria-orientation="horizontal"
+          className="flex flex-wrap justify-center gap-2"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5 }}
         >
@@ -77,34 +143,27 @@ export default function FeatureTabsSection() {
             return (
               <button
                 key={tab.title}
+                type="button"
                 id={tabId}
                 aria-controls={panelId}
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveIndex(index)}
-                className={`w-full text-left rounded-xl border px-4 py-3 transition-colors cursor-pointer
-                ${isActive
-                    ? 'border-gray-300 dark:border-gray-950/50 bg-white dark:bg-gray-800/50 text-zinc-900 dark:text-white'
-                    : 'border-gray-200/70 dark:border-gray-900/80 hover:border-gray-300 dark:hover:border-gray-700 text-gray-900 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'}`}
+                className={`inline-flex items-center justify-center rounded-full border px-5 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400 dark:focus-visible:outline-white ${isActive
+                  ? 'border-zinc-900 bg-zinc-900 text-white shadow-sm dark:border-white dark:bg-white dark:text-zinc-900'
+                  : 'border-zinc-200 bg-white text-zinc-700 hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:text-white'}`}
               >
-                <div className="font-semibold">
-                  {tab.title}
-                </div>
-                {isActive && (
-                  <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-                    {tab.description}
-                  </p>
-                )}
+                {tab.title}
               </button>
             )
           })}
         </motion.div>
 
-        {/* Video Panel */}
+        {/* Content Panel */}
         <motion.div
-          className="md:col-span-3"
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          className="mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.5, delay: 0.05 }}
         >
@@ -120,21 +179,11 @@ export default function FeatureTabsSection() {
                 role="tabpanel"
                 id={`${baseId}-panel-${activeIndex}`}
                 aria-labelledby={`${baseId}-tab-${activeIndex}`}
-                className="relative overflow-hidden rounded-2xl bg-zinc-100 dark:bg-zinc-900 shadow-2xl dark:shadow-black/70 min-h-[220px] md:min-h-[360px] lg:min-h-[420px]"
-                style={{ aspectRatio: '16 / 9' }}
+                className="overflow-hidden rounded-3xl border border-gray-200/80 bg-white/80 p-6 
+                shadow-2xl  
+                dark:border-gray-800/80 dark:bg-gray-950/50 dark:shadow-black/70 md:p-10"
               >
-                <motion.video
-                  key={`video-${activeIndex}`}
-                  initial={{ scale: 1.01 }}
-                  animate={{ scale: 1 }}
-                  transition={{ duration: 0.3, ease: 'easeOut' }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  src={TABS[activeIndex].src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
+                {TABS[activeIndex].content}
               </div>
             </motion.div>
           </AnimatePresence>
