@@ -38,8 +38,7 @@ export default function ProLanding() {
         >
           <div className="text-primary-300/80 font-heading text-sm tracking-wide mb-3">Nodal Pro</div>
           <h2 className="font-heading text-3xl md:text-5xl font-medium">the mind map, upgraded</h2>
-          <p className="mt-4 text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto">Invite your friends, share your boards, and co-edit live. Faster AI, more power, resources and tools for thinkers who don’t stop at “idea.”</p>
-          <p className="mt-2 text-zinc-400">It's Nodal with your friends and your files.</p>
+          <p className="mt-4 text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto">Invite your friends, share your boards, and co-edit live. Nodal Pro has faster AI, more power, resources and tools for thinkers who don’t stop at “idea.”</p>\
           <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
             <a href="https://app.nodalapp.com/profile" className="bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors">Go Pro Now</a>
           </div>
@@ -146,7 +145,7 @@ export default function ProLanding() {
                   <span className="text-sm tracking-wide">Smarter AI</span>
                 </div>
                 <h3 className="font-heading text-2xl md:text-5xl mb-3">idea deeper.</h3>
-                <p className="text-zinc-300 text-lg">The latest models, custom personality sliders, and per-board memory. More options, more integrations.</p>
+                <p className="text-zinc-300 text-lg">The latest AI models, custom personality sliders, and unlimited per-board memory. More options, more integrations, more flexibility.</p>
               </div>
             </motion.div>
             <motion.div
@@ -281,7 +280,7 @@ export default function ProLanding() {
                 <ul className="mt-3 text-sm text-zinc-400 space-y-1 list-disc list-outside pl-4">
                   <li className="marker:text-zinc-400">Unlimited boards (fair use)</li>
                   <li className="marker:text-zinc-400">GPT-3.5</li>
-                  <li className="marker:text-zinc-400">Solo workspace</li>
+                  <li className="marker:text-zinc-400">Personal boardroom</li>
                 </ul>
               </div>
               <div 
@@ -294,7 +293,7 @@ export default function ProLanding() {
                   <li className="marker:text-primary-500"><strong>Collaboration</strong> (invite teammates, share boards, live co-editing)</li>
                   <li className="marker:text-primary-500">100k AI tokens /mo (covers most users)</li>
                   <li className="marker:text-primary-500">10gb of storage</li>
-                  <li className="marker:text-primary-500">Latest AI models</li>
+                  <li className="marker:text-primary-500">Latest AI models (deep thinking &amp; planning)</li>
                   <li className="marker:text-primary-500">Custom API key integration</li>
                   <li className="marker:text-primary-500">Token usage transparency</li>
                 </ul>

@@ -43,7 +43,7 @@ export default function MeetNobot() {
           {
             icon: (<img src={nobotSvg} alt="Nobot" className="w-12 h-12" />),
             title: 'board-aware intelligence',
-            lines: ['Nobot understands your board’s structure, your goals, and your content. It connects dots across your nodes, analyzes attached docs, and thinks in context - not isolation.']
+            lines: ['Nobot understands your board’s structure, your goals, and your content. He connects dots across your nodes, analyzes attached docs, and thinks in context - not isolation.']
           },
           {
             icon: (<Database size={48} weight="duotone" />),
@@ -53,7 +53,7 @@ export default function MeetNobot() {
           {
             icon: (<ShareNetwork size={48} weight="duotone" />),
             title: 'thinking with a teammate',
-            lines: ['Collaborate with AI that feels like a teammate. Bounce ideas, get fresh takes, ask quick questions, and expand your thinking - all without breaking flow.']
+            lines: ['AI that feels like a teammate. Bounce ideas, get fresh takes, ask quick questions, and expand your thinking - all without breaking flow.']
           }
         ] as { icon: React.ReactNode; title: string; lines: string[] }[]).map((c, i) => (
           <motion.div
