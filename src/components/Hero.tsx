@@ -36,7 +36,7 @@ export default function Hero({ isDark }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-2xl md:text-5xl lg:text-6xl font-medium text-zinc-900 dark:text-white">
+          <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl font-medium text-zinc-900 dark:text-white">
             a sandbox for ideas
           </h3>
           <p className="md:text-2xl max-w-md mx-auto lg:mx-0 xl:max-w-2xl text-zinc-900 dark:text-white">
@@ -56,7 +56,7 @@ export default function Hero({ isDark }: HeroProps) {
                 </a>
                 <span className="text-gray-400 dark:text-gray-400 text-xs">no credit card needed</span>
               </div>
-              <div className="hidden md:flex flex-col space-y-1">
+              <div className="flex flex-col space-y-1">
                 <a
                   href="#pro"
                   onClick={(e) => {
@@ -87,7 +87,9 @@ export default function Hero({ isDark }: HeroProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
       >
-        {/* <div className="z-0 w-full md:mx-auto md:max-w-2xl mt-12 lg:mt-32 md:rounded-2xl md:overflow-hidden md:shadow-2xl dark:shadow-black/70 md:bg-black/20 md:backdrop-blur-sm aspect-[1.94/1]">
+        <div className="z-0 w-full md:mx-auto md:max-w-2xl mt-16 md:rounded-2xl 
+        md:overflow-hidden md:shadow-2xl dark:shadow-black/70 md:bg-black/20 md:backdrop-blur-sm aspect-[1.94/1]
+        lg:hidden">
           <video
             src={bgVideo}
             autoPlay
@@ -97,7 +99,7 @@ export default function Hero({ isDark }: HeroProps) {
             aria-hidden="true"
             className="pointer-events-none select-none w-full h-auto md:h-full object-contain"
           />
-        </div> */}
+        </div>
       </motion.div>
 
       {/* Overlay above video, below content */}

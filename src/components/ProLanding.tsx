@@ -28,7 +28,7 @@ export default function ProLanding() {
   return (
     <section className="w-full" id="pro">
       {/* Entry / Hero */}
-      <div className="relative py-28 md:pt-36 md:pb-16 lg:pt-48 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-transparent to-black text-white">
+      <div className="relative pt-16 pb-4 md:pt-36 md:pb-16 lg:pt-48 px-4 md:px-8 lg:px-16 bg-gradient-to-b from-transparent to-black text-white">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
