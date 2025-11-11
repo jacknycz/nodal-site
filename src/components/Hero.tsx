@@ -40,7 +40,7 @@ export default function Hero({ isDark }: HeroProps) {
             a sandbox for ideas
           </h3>
           <p className="md:text-2xl max-w-md mx-auto lg:mx-0 xl:max-w-2xl text-zinc-900 dark:text-white">
-            nodal is seriously flexible visual thinking tool. plan, organize, learn, teach, and share ideas.
+            nodal is a seriously flexible visual thinking tool. plan, organize, learn, teach, and share ideas.
           </p>
 
           <div className="mt-6 flex w-full gap-4">
