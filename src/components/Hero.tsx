@@ -36,11 +36,11 @@ export default function Hero({ isDark }: HeroProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h3 className="font-heading text-4xl md:text-5xl lg:text-6xl font-medium text-zinc-900 dark:text-white">
-            a sandbox for ideas
+          <h3 className="font-heading text-3xl md:text-4xl lg:text-5xl font-medium text-zinc-900 dark:text-white">
+            nodal is a visual thinking platform for turning ideas into shareable stories
           </h3>
           <p className="md:text-2xl max-w-md mx-auto lg:mx-0 xl:max-w-2xl text-zinc-900 dark:text-white">
-            nodal is a seriously flexible visual thinking tool. plan, organize, learn, teach, and share ideas.
+            explore ideas freely, connect thoughts visually, and share them clearly when you’re ready
           </p>
 
           <div className="mt-6 flex w-full gap-4">

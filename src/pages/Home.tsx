@@ -1,5 +1,6 @@
 import Hero from '../components/Hero'
 import FeatureTabsSection from '../components/FeatureTabsSection'
+import StoryMode from '../components/StoryMode'
 import ProLanding from '../components/ProLanding'
 import FinalCTASection from '../components/FinalCTASection'
 import MeetNobot from '../components/MeetNobot'
@@ -14,6 +15,7 @@ export default function Home({ isDark }: HomeProps) {
       <Hero isDark={isDark} />
       <FeatureTabsSection />
       {/* <MeetTheNodes isDark={isDark} /> */}
+      <StoryMode />
       <MeetNobot />
       <ProLanding />
       <FinalCTASection isDark={isDark} />
