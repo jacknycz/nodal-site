@@ -179,11 +179,19 @@ export default function FeatureTabsSection() {
                 role="tabpanel"
                 id={`${baseId}-panel-${activeIndex}`}
                 aria-labelledby={`${baseId}-tab-${activeIndex}`}
-                className="overflow-hidden rounded-3xl border border-gray-200/80 bg-white/80 p-6 
-                shadow-2xl  
+                className="relative overflow-hidden rounded-3xl border border-gray-200/80 bg-white/80 p-6 shadow-2xl 
                 dark:border-gray-800/80 dark:bg-gray-950/50 dark:shadow-black/70 md:p-10"
               >
-                {TABS[activeIndex].content}
+                {/* Gradient/wash treatment (no extra outer box) */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 opacity-70"
+                  style={{
+                    background:
+                      'radial-gradient(46rem 46rem at 12% 18%, rgba(0, 207, 245, 0.16), transparent 58%), radial-gradient(44rem 44rem at 88% 25%, rgba(255, 0, 168, 0.10), transparent 58%), radial-gradient(52rem 52rem at 55% 92%, rgba(255, 222, 0, 0.08), transparent 62%)'
+                  }}
+                />
+                <div className="relative">{TABS[activeIndex].content}</div>
               </div>
             </motion.div>
           </AnimatePresence>
