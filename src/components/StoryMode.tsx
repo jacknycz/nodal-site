@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import storyModeIntro from '../assets/story-mode-intro-small.mp4'
 
 export default function StoryMode() {
   return (
@@ -80,6 +81,24 @@ export default function StoryMode() {
 
                 <div className="font-heading text-sm tracking-wide text-zinc-500 dark:text-zinc-400">
                   Story Mode
+                </div>
+
+                <div className="mt-4">
+                  <div className="flex items-center justify-between">
+                    <div className="text-xs text-zinc-500 dark:text-zinc-400">intro (with audio)</div>
+                    <div className="text-xs text-zinc-400 dark:text-zinc-500">~1 min</div>
+                  </div>
+                  <div className="mt-2 overflow-hidden rounded-xl border border-zinc-200/70 bg-white/60 dark:border-zinc-800/70 dark:bg-zinc-950/20">
+                    <div className="aspect-video">
+                      <video
+                        src={storyModeIntro}
+                        controls
+                        playsInline
+                        preload="metadata"
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mt-4 space-y-3">
