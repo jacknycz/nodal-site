@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import Deck from './pages/Deck'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import './App.css'
@@ -27,7 +28,7 @@ function App() {
 
       <a
         href="https://app.nodalapp.com/"
-        className="bg-primary-600 hover:bg-primary-500 fixed top-4 right-4 z-50
+        className="bg-primary-600 hover:bg-primary-500 fixed top-4 right-4 lg:right-16 z-50
         text-white text-center font-normal md:font-medium font-heading text-sm md:text-base
         px-4 md:px-6 py-2 md:py-3 rounded-full transition-colors duration-200"
       >
@@ -36,25 +37,19 @@ function App() {
 
       {/* Site-wide fixed background dots (behind everything) */}
       <div
-        className="fixed inset-0 -z-50 pointer-events-none bg-white dark:bg-gray-950"
+        className="fixed inset-0 -z-50 pointer-events-none bg-white dark:bg-gray-950 opacity-40"
         style={{
           backgroundImage: `radial-gradient(circle, ${isDark ? '#333333' : '#c9c9c9'} 1px, transparent 1px)`,
           backgroundSize: '20px 20px',
           backgroundPosition: '0 0'
         }}
       />
-      {/* Radial overlay above dots, still behind content */}
-      <div
-        className="fixed inset-0 -z-40 pointer-events-none"
-        style={{
-          background: isDark
-            ? 'radial-gradient(60% 60% at 50% 50%, rgba(9,9,11,.6) 0%, rgba(9,9,11,0.55) 65%, rgba(9,9,11,0.2) 85%)'
-            : 'radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.55) 65%, rgba(255,255,255,0.3) 85%)'
-        }}
-      />
+      {/* Site-wide gradient wash above dots, still behind content */}
+      <div className="site-wash" />
 
       <Routes>
         <Route path="/" element={<Home isDark={isDark} />} />
+        <Route path="/deck" element={<Deck isDark={isDark} />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
       </Routes>

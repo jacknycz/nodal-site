@@ -38,7 +38,7 @@ export default function ProLanding() {
         >
           <div className="text-primary-300/80 font-heading text-sm tracking-wide mb-3">Nodal Pro</div>
           <h2 className="font-heading text-3xl md:text-5xl font-medium">the mind map, upgraded</h2>
-          <p className="mt-4 text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto">Invite your friends, share your boards, and co-edit live. Nodal Pro has faster AI, more power, resources and tools for thinkers who don’t stop at “idea.”</p>\
+          <p className="mt-4 text-lg md:text-xl text-zinc-300 max-w-3xl mx-auto">Invite your friends, share your boards, and co-edit live. Nodal Pro has faster AI, more power, resources and tools for thinkers who don’t stop at “idea.”</p>
           <div className="mt-8 flex items-center justify-center gap-4 flex-wrap">
             <a href="https://app.nodalapp.com/profile" className="bg-primary-600 hover:bg-primary-500 text-white font-heading px-6 py-3 rounded-full transition-colors">Go Pro Now</a>
           </div>

@@ -154,7 +154,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
       {/* Node 1 - centered top with responsive Y */}
       {/* <DraggableNode initial={{ x: 0, y: 40 }} initialYByWidth={{ base: 100, md: 20, lg: 20, xl: 20 }} centerX> */}
       {!isMobile && !isTablet && (  
-      <DraggableNode initialByWidth={{ base: { x: 820, y: 380 }, md: { x: 520, y: 180 }, lg: { x: 16, y: 240 }, xl: { x: 20, y: 200 } }}>
+      <DraggableNode initialByWidth={{ base: { x: 820, y: 380 }, md: { x: 520, y: 180 }, lg: { x: 16, y: 240 }, xl: { x: 20, y: 100 } }}>
         <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
           <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
           <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -179,7 +179,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
 
       {/* Node 3 - hide on mobile */}
       {!isMobile && !isTablet && (
-        <DraggableNode initialByWidth={{ base: { x: -600, y: 740 }, md: { x: 660, y: 60 }, lg: { x: 1040, y: 80 }, xl: { x: 1800, y: 100 } }}>
+        <DraggableNode initialByWidth={{ base: { x: -600, y: 740 }, md: { x: 660, y: 60 }, lg: { x: 1040, y: 80 }, xl: { x: 540, y: 120 } }}>
           <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-[260px] hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
             <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
             <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>
@@ -199,7 +199,7 @@ export default function DraggableBoard({ className = '', fillParent = false }: {
 
       {/* Node 4 - hide on mobile */}
       {!isMobile && !isTablet && (
-        <DraggableNode initial={{ x: 0, y: 40 }} initialYByWidth={{ base: 100, md: 20, lg: 700, xl: 600 }} centerX>
+        <DraggableNode initial={{ x: 0, y: 40 }} initialYByWidth={{ base: 100, md: 20, lg: 700, xl: 400 }} centerX>
           <div className="relative flex flex-col justify-start text-left p-3 bg-white dark:bg-gray-800 border border-transparent rounded-lg shadow-sm shadow-gray-400/20 dark:shadow-none group w-full hover:shadow-md hover:border-gray-300 dark:hover:border-gray-600 transition">
             <div className="rf-handle-hit-32 absolute -top-2 left-1/2 -translate-x-1/2"></div>
             <div className="rf-handle-hit-32 absolute -bottom-2 left-1/2 -translate-x-1/2"></div>

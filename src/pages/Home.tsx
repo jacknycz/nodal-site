@@ -1,4 +1,4 @@
-import Hero from '../components/Hero'
+import HeroV2 from '../components/HeroV2'
 import FeatureTabsSection from '../components/FeatureTabsSection'
 import StoryMode from '../components/StoryMode'
 import ProLanding from '../components/ProLanding'
@@ -12,7 +12,7 @@ interface HomeProps {
 export default function Home({ isDark }: HomeProps) {
   return (
     <>
-      <Hero isDark={isDark} />
+      <HeroV2 isDark={isDark} />
       <FeatureTabsSection />
       {/* <MeetTheNodes isDark={isDark} /> */}
       <StoryMode />

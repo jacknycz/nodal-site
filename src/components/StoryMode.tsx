@@ -31,7 +31,7 @@ export default function StoryMode() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                Turn thinking into a story.
+                turn thinking into a story
               </motion.h2>
 
               <motion.p
@@ -41,7 +41,7 @@ export default function StoryMode() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.05 }}
               >
-                Ideas don’t start as stories — they become stories when they make sense. Story Mode lets you turn a
+                Ideas don’t start as stories - they become stories when they make sense. <strong>Story Mode</strong> lets you turn a
                 board of connected thoughts into a clear, guided narrative without rebuilding your work as slides or
                 docs.
               </motion.p>

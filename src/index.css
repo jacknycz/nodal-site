@@ -92,6 +92,39 @@
     radial-gradient(50rem 50rem at 10% 10%, rgba(255, 222, 0, 0.28), transparent 62%);
 }
 
+/* --- Site-wide animated gradient wash (HeroV2 background) --- */
+.site-wash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  height: 120vh;
+  width: 120vw;
+  top: -10vh;
+  left: -10vw;
+  z-index: -40;
+  opacity: 0.9;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  animation: siteWashDrift 10s ease-in-out infinite;
+  background:
+    radial-gradient(60rem 60rem at 20% 10%, rgba(0, 207, 245, 0.16), transparent 60%),
+    radial-gradient(55rem 55rem at 90% 15%, rgba(255, 0, 168, 0.12), transparent 58%),
+    radial-gradient(60rem 60rem at 55% 95%, rgba(255, 222, 0, 0.10), transparent 60%);
+}
+
+.dark .site-wash {
+  background:
+    radial-gradient(60rem 60rem at 20% 10%, rgba(0, 207, 245, 0.18), transparent 60%),
+    radial-gradient(55rem 55rem at 90% 15%, rgba(255, 0, 168, 0.14), transparent 58%),
+    radial-gradient(60rem 60rem at 55% 95%, rgba(255, 222, 0, 0.10), transparent 60%);
+}
+
+@keyframes siteWashDrift {
+  0% { transform: translate3d(-2.5%, -2%, 0) scale(1.04) rotate(-1.2deg); opacity: 0.82; }
+  50% { transform: translate3d(2.5%, 2%, 0) scale(1.09) rotate(1.2deg); opacity: 0.95; }
+  100% { transform: translate3d(-2.5%, -2%, 0) scale(1.04) rotate(-1.2deg); opacity: 0.82; }
+}
+
 /* Hero ripple mask: hides a circular ring of the dots that expands outward */
 .hero-ripple-mask {
   position: absolute;
