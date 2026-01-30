@@ -20,7 +20,7 @@ const TABS: FeatureTab[] = [
         imageLabel="Search UI preview"
         imageSrc={usesBrainstorm}
         subtitle="got a direction? let's go there"
-        description="Nodal is seriously flexible. Jot down thoughts, word vomit, lay everything down in one place. Find connections and similarities so you can see the bigger picture and build from there. Invite your friends to collaborate. Or ask Nobot to weigh in too - he's good at that."
+        description="nodal is seriously flexible. Jot down thoughts, word vomit, lay everything down in one place. Find connections and similarities so you can see the bigger picture and build from there. Invite your friends to collaborate. Or ask Nobot to weigh in too - he's good at that."
       />
     )
   },
@@ -112,7 +112,7 @@ export default function FeatureTabsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          so many ways to use the board
+          boards are infinite and flexible
         </motion.h2>
         <motion.p
           className="text-lg md:text-xl text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto"
@@ -121,7 +121,16 @@ export default function FeatureTabsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          the board is infinite and flexible - so just dive in and see what happens.
+          so here are a few of the ways people use their boards
+        </motion.p>
+        <motion.p
+          className="text-sm md:text-sm text-zinc-700 dark:text-zinc-300 max-w-3xl mx-auto mt-2"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          *legally the board is just really big, not <em>infinite</em>
         </motion.p>
       </div>
 
