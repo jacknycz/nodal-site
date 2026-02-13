@@ -13,9 +13,9 @@ export default function Home({ isDark }: HomeProps) {
   return (
     <>
       <HeroV2 isDark={isDark} />
+      <StoryMode />
       <FeatureTabsSection />
       {/* <MeetTheNodes isDark={isDark} /> */}
-      <StoryMode />
       <MeetNobot />
       <ProLanding />
       <FinalCTASection isDark={isDark} />

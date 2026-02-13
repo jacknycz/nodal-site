@@ -13,7 +13,7 @@ interface FeatureTab {
 
 const TABS: FeatureTab[] = [
   {
-    title: 'brainstorm',
+    title: 'brainstorm', 
     content: (
       <PlaceholderContent
         contentTitle="brainstorming"
