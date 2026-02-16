@@ -10,12 +10,12 @@ export default function StoryMode() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-white/70 p-6 shadow-2xl backdrop-blur-sm dark:border-zinc-800/80 dark:bg-zinc-950/30 dark:shadow-black/70 md:p-10"
+          className="relative"
         >
-          {/* Decorative background wash */}
+          {/* Decorative background wash (open/airy, not a boxed container) */}
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-70"
+            className="pointer-events-none absolute -inset-x-10 -inset-y-16 -z-10 opacity-70 blur-3xl"
             style={{
               background:
                 'radial-gradient(50rem 50rem at 15% 15%, rgba(0, 207, 245, 0.20), transparent 55%), radial-gradient(45rem 45rem at 85% 25%, rgba(255, 0, 168, 0.14), transparent 55%), radial-gradient(55rem 55rem at 55% 90%, rgba(255, 222, 0, 0.12), transparent 60%)'
