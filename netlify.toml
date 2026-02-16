@@ -1,0 +1,18 @@
+[[redirects]]
+  from = "/demo"
+  to = "https://app.nodalapp.com/board/c933c8f3-3ace-44e8-ba12-8043fcc82317"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/demo/"
+  to = "https://app.nodalapp.com/board/c933c8f3-3ace-44e8-ba12-8043fcc82317"
+  status = 301
+  force = true
+
+# SPA fallback so refreshes on client-side routes work (e.g. /deck, /privacy)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
