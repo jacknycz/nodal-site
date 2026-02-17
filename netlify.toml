@@ -1,12 +1,12 @@
 [[redirects]]
   from = "/demo"
-  to = "https://app.nodalapp.com/board/c933c8f3-3ace-44e8-ba12-8043fcc82317?story=topic-c933c8f3-3ace-44e8-ba12-8043fcc82317"
+  to = "https://app.nodalapp.com/board/46290192-58c1-4a45-b8fa-e6b7717eed55"
   status = 301
   force = true
 
 [[redirects]]
   from = "/demo/"
-  to = "https://app.nodalapp.com/board/c933c8f3-3ace-44e8-ba12-8043fcc82317?story=topic-c933c8f3-3ace-44e8-ba12-8043fcc82317"
+  to = "https://app.nodalapp.com/board/46290192-58c1-4a45-b8fa-e6b7717eed55"
   status = 301
   force = true
 
